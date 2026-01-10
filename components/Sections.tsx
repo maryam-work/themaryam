@@ -1,18 +1,21 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Container, Button, StarRating, Section, Marquee } from './UI';
-import { ArrowRight, ArrowLeft, Sparkles, Send, Loader2, Gift, Zap, TrendingUp, Package, ShoppingBag, Star, Heart, Smartphone, Play, Gem, Mail, Clock, Smile, ScanLine, Box, Link, Wifi, Battery, Fingerprint } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Sparkles, Send, Loader2, Gift, Zap, TrendingUp, Package, ShoppingBag, Star, Heart, Smartphone, Play, Gem, Mail, Clock, Smile, ScanLine, Box, Link, Wifi, Battery, Fingerprint, ExternalLink } from 'lucide-react';
 import { Product, Article, Category } from '../types';
+import { MatchedProduct } from '../lib/aiService';
 
 // =============================================================================
 // HERO SECTION (STRICTLY NO CHANGES - PRESERVED EXACTLY AS REQUESTED)
 // =============================================================================
 
-export const Hero = () => {
+// Isolated Typewriter/Input Component to prevent Hero re-renders
+const AnimatedSearchInput = ({
+    onSearch
+}: {
+    onSearch: (text: string) => void
+}) => {
     const [inputText, setInputText] = useState("");
     const [placeholder, setPlaceholder] = useState("");
-    const [isTyping, setIsTyping] = useState(false);
-    const [isSearching, setIsSearching] = useState(false);
-    const [showResults, setShowResults] = useState(false);
 
     const phrases = [
         "Mere bhai ka birthday hai, kuch unique customized chahiye...",
@@ -22,12 +25,13 @@ export const Hero = () => {
         "Long distance boyfriend ke liye kuch special..."
     ];
 
-    // Typewriter effect logic
+    // Typewriter effect logic - isolated here
     useEffect(() => {
         let currentPhraseIndex = 0;
         let currentCharIndex = 0;
         let isDeleting = false;
         let typingSpeed = 100;
+        let timer: any;
 
         const type = () => {
             const currentPhrase = phrases[currentPhraseIndex];
@@ -51,100 +55,112 @@ export const Hero = () => {
                 typingSpeed = 500;
             }
 
-            setTimeout(type, typingSpeed);
+            timer = setTimeout(type, typingSpeed);
         };
 
-        const timer = setTimeout(type, 1000);
+        timer = setTimeout(type, 1000);
         return () => clearTimeout(timer);
     }, []);
 
-    const handleSearch = (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (!inputText) return;
+        onSearch(inputText);
+    };
 
-        setIsSearching(true);
-        // Simulate AI processing
-        setTimeout(() => {
-            setIsSearching(false);
-            setShowResults(true);
-            // Smooth scroll to results
-            document.getElementById('ai-results')?.scrollIntoView({ behavior: 'smooth' });
-        }, 1500);
+    return (
+        <form onSubmit={handleSubmit} className="relative bg-white rounded-[2rem] shadow-2xl p-5 md:p-8 flex flex-col min-h-[220px] md:min-h-[240px] text-left transition-all duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
+            <div className="flex items-center gap-3 mb-3 md:mb-4 select-none">
+                <div className="w-8 h-8 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full flex items-center justify-center">
+                    <Zap className="text-indigo-600 fill-indigo-600" size={16} />
+                </div>
+                <span className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">Likh do jo dil mein hai...</span>
+            </div>
+
+            <textarea
+                value={inputText}
+                onChange={(e) => setInputText(e.target.value)}
+                className="w-full flex-1 text-xl md:text-3xl font-bold text-gray-900 placeholder-gray-300 focus:outline-none bg-transparent resize-none leading-tight font-heading"
+                placeholder={placeholder}
+                spellCheck={false}
+                rows={2}
+            />
+
+            <div className="flex flex-col md:flex-row items-center justify-between mt-4 md:mt-6 pt-4 md:pt-6 border-t border-gray-100 gap-4">
+                <div className="flex gap-2 overflow-x-auto w-full md:w-auto no-scrollbar pb-1 md:pb-0 select-none">
+                    {['Bhai ka Birthday', 'Sorry Gift', 'Ex ki Shaadi'].map(tag => (
+                        <span key={tag} onClick={() => setInputText(tag)} className="flex-shrink-0 text-[10px] font-bold bg-gray-50 hover:bg-gray-100 border border-gray-100 px-3 py-1.5 rounded-full text-gray-500 cursor-pointer transition-all uppercase tracking-wide whitespace-nowrap">
+                            {tag}
+                        </span>
+                    ))}
+                </div>
+
+                <button
+                    type="submit"
+                    className="w-full md:w-auto bg-black text-white px-6 py-3 md:px-8 rounded-full hover:bg-gray-900 transition-all flex items-center justify-center gap-2 font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:scale-95 whitespace-nowrap text-sm md:text-base"
+                >
+                    Generate Gift <ArrowRight size={16} />
+                </button>
+            </div>
+        </form>
+    );
+};
+
+export const Hero = ({ onSearch, isLoading }: { onSearch: (query: string) => void; isLoading?: boolean }) => {
+
+    const handleSearch = (text: string) => {
+        if (!text) return;
+        onSearch(text);
     };
 
     return (
         <div className="relative w-full overflow-hidden bg-[#FAFAFA]">
-            {/* Advanced Aurora Background */}
-            <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
-                {/* Soft Gradient Mesh */}
-                <div className="absolute top-[-20%] left-[-10%] w-[80%] h-[80%] rounded-full bg-gradient-to-tr from-rose-200/40 via-pink-200/40 to-transparent blur-[80px] md:blur-[120px] animate-blob mix-blend-multiply"></div>
-                <div className="absolute top-[-10%] right-[-10%] w-[70%] h-[70%] rounded-full bg-gradient-to-bl from-violet-200/40 via-purple-200/40 to-transparent blur-[80px] md:blur-[120px] animate-blob animation-delay-2000 mix-blend-multiply"></div>
-                <div className="absolute -bottom-[20%] left-[20%] w-[80%] h-[80%] rounded-full bg-gradient-to-t from-amber-100/60 via-orange-100/40 to-transparent blur-[80px] md:blur-[120px] animate-blob animation-delay-4000 mix-blend-multiply"></div>
+            {/* Static Aurora Background - Zero animations, zero blur filters, pure CSS gradients */}
+            <div
+                className="absolute inset-0 w-full h-full pointer-events-none z-0"
+                style={{
+                    background: `
+                        radial-gradient(ellipse 80% 80% at -10% -20%, rgba(251, 207, 232, 0.4), transparent 60%),
+                        radial-gradient(ellipse 70% 70% at 110% -10%, rgba(196, 181, 253, 0.4), transparent 60%),
+                        radial-gradient(ellipse 80% 80% at 20% 120%, rgba(254, 243, 199, 0.5), transparent 60%)
+                    `
+                }}
+            />
 
-                {/* Subtle Grid Overlay for Texture */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-            </div>
+            {/* Subtle Grid Overlay */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0 opacity-50"></div>
 
             <div className="relative z-10 min-h-[600px] md:h-[700px] flex flex-col items-center justify-center px-4 text-center pt-20 md:pt-0">
 
                 {/* Premium Badge - Mobile Optimized */}
-                <div className="animate-fade-in-up inline-flex items-center gap-1.5 md:gap-2 bg-white/80 backdrop-blur-xl border border-white/60 px-3 py-1.5 md:px-4 md:py-2 rounded-full mb-6 md:mb-10 shadow-[0_2px_10px_rgba(0,0,0,0.03)] ring-1 ring-white">
+                <div className="inline-flex items-center gap-1.5 md:gap-2 bg-white/80 backdrop-blur-xl border border-white/60 px-3 py-1.5 md:px-4 md:py-2 rounded-full mb-6 md:mb-10 shadow-[0_2px_10px_rgba(0,0,0,0.03)] ring-1 ring-white">
                     <Sparkles size={12} className="text-yellow-500 fill-yellow-500 md:w-4 md:h-4" />
                     <span className="text-[10px] md:text-xs font-bold tracking-wider text-gray-800 uppercase">India's 1st AI Gifting Store</span>
                 </div>
 
                 {/* Heading */}
-                <h1 className="animate-fade-in-up [animation-delay:200ms] text-4xl md:text-7xl font-heading font-extrabold leading-[1.1] mb-6 max-w-4xl text-gray-900 tracking-tight select-none">
+                <h1 className="text-4xl md:text-7xl font-heading font-extrabold leading-[1.1] mb-6 max-w-4xl text-gray-900 tracking-tight select-none">
                     Dil ki baat, <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600">Gifts ke saath.</span>
                 </h1>
 
-                <p className="animate-fade-in-up [animation-delay:400ms] text-base md:text-xl text-gray-600 mb-8 md:mb-12 max-w-xl leading-relaxed px-4 select-none">
+                <p className="text-base md:text-xl text-gray-600 mb-8 md:mb-12 max-w-xl leading-relaxed px-4 select-none">
                     Koi rootha hai? Ya bas pyaar jatana hai? <br className="hidden md:block" />
                     Bas batao kiske liye hai, baaki magic hum karenge.
                 </p>
 
-                {/* AI Input Interface - Boxy Style */}
-                <div className="animate-fade-in-up [animation-delay:600ms] w-full max-w-xl relative group mx-auto mt-6 md:mt-8 mb-12 md:mb-0">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 rounded-[2rem] blur opacity-30 group-hover:opacity-80 transition duration-1000 group-hover:duration-200"></div>
+                {/* AI Input Interface - Clean Style */}
+                <div className="w-full max-w-xl relative mx-auto mt-6 md:mt-8 mb-12 md:mb-0">
+                    {/* Render Isolated Component */}
+                    <AnimatedSearchInput onSearch={handleSearch} />
 
-                    <form onSubmit={handleSearch} className="relative bg-white rounded-[2rem] shadow-2xl p-5 md:p-8 flex flex-col min-h-[220px] md:min-h-[240px] text-left transition-all duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
-
-                        {/* Header */}
-                        <div className="flex items-center gap-3 mb-3 md:mb-4 select-none">
-                            <div className="w-8 h-8 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full flex items-center justify-center">
-                                <Zap className="text-indigo-600 fill-indigo-600" size={16} />
+                    {/* Render Loading Overlay if searching */}
+                    {isLoading && (
+                        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm rounded-[2rem] flex items-center justify-center z-20">
+                            <div className="flex flex-col items-center">
+                                <Loader2 className="animate-spin text-purple-600 mb-2" size={32} />
+                                <span className="text-sm font-bold text-purple-900 animate-pulse">AI is finding gifts...</span>
                             </div>
-                            <span className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">Likh do jo dil mein hai...</span>
                         </div>
-
-                        {/* Text Area */}
-                        <textarea
-                            value={inputText}
-                            onChange={(e) => setInputText(e.target.value)}
-                            className="w-full flex-1 text-xl md:text-3xl font-bold text-gray-900 placeholder-gray-300 focus:outline-none bg-transparent resize-none leading-tight font-heading"
-                            placeholder={placeholder}
-                            spellCheck={false}
-                            rows={2}
-                        />
-
-                        {/* Footer Actions */}
-                        <div className="flex flex-col md:flex-row items-center justify-between mt-4 md:mt-6 pt-4 md:pt-6 border-t border-gray-100 gap-4">
-                            <div className="flex gap-2 overflow-x-auto w-full md:w-auto no-scrollbar pb-1 md:pb-0 select-none">
-                                {['Bhai ka Birthday', 'Sorry Gift', 'Ex ki Shaadi'].map(tag => (
-                                    <span key={tag} onClick={() => setInputText(tag)} className="flex-shrink-0 text-[10px] font-bold bg-gray-50 hover:bg-gray-100 border border-gray-100 px-3 py-1.5 rounded-full text-gray-500 cursor-pointer transition-all uppercase tracking-wide whitespace-nowrap">
-                                        {tag}
-                                    </span>
-                                ))}
-                            </div>
-
-                            <button
-                                type="submit"
-                                className="w-full md:w-auto bg-black text-white px-6 py-3 md:px-8 rounded-full hover:bg-gray-900 transition-all flex items-center justify-center gap-2 font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:scale-95 whitespace-nowrap text-sm md:text-base"
-                            >
-                                {isSearching ? <Loader2 className="animate-spin" size={18} /> : <>Generate Gift <ArrowRight size={16} /></>}
-                            </button>
-                        </div>
-                    </form>
+                    )}
                 </div>
             </div>
         </div>
@@ -159,31 +175,39 @@ const generatedProducts: Product[] = [
     { id: 'g4', name: 'Couple Neon Light', description: 'Custom names glowing', price: 1800, rating: 5, image: 'https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop', category: 'DECOR' },
 ];
 
-export const AIResults = () => {
+export const AIResults = ({ visible, products }: { visible: boolean; products: MatchedProduct[] }) => {
+    if (!visible || products.length === 0) return null;
+
     return (
         <div id="ai-results" className="bg-white py-12 scroll-mt-24 border-t border-gray-100">
             <Container>
-                <div className="flex items-center gap-2 mb-8 animate-fade-in-up select-none">
+                <div className="flex items-center gap-2 mb-8 select-none">
                     <Sparkles className="text-yellow-500" />
                     <h2 className="text-2xl font-bold">AI Recommended for you</h2>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-                    {generatedProducts.map((p, idx) => (
-                        <div key={p.id} className="group cursor-pointer animate-fade-in-up" style={{ animationDelay: `${idx * 100}ms` }}>
+                    {products.map((p, idx) => (
+                        <a
+                            key={p.handle}
+                            href={p.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group cursor-pointer block"
+                        >
                             <div className="relative overflow-hidden rounded-xl bg-gray-100 mb-3 aspect-square">
                                 <img src={p.image} alt={p.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                                 {idx === 0 && <div className="absolute top-2 left-2 bg-black text-white text-[10px] font-bold px-2 py-1 rounded-full">BEST MATCH</div>}
-                                <button className="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow-md translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                                    <ShoppingBag size={16} />
-                                </button>
+                                <div className="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow-md translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                    <ExternalLink size={16} />
+                                </div>
                             </div>
                             <h3 className="font-bold text-gray-900 text-sm md:text-base leading-tight mb-1">{p.name}</h3>
-                            <p className="text-xs text-gray-500 mb-2">{p.description}</p>
+                            <p className="text-xs text-gray-500 mb-2 line-clamp-1">{p.reason}</p>
                             <div className="flex items-center justify-between">
                                 <span className="font-bold">₹{p.price}</span>
-                                <StarRating rating={p.rating} size={12} />
+                                <span className="text-xs text-green-600 font-medium">{p.score}% Match</span>
                             </div>
-                        </div>
+                        </a>
                     ))}
                 </div>
             </Container>
@@ -286,68 +310,84 @@ export const TechLove = () => {
     return (
         <div className="w-full bg-[#050505] text-white py-32 overflow-hidden relative perspective-1000">
             {/* Cosmic Background */}
-            <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 z-0 opacity-50">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-indigo-900/20 rounded-full blur-[120px] animate-pulse-slow"></div>
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[100px]"></div>
+                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-pink-900/10 rounded-full blur-[100px]"></div>
             </div>
 
             <Container className="relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
 
-                    {/* LEFT: 3D Composition */}
-                    <div className="order-2 lg:order-1 relative h-[600px] flex items-center justify-center">
-                        <div className="relative w-80 h-full">
+                    {/* LEFT: 3D Composition (Mobile in Front, QR Behind) */}
+                    <div className="order-2 lg:order-1 relative h-[600px] flex items-center justify-center -ml-12 md:ml-0">
+                        <div className="relative w-80 h-full flex items-center justify-center">
 
-                            {/* Floating QR Glass Card */}
-                            <div className="absolute top-10 -left-12 z-20 w-64 bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.5)] animate-float transform rotate-[-6deg] hover:rotate-0 transition-all duration-500">
-                                <div className="relative overflow-hidden rounded-xl bg-white p-2">
-                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=Love-You-Forever" alt="QR" className="w-full h-auto opacity-90" />
-                                    {/* Laser Scan Animation */}
-                                    <div className="absolute top-0 left-0 w-full h-1 bg-red-500 shadow-[0_0_20px_rgba(239,68,68,1)] animate-scan z-30"></div>
-                                    <div className="absolute inset-0 bg-gradient-to-b from-red-500/10 to-transparent pointer-events-none"></div>
+                            {/* BACK: Floating QR Card (The Source) */}
+                            <div className="absolute top-20 right-[-40px] z-0 w-64 bg-white/5 backdrop-blur-sm border border-white/10 p-4 rounded-xl shadow-[0_0_50px_rgba(255,255,255,0.05)] animate-float-delayed transform rotate-[12deg] opacity-60 hover:opacity-100 transition-all duration-500 scale-90">
+                                <div className="relative overflow-hidden rounded-lg bg-white/90 p-2 opacity-80">
+                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=Love-You-Forever" alt="QR" className="w-full h-auto" />
                                 </div>
-                                <div className="mt-3 flex items-center gap-2">
-                                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                    <p className="text-xs font-mono text-white/70">SCANNING...</p>
+                                <div className="mt-3 text-center">
+                                    <p className="text-[10px] font-mono text-white/50 tracking-widest">SECRET MESSAGE INSIDE</p>
                                 </div>
                             </div>
 
-                            {/* 3D Phone Mockup */}
-                            <div className="absolute top-0 left-10 z-10 w-[300px] animate-float-delayed">
-                                <div className="bg-black border-[6px] border-gray-800 rounded-[3rem] h-[580px] shadow-2xl overflow-hidden relative ring-1 ring-gray-700/50">
-                                    {/* Screen Content */}
-                                    <div className="absolute inset-0 bg-gray-900">
-                                        <img src="https://images.pexels.com/photos/3585046/pexels-photo-3585046.jpeg?auto=compress&cs=tinysrgb&w=400&h=800&fit=crop" loading="lazy" className="w-full h-full object-cover opacity-60" alt="Memory" />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-6 pb-12">
-                                            <div className="flex gap-2 mb-4">
-                                                <div className="w-8 h-1 bg-red-500 rounded-full animate-pulse"></div>
-                                                <div className="w-1 h-1 bg-white/50 rounded-full"></div>
-                                                <div className="w-1 h-1 bg-white/50 rounded-full"></div>
-                                            </div>
-                                            <h3 className="text-3xl font-heading font-bold text-white mb-2">Happy 1st Anniversary!</h3>
-                                            <p className="text-white/80 text-sm leading-relaxed mb-6">"Every moment with you is magic. Here is a little song that reminds me of us..."</p>
+                            {/* FRONT: 3D Phone Glass Mockup (The Scanner/Viewer) */}
+                            <div className="absolute top-0 left-4 z-20 w-[300px] animate-float">
+                                {/* Glass Body */}
+                                <div className="bg-gradient-to-br from-gray-900/80 via-black/60 to-gray-900/80 backdrop-blur-xl border border-white/20 rounded-[3rem] h-[580px] shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden relative ring-1 ring-white/10">
 
-                                            {/* Audio Player UI */}
-                                            <div className="bg-white/10 backdrop-blur-md rounded-xl p-3 flex items-center gap-3 border border-white/10">
-                                                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                                                    <Play size={16} className="fill-black text-black ml-1" />
+                                    {/* Screen Content - The Website View */}
+                                    <div className="absolute inset-0 bg-transparent flex flex-col relative z-10">
+                                        {/* Website Hero Image */}
+                                        <div className="h-1/2 relative group">
+                                            <img src="https://images.pexels.com/photos/3585046/pexels-photo-3585046.jpeg?auto=compress&cs=tinysrgb&w=400&h=800&fit=crop" loading="lazy" className="w-full h-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-105" alt="Memory" />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-[#000] via-transparent to-transparent"></div>
+
+                                            {/* Floating Hearts Animation inside Phone */}
+                                            <div className="absolute bottom-10 right-4 animate-bounce">
+                                                <Heart className="fill-red-500 text-red-500 drop-shadow-lg" size={24} />
+                                            </div>
+                                        </div>
+
+                                        {/* Website Body */}
+                                        <div className="h-1/2 bg-black/40 backdrop-blur-md p-6 flex flex-col">
+                                            <div className="flex gap-1 mb-4 justify-center">
+                                                <div className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></div>
+                                                <div className="w-1.5 h-1.5 bg-white/30 rounded-full"></div>
+                                                <div className="w-1.5 h-1.5 bg-white/30 rounded-full"></div>
+                                            </div>
+
+                                            <h3 className="text-2xl font-heading font-bold text-white mb-2 text-center leading-tight">
+                                                Happy Birthday <br /><span className="text-pink-500">Meri Jaan! ❤️</span>
+                                            </h3>
+
+                                            <div className="bg-white/10 rounded-xl p-4 mt-2 border border-white/5">
+                                                <p className="text-white/90 text-xs italic leading-relaxed text-center">
+                                                    "Tumhare liye ek chhota sa surprise. Scroll down to see our best memories..."
+                                                </p>
+                                            </div>
+
+                                            {/* Fake Audio Player */}
+                                            <div className="mt-4 flex items-center gap-3 bg-white/5 rounded-full p-2 border border-white/10">
+                                                <div className="w-8 h-8 bg-pink-500 rounded-full flex items-center justify-center shadow-lg">
+                                                    <Play size={12} className="fill-white text-white ml-0.5" />
                                                 </div>
-                                                <div className="flex-1">
-                                                    <div className="h-1 bg-white/20 rounded-full w-full overflow-hidden">
-                                                        <div className="h-full bg-red-500 w-1/3"></div>
-                                                    </div>
-                                                    <div className="flex justify-between text-[10px] text-white/50 mt-1">
-                                                        <span>1:20</span>
-                                                        <span>3:45</span>
-                                                    </div>
+                                                <div className="flex-1 h-1 bg-white/20 rounded-full overflow-hidden">
+                                                    <div className="h-full bg-pink-500 w-2/3 animate-[shimmer_2s_infinite]"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
+                                    {/* Scan Line Effect Overlay (Scanning the QR behind) */}
+                                    <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-b from-transparent via-white/5 to-transparent h-[20%] w-full animate-scan opacity-30"></div>
+
                                     {/* Dynamic Island */}
-                                    <div className="absolute top-2 left-1/2 -translate-x-1/2 w-28 h-7 bg-black rounded-full z-50 flex items-center justify-center gap-2">
+                                    <div className="absolute top-3 left-1/2 -translate-x-1/2 w-24 h-7 bg-black rounded-full z-50 flex items-center justify-center gap-2 shadow-lg">
                                         <div className="w-1.5 h-1.5 bg-gray-800 rounded-full"></div>
-                                        <div className="w-1.5 h-1.5 bg-blue-900 rounded-full animate-pulse"></div>
+                                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
                                     </div>
                                 </div>
                             </div>
@@ -356,41 +396,45 @@ export const TechLove = () => {
                     </div>
 
                     {/* RIGHT: Typography & Content */}
-                    <div className="order-1 lg:order-2">
-                        <div className="flex items-center gap-3 mb-6">
-                            <div className="h-[1px] w-12 bg-indigo-500"></div>
-                            <span className="text-indigo-400 font-bold tracking-[0.2em] text-sm uppercase">Next Gen Gifting</span>
+                    <div className="order-1 lg:order-2 text-center md:text-left">
+                        <div className="flex items-center justify-center md:justify-start gap-3 mb-6">
+                            <div className="h-[1px] w-12 bg-pink-500"></div>
+                            <span className="text-pink-400 font-bold tracking-[0.2em] text-sm uppercase">The Ultimate Surprise</span>
                         </div>
 
-                        <h2 className="text-6xl md:text-8xl font-heading font-black mb-6 leading-[0.9] tracking-tighter select-none">
-                            GIFTS THAT <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 animate-shimmer bg-[length:200%_auto]">SPEAK.</span>
+                        <h2 className="text-5xl md:text-7xl font-heading font-black mb-6 leading-[1] tracking-tighter select-none">
+                            EK SCAN, <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 animate-shimmer bg-[length:200%_auto]">DHER SAARA PYAAR.</span>
                         </h2>
 
-                        <p className="text-xl text-gray-400 mb-10 leading-relaxed max-w-lg border-l-2 border-gray-800 pl-6 select-none">
-                            Embed a secret video message, voice note, or romantic playlist inside a physical card. <br />
-                            <span className="text-white font-bold">They scan, they smile, they remember.</span>
+                        <p className="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed max-w-lg mx-auto md:mx-0 font-medium">
+                            Gift ke saath ek <span className="text-white font-bold underline decoration-pink-500 underline-offset-4">custom website</span> banaao. <br /><br />
+                            <span className="text-gray-400 text-base">
+                                1. Hum aapko ek pyara sa QR Code denge.<br />
+                                2. Woh scan karenge.<br />
+                                3. Aur ek <b className="text-white">beautiful animated website</b> khulegi sirf unke liye. With photos, music & your customized letter.
+                            </span>
                         </p>
 
-                        <div className="flex flex-wrap gap-4 mb-16">
-                            <Button variant="glow" size="lg">Create Magic</Button>
-                            <div className="flex items-center gap-4 px-6 text-sm font-medium text-gray-400">
-                                <Wifi size={16} className="animate-pulse" /> Instant Load
+                        <div className="flex flex-col md:flex-row items-center gap-4 mb-16 justify-center md:justify-start">
+                            <Button variant="glow" size="lg" className="w-full md:w-auto">Create Your Website Gift</Button>
+                            <div className="flex items-center gap-2 text-sm font-medium text-gray-500">
+                                <ScanLine size={16} /> Scan Demo
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-3 gap-4 border-t border-gray-900 pt-8">
-                            <div className="text-center md:text-left">
-                                <Fingerprint className="mb-2 text-gray-600" />
-                                <h4 className="font-bold text-white">Unique ID</h4>
+                        <div className="grid grid-cols-3 gap-2 md:gap-4 border-t border-gray-900 pt-8">
+                            <div className="text-center md:text-left p-2 bg-white/5 rounded-lg border border-white/5">
+                                <Smartphone className="mb-2 text-pink-500 mx-auto md:mx-0" size={20} />
+                                <h4 className="font-bold text-white text-sm">Mobile Optimized</h4>
                             </div>
-                            <div className="text-center md:text-left">
-                                <Smartphone className="mb-2 text-gray-600" />
-                                <h4 className="font-bold text-white">Mobile First</h4>
+                            <div className="text-center md:text-left p-2 bg-white/5 rounded-lg border border-white/5">
+                                <Link className="mb-2 text-blue-500 mx-auto md:mx-0" size={20} />
+                                <h4 className="font-bold text-white text-sm">Lifetime URL</h4>
                             </div>
-                            <div className="text-center md:text-left">
-                                <Battery className="mb-2 text-gray-600" />
-                                <h4 className="font-bold text-white">Lifetime</h4>
+                            <div className="text-center md:text-left p-2 bg-white/5 rounded-lg border border-white/5">
+                                <Heart className="mb-2 text-red-500 mx-auto md:mx-0" size={20} />
+                                <h4 className="font-bold text-white text-sm">Total Privacy</h4>
                             </div>
                         </div>
                     </div>
