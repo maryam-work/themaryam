@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TopBar, Header, Footer } from './components/Layout';
-import { 
-  Hero, 
+import {
+  Hero,
   AIResults,
   CategoryArches,
   TrendingLevitation,
@@ -11,8 +11,30 @@ import {
   LoveWall,
   UnboxingStream
 } from './components/Sections';
+import { matchProducts, MatchedProduct } from './lib/aiService';
 
 const App: React.FC = () => {
+  const [showResults, setShowResults] = useState(false);
+  const [matchedProducts, setMatchedProducts] = useState<MatchedProduct[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSearch = async (query: string) => {
+    setIsLoading(true);
+    try {
+      const products = await matchProducts(query);
+      setMatchedProducts(products);
+      setShowResults(true);
+      // Scroll to results after a short delay
+      setTimeout(() => {
+        document.getElementById('ai-results')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } catch (error) {
+      console.error('Search error:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="font-sans text-primary antialiased selection:bg-brand selection:text-white bg-white">
       {/* Layout Header */}
@@ -21,10 +43,10 @@ const App: React.FC = () => {
 
       {/* Main Content Flow - Storytelling Approach */}
       <main className="flex flex-col gap-0 w-full overflow-x-hidden">
-        
+
         {/* 1. The Hook: AI Magic */}
-        <Hero />
-        <AIResults />
+        <Hero onSearch={handleSearch} isLoading={isLoading} />
+        <AIResults visible={showResults} products={matchedProducts} />
 
         {/* 2. Exploration: Shop By Relation (Arch Cards) */}
         <CategoryArches />
