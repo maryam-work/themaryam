@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Wedding Gifts | Handcrafted Wedding Hampers | The Maryam</title>
+    <meta name="description"
+        content="Elegant wedding gifts and hampers. Bulk shagun envelopes, return gifts for weddings, and personalized couple gifts.">
+    <link rel="canonical" href="https://themaryam.in/wedding-gifts.html">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        /* PREMIUM LUXE SYSTEM */
+        :root {
+            --royal-blue: #0F172A;
+            --gold: #B45309;
+            --gold-light: #F59E0B;
+            --cream: #FAFAF9;
+            --charcoal: #1C1917;
+            --text-gray: #4B5563;
+            --border: #E7E5E4;
+            --white: #ffffff;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--charcoal);
+            background: var(--cream);
+            line-height: 1.6;
+            padding-bottom: 80px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.2s;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .flex {
+            display: flex;
+            align-items: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .bg-white {
+            background: var(--white);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-gold {
+            color: var(--gold);
+        }
+
+        .text-serif {
+            font-family: var(--font-serif);
+        }
+
+        .announcement {
+            background: var(--royal-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-inner {
+            height: 70px;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--royal-blue);
+            letter-spacing: -0.5px;
+        }
+
+        .search-box {
+            background: var(--cream);
+            border: 1px solid var(--border);
+            padding: 10px 16px;
+            border-radius: 4px;
+            margin: 0 32px;
+            flex: 1;
+            max-width: 500px;
+            color: var(--text-gray);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .icon-nav a {
+            margin-left: 20px;
+            color: var(--royal-blue);
+            font-size: 20px;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(15, 23, 42, 0.5), rgba(15, 23, 42, 0.5)), url('https://cdn.shopify.com/s/files/1/0801/4931/5828/files/IMG_20251219_165233.jpg') center/cover;
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero-tag {
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--gold-light);
+            margin-bottom: 16px;
+            display: block;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: 42px;
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: #e2e8f0;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: var(--white);
+            padding: 14px 32px;
+            border-radius: 2px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 13px;
+            display: inline-block;
+            border: 1px solid var(--gold);
+        }
+
+        .trust-strip {
+            background: var(--royal-blue);
+            color: var(--white);
+            padding: 20px 0;
+            overflow-x: auto;
+        }
+
+        .trust-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-right: 40px;
+            white-space: nowrap;
+        }
+
+        .trust-icon {
+            color: var(--gold-light);
+            font-size: 20px;
+        }
+
+        .trust-text h4 {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .trust-text p {
+            font-size: 11px;
+            color: #94a3b8;
+            margin: 0;
+        }
+
+        .cat-scroll {
+            display: flex;
+            gap: 24px;
+            padding-bottom: 10px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            justify-content: center;
+        }
+
+        .cat-item {
+            text-align: center;
+            min-width: 90px;
+        }
+
+        .cat-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            margin-bottom: 12px;
+            border: 2px solid var(--gold);
+            padding: 4px;
+            background: var(--white);
+        }
+
+        .cat-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .cat-label {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .sec-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+        }
+
+        .sec-title {
+            font-family: var(--font-serif);
+            font-size: 28px;
+            color: var(--royal-blue);
+        }
+
+        .sec-link {
+            font-size: 13px;
+            color: var(--gold);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .p-img-box {
+            position: relative;
+            padding-top: 110%;
+            background: #f1f5f9;
+            overflow: hidden;
+        }
+
+        .p-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .product-card:hover .p-img {
+            transform: scale(1.05);
+        }
+
+        .p-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--white);
+            color: var(--charcoal);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            letter-spacing: 1px;
+        }
+
+        .p-info {
+            padding: 16px;
+        }
+
+        .p-name {
+            font-family: var(--font-serif);
+            font-size: 16px;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .p-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .p-price {
+            font-weight: 600;
+            color: var(--royal-blue);
+        }
+
+        .p-star {
+            color: var(--gold);
+            font-size: 12px;
+        }
+
+        .content-box {
+            background: var(--royal-blue);
+            color: var(--white);
+            padding: 40px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .content-box h3 {
+            font-family: var(--font-serif);
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: var(--gold-light);
+        }
+
+        .content-box p {
+            color: #cbd5e1;
+            font-size: 15px;
+            margin-bottom: 24px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer {
+            background: var(--charcoal);
+            color: #a8a29e;
+            padding: 60px 0 30px;
+            font-size: 13px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-family: var(--font-serif);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a:hover {
+            color: var(--gold);
+        }
+
+        .mobile-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            display: flex;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 999;
+            display: none;
+        }
+
+        .mn-btn {
+            flex: 1;
+            padding: 14px;
+            text-align: center;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .mn-chat {
+            background: #25D366;
+            color: white;
+        }
+
+        .mn-buy {
+            background: var(--royal-blue);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .grid-4 {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .search-box {
+                display: none;
+            }
+
+            .cat-scroll {
+                justify-content: flex-start;
+                padding-left: 16px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+
+            .mobile-nav {
+                display: flex;
+            }
+
+            .header-inner {
+                padding: 0 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="announcement">💍 WEDDING SEASON SALE: FLAT 15% OFF ON BULK ORDERS OF 50+ ITEMS</div>
+
+    <header class="header">
+        <div class="container header-inner flex justify-between">
+            <div class="logo">The Maryam</div>
+            <div class="search-box"><i class="ri-search-line"></i> Search "Wedding Hampers"...</div>
+            <div class="icon-nav">
+                <a href="https://wa.me/917359033087"><i class="ri-whatsapp-line"></i></a>
+                <a href="/contact.html"><i class="ri-heart-line"></i></a>
+                <a href="#"><i class="ri-shopping-bag-line"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <span class="hero-tag">Royal Celebrations</span>
+            <h1>Grand Wedding Gifting</h1>
+            <p>Elevate your celebrations with our luxurious range of wedding hampers, return gifts, and bridal specials.
+            </p>
+            <a href="#collection" class="btn-gold">View Wedding Special</a>
+        </div>
+    </section>
+
+    <div class="trust-strip">
+        <div class="container" style="display:flex; overflow-x:auto;">
+            <div class="trust-item"><i class="ri-group-line trust-icon"></i>
+                <div class="trust-text">
+                    <h4>Bulk Orders</h4>
+                    <p>Special Pricing</p>
+                </div>
+            </div>
+            <div class="trust-item"><i class="ri-palette-line trust-icon"></i>
+                <div class="trust-text">
+                    <h4>Custom Themes</h4>
+                    <p>Color Matched</p>
+                </div>
+            </div>
+            <div class="trust-item"><i class="ri-time-line trust-icon"></i>
+                <div class="trust-text">
+                    <h4>On Time</h4>
+                    <p>Guaranteed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="section bg-white">
+        <div class="container">
+            <div class="text-center" style="margin-bottom:32px;">
+                <h2 class="sec-title" style="font-size:24px;">Wedding Collections</h2>
+            </div>
+            <div class="cat-scroll">
+                <a href="#" class="cat-item">
+                    <div class="cat-img"><img
+                            src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/IMG_20251219_165233.jpg"></div>
+                    <div class="cat-label">Couple</div>
+                </a>
+                <a href="#" class="cat-item">
+                    <div class="cat-img"><img
+                            src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/IMG_20251015_081034.jpg"></div>
+                    <div class="cat-label">Bride</div>
+                </a>
+                <a href="#" class="cat-item">
+                    <div class="cat-img"><img
+                            src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/IMG_20250918_194726.jpg"></div>
+                    <div class="cat-label">Hampers</div>
+                </a>
+                <a href="#" class="cat-item">
+                    <div class="cat-img"><img
+                            src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/Snapchat-428711424.jpg"></div>
+                    <div class="cat-label">Return Gift</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="collection">
+        <div class="container">
+            <div class="sec-header">
+                <h2 class="sec-title">The Wedding Edit</h2><a href="#" class="sec-link">See All</a>
+            </div>
+            <div class="grid-4">
+                <div class="product-card">
+                    <a href="https://shop.themaryam.in/products/led-letter-lights-glass-box" class="p-img-box">
+                        <span class="p-tag">Popular</span>
+                        <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/IMG_20251219_165233.jpg"
+                            class="p-img">
+                    </a>
+                    <div class="p-info">
+                        <h3 class="p-name">Couple Initials Glass Box</h3>
+                        <div class="p-meta"><span class="p-price">₹999</span><span class="p-star">★★★★★</span></div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <a href="https://shop.themaryam.in/products/vintage-book-personalized" class="p-img-box">
+                        <span class="p-tag">Gift Item</span>
+                        <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/IMG_20250918_194726.jpg"
+                            class="p-img">
+                    </a>
+                    <div class="p-info">
+                        <h3 class="p-name">Wedding Vows Book</h3>
+                        <div class="p-meta"><span class="p-price">₹799</span><span class="p-star">★★★★★</span></div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <a href="https://shop.themaryam.in/products/accessories-bouquet-premium" class="p-img-box">
+                        <span class="p-tag">Bridal</span>
+                        <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/IMG_20251015_081034.jpg"
+                            class="p-img">
+                    </a>
+                    <div class="p-info">
+                        <h3 class="p-name">Premium Bridal Bouquet</h3>
+                        <div class="p-meta"><span class="p-price">₹999</span><span class="p-star">★★★★★</span></div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <a href="https://shop.themaryam.in/products/flower-bouquet-handmade" class="p-img-box">
+                        <span class="p-tag">Shagun</span>
+                        <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/rn-image_picker_lib_temp_ab0a9b98-b6c3-4198-91c5-6127772313a8.jpg"
+                            class="p-img">
+                    </a>
+                    <div class="p-info">
+                        <h3 class="p-name">Forever Rose Return Gift</h3>
+                        <div class="p-meta"><span class="p-price">₹400</span><span class="p-star">★★★★★</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="content-box">
+            <h3>Bulk Wedding Inquiries</h3>
+            <p>Planning a wedding? We specialize in creating bulk return gifts like personalized keychains, mini frames,
+                and chocolate hampers. Contact us for a quote.</p>
+            <a href="https://wa.me/917359033087" class="btn-gold">WhatsApp Inquiry</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="grid-4" style="grid-template-columns: 2fr 1fr 1fr;">
+                <div class="footer-col">
+                    <div class="logo" style="color:white; margin-bottom:20px;">The Maryam</div>
+                    <p>Exquisite wedding gifting solutions. Handcrafted with precision in India.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Pages</h4>
+                    <ul>
+                        <li><a href="/wedding-gifts.html">Wedding</a></li>
+                        <li><a href="/bestsellers.html">Bestsellers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Policy</h4>
+                    <ul>
+                        <li><a href="/policies/shipping-policy.html">Shipping</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top:1px solid #444; margin-top:40px; padding-top:20px; text-align:center; color:#666;">
+                &copy; 2026 The Maryam.</div>
+        </div>
+    </footer>
+
+    <div class="mobile-nav">
+        <a href="https://wa.me/917359033087" class="mn-btn mn-chat"><i class="ri-whatsapp-line"></i> Bulk Inquiry</a>
+        <a href="#collection" class="mn-btn mn-buy">Shop Gifts</a>
+    </div>
+
+</body>
+
+</html>

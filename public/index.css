@@ -1,0 +1,141 @@
+/* ============================================
+   THE MARYAM - LUXURY THEME STYLES
+   Premium, Minimal, Elegant
+   ============================================ */
+
+/* Luxury Loading Animations */
+@keyframes luxurySlide {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* M Logo Draw Animation - Silk Thread Effect */
+@keyframes drawM {
+  0% {
+    stroke-dashoffset: 280;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Silk Thread Draw - Full Width M Logo Animation (2s draw, 1.3s undraw) */
+@keyframes silkThreadDraw {
+  0% {
+    stroke-dashoffset: 450;
+  }
+
+  60% {
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dashoffset: 450;
+  }
+}
+
+/* Soft Fade for Text */
+@keyframes softFade {
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes luxuryFade {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes luxuryPulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: scale(0.98);
+  }
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Smooth reveal */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* No scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Selection styling - Luxury warm */
+::selection {
+  background: rgba(180, 83, 9, 0.15);
+  color: #78350f;
+}
+
+/* Focus ring luxury */
+*:focus-visible {
+  outline: 2px solid rgba(180, 83, 9, 0.5);
+  outline-offset: 2px;
+}
+
+/* AI Search Bar Gradient Animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
+  }
+}

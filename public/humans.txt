@@ -1,0 +1,14 @@
+/* TEAM */
+Name: The Maryam Team
+Site: https://themaryam.in
+Location: Vadodara, Gujarat, India
+
+/* SITE */
+Last update: 2026/01/13
+Language: English, Hindi, Gujarati
+Standards: HTML5, CSS3, JavaScript ES6+
+Framework: React, Vite, TailwindCSS
+CDN: Cloudflare
+
+/* THANKS */
+Special thanks to our customers for their trust and support.

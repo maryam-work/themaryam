@@ -1,0 +1,70 @@
+{
+    "name": "The Maryam - Personalized Gift Store",
+    "short_name": "The Maryam",
+    "description": "Personalized & Customized Gift Store. Discover perfect gifts for birthdays, anniversaries, weddings, festivals & all occasions.",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "theme_color": "#f43f5e",
+    "background_color": "#fff9fb",
+    "icons": [
+        {
+            "src": "/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": [
+        "shopping",
+        "lifestyle",
+        "personalization",
+        "gifts"
+    ],
+    "lang": "en-IN",
+    "dir": "ltr",
+    "prefer_related_applications": false,
+    "related_applications": [],
+    "screenshots": [],
+    "shortcuts": [
+        {
+            "name": "Birthday Gifts",
+            "short_name": "Birthday",
+            "url": "/collections/birthday",
+            "icons": [
+                {
+                    "src": "/android-chrome-192x192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Anniversary Gifts",
+            "short_name": "Anniversary",
+            "url": "/collections/anniversary",
+            "icons": [
+                {
+                    "src": "/android-chrome-192x192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        }
+    ]
+}
