@@ -10,7 +10,10 @@ const API_KEYS = [
     'AIzaSyBWE1w8qViWpqUXAPgU8XogXRMajdLzLhE',
     'AIzaSyBIq08dZHBaDTxdWdd_v_3cTgn0xH8Pj5o',
     'AIzaSyDzUKT7Zx_NoinmXfid4hEkwoO7hACa2kY',
-    'AIzaSyAkF8HW-C-gC77Ok494esRGMeXWBQjRJ34'
+    'AIzaSyAkF8HW-C-gC77Ok494esRGMeXWBQjRJ34',
+    'AIzaSyBHda9popNd53-bS4eE0Wv8voe4NWsnR94',
+    'AIzaSyBN1MvU9szyWslbAgYEx7gr8OIi9YFsZ54',
+    'AIzaSyC3kMunjzCdgbab144y3NWkqZnQnixXxPY'
 ];
 
 let currentKeyIndex = 0;
