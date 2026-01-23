@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Container, Button, StarRating, Section, Marquee } from './UI';
-import { ArrowRight, ArrowLeft, Sparkles, Send, Loader2, Gift, Zap, TrendingUp, Package, ShoppingBag, Star, Heart, Smartphone, Play, Gem, Mail, Clock, Smile, ScanLine, Box, Link, Wifi, Battery, Fingerprint, ExternalLink } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Sparkles, Send, Loader2, Gift, Zap, TrendingUp, Package, ShoppingBag, Star, Heart, Smartphone, Play, Gem, Mail, Clock, Smile, ScanLine, Box, Link, Wifi, Battery, Fingerprint, ExternalLink, MapPin, ChevronDown } from 'lucide-react';
 import { Product, Article, Category } from '../types';
 import { MatchedProduct } from '../lib/aiService';
 
@@ -106,86 +106,476 @@ const AnimatedSearchInput = ({
 };
 
 export const Hero = ({ onSearch, isLoading }: { onSearch: (query: string) => void; isLoading?: boolean }) => {
+    const [inputText, setInputText] = useState('');
+    const [placeholder, setPlaceholder] = useState('');
+    const [selectedCity, setSelectedCity] = useState('Select Location');
+    const [showLocationModal, setShowLocationModal] = useState(false);
+    const [showLocationDropdown, setShowLocationDropdown] = useState(false);
+    const [locationSearch, setLocationSearch] = useState('');
+    const [isGettingLocation, setIsGettingLocation] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
 
-    const handleSearch = (text: string) => {
-        if (!text) return;
-        onSearch(text);
+    const cities = ['Delhi NCR', 'Mumbai', 'Bangalore', 'Hyderabad', 'Chennai', 'Kolkata', 'Pune', 'Ahmedabad', 'Jaipur', 'Lucknow'];
+    const filteredCities = cities.filter(city => city.toLowerCase().includes(locationSearch.toLowerCase()));
+
+    // Typing animation
+    useEffect(() => {
+        const phrases = [
+            "Bhai ka birthday aa raha hai...",
+            "Ex ki shaadi mein kya gift du?",
+            "Mummy ko kuch special dena hai...",
+            "2000 mein girlfriend ke liye gift?",
+            "Boss ko thank you bolna hai gift se..."
+        ];
+
+        let currentPhraseIndex = 0;
+        let currentCharIndex = 0;
+        let isDeleting = false;
+        let timer: NodeJS.Timeout;
+
+        const type = () => {
+            const currentPhrase = phrases[currentPhraseIndex];
+            let typingSpeed = 100;
+
+            if (isDeleting) {
+                setPlaceholder(currentPhrase.substring(0, currentCharIndex - 1));
+                currentCharIndex--;
+                typingSpeed = 50;
+            } else {
+                setPlaceholder(currentPhrase.substring(0, currentCharIndex + 1));
+                currentCharIndex++;
+                typingSpeed = 100;
+            }
+
+            if (!isDeleting && currentCharIndex === currentPhrase.length) {
+                isDeleting = true;
+                typingSpeed = 2000;
+            } else if (isDeleting && currentCharIndex === 0) {
+                isDeleting = false;
+                currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+                typingSpeed = 500;
+            }
+
+            timer = setTimeout(type, typingSpeed);
+        };
+
+        timer = setTimeout(type, 1000);
+        return () => clearTimeout(timer);
+    }, []);
+
+    // Close dropdown on click outside
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+                setShowLocationDropdown(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (inputText.trim()) onSearch(inputText);
+    };
+
+    // Get current location using GPS
+    const handleGetCurrentLocation = () => {
+        if (!navigator.geolocation) {
+            alert('Geolocation not supported by your browser');
+            return;
+        }
+        setIsGettingLocation(true);
+        navigator.geolocation.getCurrentPosition(
+            async (position) => {
+                try {
+                    // Reverse geocoding to get city name
+                    const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}`);
+                    const data = await res.json();
+                    const city = data.address?.city || data.address?.town || data.address?.state_district || data.address?.state || 'Your Location';
+                    setSelectedCity(city);
+                    setShowLocationModal(false);
+                    setShowLocationDropdown(false);
+                } catch {
+                    setSelectedCity('Current Location');
+                    setShowLocationModal(false);
+                    setShowLocationDropdown(false);
+                }
+                setIsGettingLocation(false);
+            },
+            () => {
+                alert('Unable to get location. Please enable GPS.');
+                setIsGettingLocation(false);
+            }
+        );
+    };
+
+    const selectCity = (city: string) => {
+        setSelectedCity(city);
+        setShowLocationModal(false);
+        setShowLocationDropdown(false);
+        setLocationSearch('');
     };
 
     return (
-        <div className="relative w-full overflow-hidden bg-[#FAFAFA]">
-            {/* Static Aurora Background - Zero animations, zero blur filters, pure CSS gradients */}
-            <div
-                className="absolute inset-0 w-full h-full pointer-events-none z-0"
-                style={{
-                    background: `
-                        radial-gradient(ellipse 80% 80% at -10% -20%, rgba(251, 207, 232, 0.4), transparent 60%),
-                        radial-gradient(ellipse 70% 70% at 110% -10%, rgba(196, 181, 253, 0.4), transparent 60%),
-                        radial-gradient(ellipse 80% 80% at 20% 120%, rgba(254, 243, 199, 0.5), transparent 60%)
-                    `
-                }}
-            />
+        <div className="relative w-full overflow-hidden bg-white">
 
-            {/* Subtle Grid Overlay */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0 opacity-50"></div>
-
-            <div className="relative z-10 min-h-[600px] md:h-[700px] flex flex-col items-center justify-center px-4 text-center pt-20 md:pt-0">
-
-                {/* Premium Badge - Mobile Optimized */}
-                <div className="inline-flex items-center gap-1.5 md:gap-2 bg-white/80 backdrop-blur-xl border border-white/60 px-3 py-1.5 md:px-4 md:py-2 rounded-full mb-6 md:mb-10 shadow-[0_2px_10px_rgba(0,0,0,0.03)] ring-1 ring-white">
-                    <Sparkles size={12} className="text-yellow-500 fill-yellow-500 md:w-4 md:h-4" />
-                    <span className="text-[10px] md:text-xs font-bold tracking-wider text-gray-800 uppercase">India's 1st AI Gifting Store</span>
-                </div>
-
-                {/* Heading */}
-                <h1 className="text-4xl md:text-7xl font-heading font-extrabold leading-[1.1] mb-6 max-w-4xl text-gray-900 tracking-tight select-none">
-                    Dil ki baat, <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600">Gifts ke saath.</span>
-                </h1>
-
-                <p className="text-base md:text-xl text-gray-600 mb-8 md:mb-12 max-w-xl leading-relaxed px-4 select-none">
-                    Koi rootha hai? Ya bas pyaar jatana hai? <br className="hidden md:block" />
-                    Bas batao kiske liye hai, baaki magic hum karenge.
-                </p>
-
-                {/* AI Input Interface - Clean Style */}
-                <div className="w-full max-w-xl relative mx-auto mt-6 md:mt-8 mb-12 md:mb-0">
-                    {/* Render Isolated Component */}
-                    <AnimatedSearchInput onSearch={handleSearch} />
-
-                    {/* Render Loading Overlay if searching */}
-                    {isLoading && (
-                        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm rounded-[2rem] flex items-center justify-center z-20">
-                            <div className="flex flex-col items-center">
-                                <Loader2 className="animate-spin text-purple-600 mb-2" size={32} />
-                                <span className="text-sm font-bold text-purple-900 animate-pulse">AI is finding gifts...</span>
-                            </div>
+            {/* Mobile Location Modal - Full Screen */}
+            {showLocationModal && (
+                <div className="fixed inset-0 bg-white z-50 lg:hidden">
+                    {/* Header */}
+                    <div className="flex items-center gap-3 p-4 border-b border-gray-100">
+                        <button onClick={() => setShowLocationModal(false)} className="p-1">
+                            <ArrowLeft size={24} className="text-gray-700" />
+                        </button>
+                        <div className="flex-1 relative">
+                            <input
+                                type="text"
+                                value={locationSearch}
+                                onChange={(e) => setLocationSearch(e.target.value)}
+                                placeholder="Enter area, street name..."
+                                className="w-full text-base text-gray-800 placeholder-gray-400 focus:outline-none bg-transparent"
+                                autoFocus
+                            />
                         </div>
-                    )}
+                        <svg className="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+
+                    {/* Use Current Location */}
+                    <button
+                        onClick={handleGetCurrentLocation}
+                        disabled={isGettingLocation}
+                        className="w-full flex items-center gap-4 p-4 border-b border-gray-100 hover:bg-gray-50 transition-colors"
+                    >
+                        <div className="w-8 h-8 rounded-full border-2 border-gray-300 flex items-center justify-center">
+                            {isGettingLocation ? (
+                                <Loader2 className="w-4 h-4 animate-spin text-gray-500" />
+                            ) : (
+                                <svg className="w-4 h-4 text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                    <circle cx="12" cy="12" r="3" />
+                                    <path d="M12 2v4m0 12v4M2 12h4m12 0h4" />
+                                </svg>
+                            )}
+                        </div>
+                        <div className="text-left">
+                            <p className="font-semibold text-gray-900">Use Current Location</p>
+                            <p className="text-xs text-gray-500">Using GPS</p>
+                        </div>
+                    </button>
+
+                    {/* City List */}
+                    <div className="p-4">
+                        <p className="text-xs font-semibold text-gray-400 uppercase mb-3">Popular Cities</p>
+                        {filteredCities.map(city => (
+                            <button
+                                key={city}
+                                onClick={() => selectCity(city)}
+                                className="w-full text-left py-3 px-2 text-gray-800 hover:bg-gray-50 rounded-lg transition-colors"
+                            >
+                                {city}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+
+
+            {/* Category Grid - Mobile Only (4x2 Grid) */}
+            <div className="relative z-20 px-4 py-6 lg:hidden">
+                <div className="border border-rose-400 rounded-2xl bg-white overflow-hidden p-3">
+                    {/* Row 1 */}
+                    <div className="grid grid-cols-4 gap-0">
+                        <a href="/valentine" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
+                            <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                                <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/valentine_hero_image_800x800.jpg?v=1769151013" alt="Valentine" className="w-full h-full object-cover" />
+                            </div>
+                            <span className="text-[11px] font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Valentine</span>
+                            {/* Right divider */}
+                            <div className="absolute right-0 top-2 bottom-2 w-px bg-rose-200"></div>
+                        </a>
+                        <a href="/letters" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
+                            <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                                <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/letter_hero_image_800x800.jpg?v=1769150971" alt="Letters" className="w-full h-full object-cover" />
+                            </div>
+                            <span className="text-[11px] font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Letters</span>
+                            <div className="absolute right-0 top-2 bottom-2 w-px bg-rose-200"></div>
+                        </a>
+                        <a href="/bouquets" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
+                            <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                                <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/bouquet_hero_image_800x800.jpg?v=1769151295" alt="Bouquets" className="w-full h-full object-cover" />
+                            </div>
+                            <span className="text-[11px] font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Bouquets</span>
+                            <div className="absolute right-0 top-2 bottom-2 w-px bg-rose-200"></div>
+                        </a>
+                        <a href="/hampers" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors">
+                            <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                                <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/hamper_hero_image_800x800.jpg?v=1769151314" alt="Hampers" className="w-full h-full object-cover" />
+                            </div>
+                            <span className="text-[11px] font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Hampers</span>
+                        </a>
+                    </div>
+
+                    {/* Horizontal divider with margins */}
+                    <div className="mx-2 my-1 h-px bg-rose-200"></div>
+
+                    {/* Row 2 */}
+                    <div className="grid grid-cols-4 gap-0">
+                        <a href="/cards" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
+                            <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                                <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/cards_hero_image_800x800.jpg?v=1769151376" alt="Cards" className="w-full h-full object-cover" />
+                            </div>
+                            <span className="text-[11px] font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Cards</span>
+                            <div className="absolute right-0 top-2 bottom-2 w-px bg-rose-200"></div>
+                        </a>
+                        <a href="/wearables" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
+                            <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                                <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/wearables_hero_image_800x800.jpg?v=1769151421" alt="Wearables" className="w-full h-full object-cover" />
+                            </div>
+                            <span className="text-[11px] font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Wearables</span>
+                            <div className="absolute right-0 top-2 bottom-2 w-px bg-rose-200"></div>
+                        </a>
+                        <a href="/frames" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
+                            <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                                <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/frames_hero_image_800x800.jpg?v=1769151477" alt="Frames" className="w-full h-full object-cover" />
+                            </div>
+                            <span className="text-[11px] font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Frames</span>
+                            <div className="absolute right-0 top-2 bottom-2 w-px bg-rose-200"></div>
+                        </a>
+                        <a href="/personalised" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors">
+                            <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                                <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/personalised_hero_image_800x800.jpg?v=1769150941" alt="Personalised" className="w-full h-full object-cover" />
+                            </div>
+                            <span className="text-[11px] font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Personalised</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {/* Category Grid - Desktop Version (8 cols in one row) */}
+            <div className="hidden lg:block relative z-20 px-8 py-6">
+                <div className="border border-rose-400 rounded-2xl bg-white overflow-hidden p-4">
+                    <div className="grid grid-cols-8 gap-0">
+                        <a href="/valentine" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
+                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                                <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/valentine_hero_image_800x800.jpg?v=1769151013" alt="Valentine" className="w-full h-full object-cover" />
+                            </div>
+                            <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Valentine</span>
+                            <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
+                        </a>
+                        <a href="/letters" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
+                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                                <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/letter_hero_image_800x800.jpg?v=1769150971" alt="Letters" className="w-full h-full object-cover" />
+                            </div>
+                            <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Letters</span>
+                            <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
+                        </a>
+                        <a href="/bouquets" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
+                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                                <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/bouquet_hero_image_800x800.jpg?v=1769151295" alt="Bouquets" className="w-full h-full object-cover" />
+                            </div>
+                            <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Bouquets</span>
+                            <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
+                        </a>
+                        <a href="/hampers" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
+                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                                <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/hamper_hero_image_800x800.jpg?v=1769151314" alt="Hampers" className="w-full h-full object-cover" />
+                            </div>
+                            <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Hampers</span>
+                            <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
+                        </a>
+                        <a href="/cards" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
+                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                                <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/cards_hero_image_800x800.jpg?v=1769151376" alt="Cards" className="w-full h-full object-cover" />
+                            </div>
+                            <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Cards</span>
+                            <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
+                        </a>
+                        <a href="/wearables" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
+                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                                <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/wearables_hero_image_800x800.jpg?v=1769151421" alt="Wearables" className="w-full h-full object-cover" />
+                            </div>
+                            <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Wearables</span>
+                            <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
+                        </a>
+                        <a href="/frames" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
+                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                                <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/frames_hero_image_800x800.jpg?v=1769151477" alt="Frames" className="w-full h-full object-cover" />
+                            </div>
+                            <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Frames</span>
+                            <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
+                        </a>
+                        <a href="/personalised" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors">
+                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                                <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/personalised_hero_image_800x800.jpg?v=1769150941" alt="Personalised" className="w-full h-full object-cover" />
+                            </div>
+                            <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Personalised</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     );
 };
 
-// --- Generated Results (Conditional) ---
-const generatedProducts: Product[] = [
-    { id: 'g1', name: 'Custom Spotify Plaque', description: 'With your song & photo', price: 699, rating: 5, image: 'https://images.pexels.com/photos/5077039/pexels-photo-5077039.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop', category: 'TRENDING' },
-    { id: 'g2', name: '3D Miniature Doll', description: 'Hand-sculpted replica', price: 2499, rating: 4.8, image: 'https://images.pexels.com/photos/3661193/pexels-photo-3661193.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop', category: 'PREMIUM' },
-    { id: 'g3', name: 'Personalized Wallet Combo', description: 'Name engraved leather', price: 999, rating: 4.5, image: 'https://images.pexels.com/photos/4638862/pexels-photo-4638862.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop', category: 'MEN' },
-    { id: 'g4', name: 'Couple Neon Light', description: 'Custom names glowing', price: 1800, rating: 5, image: 'https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop', category: 'DECOR' },
-];
+// --- Premium Lazy Loading Image Component with Retry ---
+const OptimizedImage = ({
+    src,
+    alt,
+    className = ""
+}: {
+    src: string;
+    alt: string;
+    className?: string;
+}) => {
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [retryCount, setRetryCount] = useState(0);
+    const [isInView, setIsInView] = useState(false);
+    const [imageSrc, setImageSrc] = useState(src);
+    const imgRef = useRef<HTMLDivElement>(null);
+    const maxRetries = 5;
+
+    // Intersection Observer for lazy loading
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsInView(true);
+                    observer.disconnect();
+                }
+            },
+            { rootMargin: '200px', threshold: 0.01 }
+        );
+
+        if (imgRef.current) {
+            observer.observe(imgRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
+
+    // Retry loading with cache-busting
+    const handleError = () => {
+        if (retryCount < maxRetries) {
+            const delay = Math.min(500 * Math.pow(1.5, retryCount), 3000);
+            setTimeout(() => {
+                setRetryCount(prev => prev + 1);
+                const separator = src.includes('?') ? '&' : '?';
+                setImageSrc(`${src}${separator}_r=${Date.now()}`);
+            }, delay);
+        }
+    };
+
+    return (
+        <div ref={imgRef} className="relative w-full h-full overflow-hidden bg-gray-100">
+            {/* Skeleton Loader */}
+            <div
+                className={`absolute inset-0 bg-gradient-to-br from-gray-100 via-gray-50 to-gray-100 transition-opacity duration-500 ${isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+            >
+                <div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent animate-shimmer"
+                    style={{ backgroundSize: '200% 100%' }}
+                />
+            </div>
+
+            {/* Image - loads when in viewport */}
+            {isInView && (
+                <img
+                    src={imageSrc}
+                    alt={alt}
+                    onLoad={() => setIsLoaded(true)}
+                    onError={handleError}
+                    className={`
+                        ${className}
+                        transition-all duration-500 ease-out
+                        ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-[1.02]'}
+                    `}
+                    loading="lazy"
+                    decoding="async"
+                />
+            )}
+        </div>
+    );
+};
 
 export const AIResults = ({ visible, products }: { visible: boolean; products: MatchedProduct[] }) => {
     if (!visible || products.length === 0) return null;
 
     return (
-        <div id="ai-results" className="bg-white py-12 scroll-mt-24 border-t border-gray-100">
+        <div id="ai-results" className="bg-white py-10 md:py-14 scroll-mt-24">
             <Container>
-                <div className="flex items-center gap-2 mb-8 select-none">
-                    <Sparkles className="text-yellow-500" />
-                    <h2 className="text-2xl font-bold">AI Recommended for you</h2>
+                {/* Minimal Header */}
+                <div className="flex items-center justify-between mb-6 md:mb-8">
+                    <div className="flex items-center gap-3">
+                        <div className="w-9 h-9 bg-gray-900 rounded-full flex items-center justify-center">
+                            <Gift className="text-white" size={18} />
+                        </div>
+                        <div>
+                            <h2 className="text-lg md:text-xl font-bold text-gray-900">Handpicked for You</h2>
+                            <p className="text-[11px] md:text-xs text-gray-400">Based on what you described</p>
+                        </div>
+                    </div>
+                    <span className="text-xs text-gray-400 hidden md:block">{products.length} results</span>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+
+                {/* Mobile: Full Width Sliding Carousel (1 product at a time) */}
+                <div className="md:hidden -mx-4">
+                    <div className="flex overflow-x-auto snap-x snap-mandatory pb-4 no-scrollbar">
+                        {products.map((p, idx) => (
+                            <a
+                                key={p.handle}
+                                href={p.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex-shrink-0 w-[85vw] mx-2 first:ml-4 last:mr-4 snap-center"
+                            >
+                                <div className="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100">
+                                    {/* Image */}
+                                    <div className="relative aspect-square overflow-hidden">
+                                        <OptimizedImage
+                                            src={p.image}
+                                            alt={p.name}
+                                            className="w-full h-full object-cover"
+                                        />
+                                        {/* Top Pick Badge */}
+                                        {idx === 0 && (
+                                            <div className="absolute top-3 left-3 bg-gray-900 text-white text-[10px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1">
+                                                <Star size={10} className="fill-white" /> TOP PICK
+                                            </div>
+                                        )}
+                                        {/* Match Score */}
+                                        <div className="absolute top-3 right-3 bg-green-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full">
+                                            {p.score}% Match
+                                        </div>
+                                    </div>
+
+                                    {/* Content */}
+                                    <div className="p-4">
+                                        <h3 className="font-bold text-gray-900 text-base leading-tight mb-1 line-clamp-2">{p.name}</h3>
+                                        <p className="text-sm text-gray-500 mb-3 line-clamp-1">{p.reason}</p>
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-xl font-bold text-gray-900">₹{p.price}</span>
+                                            <div className="flex items-center gap-1 text-gray-900 text-sm font-medium">
+                                                View <ArrowRight size={14} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+                    {/* Scroll Dots */}
+                    <div className="flex justify-center gap-1.5 mt-2">
+                        {products.map((_, idx) => (
+                            <div key={idx} className={`w-1.5 h-1.5 rounded-full ${idx === 0 ? 'bg-gray-900' : 'bg-gray-200'}`} />
+                        ))}
+                    </div>
+                </div>
+
+                {/* Desktop: 4-Column Grid */}
+                <div className="hidden md:grid grid-cols-4 gap-5">
                     {products.map((p, idx) => (
                         <a
                             key={p.handle}
@@ -194,18 +584,30 @@ export const AIResults = ({ visible, products }: { visible: boolean; products: M
                             rel="noopener noreferrer"
                             className="group cursor-pointer block"
                         >
-                            <div className="relative overflow-hidden rounded-xl bg-gray-100 mb-3 aspect-square">
-                                <img src={p.image} alt={p.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                                {idx === 0 && <div className="absolute top-2 left-2 bg-black text-white text-[10px] font-bold px-2 py-1 rounded-full">BEST MATCH</div>}
-                                <div className="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow-md translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                                    <ExternalLink size={16} />
+                            <div className="bg-white rounded-xl overflow-hidden border border-gray-100 group-hover:shadow-lg group-hover:border-gray-200 transition-all duration-300">
+                                <div className="relative aspect-square overflow-hidden">
+                                    <OptimizedImage
+                                        src={p.image}
+                                        alt={p.name}
+                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                    {idx === 0 && (
+                                        <div className="absolute top-2 left-2 bg-gray-900 text-white text-[9px] font-bold px-2 py-1 rounded-full flex items-center gap-1">
+                                            <Star size={8} className="fill-white" /> TOP PICK
+                                        </div>
+                                    )}
+                                    <div className="absolute top-2 right-2 bg-green-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-full">
+                                        {p.score}%
+                                    </div>
                                 </div>
-                            </div>
-                            <h3 className="font-bold text-gray-900 text-sm md:text-base leading-tight mb-1">{p.name}</h3>
-                            <p className="text-xs text-gray-500 mb-2 line-clamp-1">{p.reason}</p>
-                            <div className="flex items-center justify-between">
-                                <span className="font-bold">₹{p.price}</span>
-                                <span className="text-xs text-green-600 font-medium">{p.score}% Match</span>
+                                <div className="p-3">
+                                    <h3 className="font-bold text-gray-900 text-sm leading-tight mb-1 line-clamp-2">{p.name}</h3>
+                                    <p className="text-[11px] text-gray-400 mb-2 line-clamp-1">{p.reason}</p>
+                                    <div className="flex items-center justify-between">
+                                        <span className="font-bold text-gray-900">₹{p.price}</span>
+                                        <ArrowRight size={14} className="text-gray-400 group-hover:text-gray-900 group-hover:translate-x-1 transition-all" />
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     ))}
@@ -216,39 +618,250 @@ export const AIResults = ({ visible, products }: { visible: boolean; products: M
 }
 
 // =============================================================================
-// 1. SHOP BY RELATION - ARCH CARDS
+// 1. SHOP BY OCCASION - SMART AUTO-HIGHLIGHT CAROUSEL
 // =============================================================================
 
-const relations = [
-    { title: "For Him", img: "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop" }, // Indian man stylish
-    { title: "For Her", img: "https://images.pexels.com/photos/1162983/pexels-photo-1162983.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop" }, // Indian woman jewelry
-    { title: "Parents", img: "https://images.pexels.com/photos/5638732/pexels-photo-5638732.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop" }, // Indian parents
-    { title: "Couples", img: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop" }, // Indian couple
-    { title: "Kids", img: "https://images.pexels.com/photos/35537/child-children-girl-happy.jpg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop" }, // Happy kid
-    { title: "Besties", img: "https://images.pexels.com/photos/1449667/pexels-photo-1449667.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop" }, // Friends laughing
-]
+// All occasions with optional dates (MM-DD format for recurring events)
+const allOccasions = [
+    // === ALWAYS TOP (no date, priority items) ===
+    { title: "For Him", subtitle: "Gifts that speak his style", color: "bg-[#f0adfa]", icon: "👔", priority: true },
+    { title: "For Her", subtitle: "Curated picks she'll adore", color: "bg-[#d7f271]", icon: "💎", priority: true },
+    { title: "Couples", subtitle: "Celebrate your bond", color: "bg-[#ffd6e0]", icon: "💕", priority: true },
+    { title: "Birthday", subtitle: "Celebrate their day", color: "bg-[#e0ccff]", icon: "🎂", priority: true },
+
+    // === INDIAN FESTIVALS ===
+    { title: "Diwali", subtitle: "Festival of lights", color: "bg-[#fff3b0]", icon: "🪔", date: "11-01" },
+    { title: "Holi", subtitle: "Colors of joy", color: "bg-[#ff9a9e]", icon: "🎨", date: "03-14" },
+    { title: "Raksha Bandhan", subtitle: "Bond of protection", color: "bg-[#ffd6e0]", icon: "🧵", date: "08-19" },
+    { title: "Ganesh Chaturthi", subtitle: "Welcome Lord Ganesha", color: "bg-[#ffcc80]", icon: "🐘", date: "09-07" },
+    { title: "Navratri", subtitle: "Nine nights of devotion", color: "bg-[#ff8a80]", icon: "🔱", date: "10-03" },
+    { title: "Durga Puja", subtitle: "Goddess Durga's blessings", color: "bg-[#ea80fc]", icon: "🙏", date: "10-10" },
+    { title: "Dussehra", subtitle: "Victory of good", color: "bg-[#ffab40]", icon: "🏹", date: "10-12" },
+    { title: "Karwa Chauth", subtitle: "Love & devotion", color: "bg-[#ff80ab]", icon: "🌙", date: "10-20" },
+    { title: "Bhai Dooj", subtitle: "Sibling love", color: "bg-[#80d8ff]", icon: "🤗", date: "11-03" },
+    { title: "Makar Sankranti", subtitle: "Harvest festival", color: "bg-[#b9f6ca]", icon: "🪁", date: "01-14" },
+    { title: "Pongal", subtitle: "Thai Pongal celebrations", color: "bg-[#fff59d]", icon: "🍚", date: "01-15" },
+    { title: "Lohri", subtitle: "Bonfire festival", color: "bg-[#ffcc80]", icon: "🔥", date: "01-13" },
+    { title: "Onam", subtitle: "Kerala's grand festival", color: "bg-[#c5e1a5]", icon: "🌸", date: "09-05" },
+    { title: "Eid", subtitle: "Festival of joy", color: "bg-[#b2dfdb]", icon: "🌙", date: "04-10" },
+    { title: "Christmas", subtitle: "Season of giving", color: "bg-[#ef9a9a]", icon: "🎄", date: "12-25" },
+
+    // === GLOBAL CELEBRATIONS ===
+    { title: "New Year", subtitle: "Fresh beginnings", color: "bg-[#b2ebf2]", icon: "🎊", date: "01-01" },
+    { title: "Valentine's Day", subtitle: "Day of love", color: "bg-[#f8bbd9]", icon: "❤️", date: "02-14" },
+    { title: "Mother's Day", subtitle: "Celebrate mom", color: "bg-[#f48fb1]", icon: "👩", date: "05-11" },
+    { title: "Father's Day", subtitle: "Honor dad", color: "bg-[#90caf9]", icon: "👨", date: "06-15" },
+    { title: "Friendship Day", subtitle: "For your besties", color: "bg-[#c5f9d7]", icon: "🤝", date: "08-03" },
+    { title: "Women's Day", subtitle: "Celebrate her", color: "bg-[#ce93d8]", icon: "👑", date: "03-08" },
+    { title: "Teacher's Day", subtitle: "Thank your guru", color: "bg-[#81d4fa]", icon: "📚", date: "09-05" },
+    { title: "Children's Day", subtitle: "For little ones", color: "bg-[#fff176]", icon: "🧸", date: "11-14" },
+
+    // === LIFE EVENTS ===
+    { title: "Wedding", subtitle: "Make their day special", color: "bg-[#ffe4cc]", icon: "💒" },
+    { title: "Anniversary", subtitle: "Cherish the moments", color: "bg-[#cce0ff]", icon: "💍" },
+    { title: "Engagement", subtitle: "New beginnings", color: "bg-[#f3e5f5]", icon: "💎" },
+    { title: "Baby Shower", subtitle: "Welcome the little one", color: "bg-[#fff9c4]", icon: "👶" },
+    { title: "Graduation", subtitle: "Achievement unlocked", color: "bg-[#dcedc8]", icon: "🎓" },
+    { title: "New Job", subtitle: "Career celebrations", color: "bg-[#b3e5fc]", icon: "💼" },
+    { title: "Promotion", subtitle: "Moving up!", color: "bg-[#c8e6c9]", icon: "📈" },
+    { title: "Retirement", subtitle: "New chapter begins", color: "bg-[#ffe0b2]", icon: "🏖️" },
+    { title: "Housewarming", subtitle: "New home vibes", color: "bg-[#d4f0d4]", icon: "🏡" },
+
+    // === OCCASIONS ===
+    { title: "Date Night", subtitle: "Romantic gestures", color: "bg-[#ffcce0]", icon: "🌹" },
+    { title: "Farewell", subtitle: "Memories to cherish", color: "bg-[#f0e0d0]", icon: "✈️" },
+    { title: "Get Well Soon", subtitle: "Sending love", color: "bg-[#e1f5fe]", icon: "💐" },
+    { title: "Thank You", subtitle: "Express gratitude", color: "bg-[#fff8e1]", icon: "🙏" },
+    { title: "Apology", subtitle: "Make it right", color: "bg-[#fce4ec]", icon: "💝" },
+    { title: "Congratulations", subtitle: "Celebrate success", color: "bg-[#e8f5e9]", icon: "🎉" },
+    { title: "Just Because", subtitle: "No reason needed", color: "bg-[#f3e5f5]", icon: "✨" },
+
+    // === RELATIONSHIPS ===
+    { title: "Parents", subtitle: "Love wrapped in memories", color: "bg-[#77d2f3]", icon: "🏠" },
+    { title: "Kids", subtitle: "Fun gifts they'll treasure", color: "bg-[#fff3b0]", icon: "🎈" },
+    { title: "Grandparents", subtitle: "Honor their wisdom", color: "bg-[#d7ccc8]", icon: "👴" },
+    { title: "Siblings", subtitle: "Sibling love", color: "bg-[#b2dfdb]", icon: "👫" },
+    { title: "Besties", subtitle: "For friends like family", color: "bg-[#c5f9d7]", icon: "🤝" },
+    { title: "Colleagues", subtitle: "Work friendships", color: "bg-[#cfd8dc]", icon: "👥" },
+    { title: "Boss", subtitle: "Professional appreciation", color: "bg-[#d1c4e9]", icon: "🤵" },
+    { title: "Teachers", subtitle: "Gratitude for mentors", color: "bg-[#b2ebf2]", icon: "✏️" },
+];
+
+// Function to check if an occasion is upcoming (within next 30 days)
+const isUpcoming = (dateStr: string | undefined): { upcoming: boolean; daysLeft: number } => {
+    if (!dateStr) return { upcoming: false, daysLeft: 999 };
+
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const [month, day] = dateStr.split('-').map(Number);
+
+    // Create date for this year
+    let eventDate = new Date(currentYear, month - 1, day);
+
+    // If date has passed this year, check next year
+    if (eventDate < today) {
+        eventDate = new Date(currentYear + 1, month - 1, day);
+    }
+
+    const diffTime = eventDate.getTime() - today.getTime();
+    const daysLeft = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    return { upcoming: daysLeft <= 30 && daysLeft >= 0, daysLeft };
+};
+
+// Sort occasions: priority first, then 2 closest upcoming festivals, then non-festivals, then all festivals at end
+const getSortedOccasions = () => {
+    const priorityItems = allOccasions.filter(o => o.priority);
+    const otherItems = allOccasions.filter(o => !o.priority);
+
+    // Separate festivals (items with dates) from non-festivals
+    const festivals = otherItems.filter(o => o.date);
+    const nonFestivals = otherItems.filter(o => !o.date);
+
+    // Find upcoming festivals sorted by days left, take top 2
+    const upcomingFestivals = festivals
+        .map(o => ({ ...o, ...isUpcoming(o.date) }))
+        .filter(o => o.upcoming)
+        .sort((a, b) => a.daysLeft - b.daysLeft)
+        .slice(0, 2); // Only top 2 closest
+
+    // Get festival titles that are being highlighted
+    const highlightedTitles = new Set(upcomingFestivals.map(f => f.title));
+
+    // Remaining festivals (not in top 2 upcoming)
+    const remainingFestivals = festivals.filter(f => !highlightedTitles.has(f.title));
+
+    return { priorityItems, upcomingFestivals, nonFestivals, remainingFestivals };
+};
 
 export const CategoryArches = () => {
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+    const [isDragging, setIsDragging] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeftStart, setScrollLeftStart] = useState(0);
+
+    const { priorityItems, upcomingFestivals, nonFestivals, remainingFestivals } = getSortedOccasions();
+    // Order: Priority → 2 Closest Upcoming Festivals → Non-Festival Items → All Other Festivals
+    const sortedOccasions = [...priorityItems, ...upcomingFestivals, ...nonFestivals, ...remainingFestivals];
+
+    // Mouse drag handlers
+    const handleMouseDown = (e: React.MouseEvent) => {
+        if (!scrollContainerRef.current) return;
+        setIsDragging(true);
+        const rect = scrollContainerRef.current.getBoundingClientRect();
+        setStartX(e.clientX - rect.left);
+        setScrollLeftStart(scrollContainerRef.current.scrollLeft);
+    };
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (!isDragging || !scrollContainerRef.current) return;
+        e.preventDefault();
+        const rect = scrollContainerRef.current.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const walk = (x - startX) * 2;
+        scrollContainerRef.current.scrollLeft = scrollLeftStart - walk;
+    };
+
+    const handleMouseUp = () => setIsDragging(false);
+    const handleMouseLeave = () => setIsDragging(false);
+
     return (
         <Section className="py-16 md:py-24">
-            <h3 className="font-heading font-bold text-3xl mb-12 text-center md:text-left select-none">Shop by Relation</h3>
-            <div className="flex gap-6 overflow-x-auto no-scrollbar pb-8 px-2 snap-x snap-mandatory">
-                {relations.map((c, i) => (
-                    <div key={i} className="flex-shrink-0 w-44 md:w-56 group snap-start cursor-pointer">
-                        <div className="w-full h-64 md:h-80 relative overflow-hidden rounded-t-full rounded-b-[2rem] shadow-sm group-hover:shadow-xl transition-all duration-500">
-                            <img
-                                src={c.img}
-                                loading="lazy"
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                alt={c.title}
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
-                            <div className="absolute bottom-6 left-0 w-full text-center">
-                                <span className="text-white font-heading font-bold text-xl tracking-wide group-hover:tracking-wider transition-all">{c.title}</span>
-                            </div>
-                        </div>
+            {/* Section Header - Minimal Style */}
+            <div className="flex items-center justify-between mb-8 md:mb-12">
+                <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 bg-gray-900 rounded-full flex items-center justify-center">
+                        <span className="text-base">📅</span>
                     </div>
-                ))}
+                    <div>
+                        <h3 className="text-lg md:text-xl font-bold text-gray-900">Shop by Occasion</h3>
+                        <p className="text-[11px] md:text-xs text-gray-400">Find the perfect gift for every celebration</p>
+                    </div>
+                </div>
+                <div className="hidden md:flex items-center gap-2 text-xs text-gray-400">
+                    <span>Drag to explore</span>
+                    <ArrowRight size={14} />
+                </div>
+            </div>
+
+            {/* Draggable Carousel */}
+            <div
+                ref={scrollContainerRef}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseLeave}
+                className={`
+                    flex gap-4 md:gap-5 overflow-x-auto no-scrollbar 
+                    py-6 -my-6 
+                    -mx-4 px-4 md:-mx-8 md:px-8
+                    ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}
+                `}
+                style={{ scrollBehavior: isDragging ? 'auto' : 'smooth' }}
+            >
+                {sortedOccasions.map((c, i) => {
+                    const { upcoming, daysLeft } = isUpcoming((c as any).date);
+                    const isHighlighted = upcoming && !(c as any).priority;
+
+                    return (
+                        <a
+                            key={i}
+                            href={`/collections/${c.title.toLowerCase().replace(/ /g, '-')}`}
+                            className={`
+                                flex-shrink-0 w-52 md:w-64 h-72 md:h-80 rounded-3xl 
+                                ${c.color} 
+                                p-5 md:p-7 flex flex-col justify-between
+                                shadow-md hover:shadow-2xl transition-all duration-300
+                                transform hover:scale-[1.05] hover:-translate-y-2
+                                group relative
+                                ${isHighlighted ? 'ring-4 ring-yellow-400 ring-offset-2 animate-pulse' : ''}
+                            `}
+                            onClick={(e) => { if (isDragging) e.preventDefault(); }}
+                            draggable="false"
+                            style={isHighlighted ? {
+                                animation: 'glow 2s ease-in-out infinite alternate',
+                                boxShadow: '0 0 20px rgba(250, 204, 21, 0.5)'
+                            } : {}}
+                        >
+                            {/* Coming Soon Badge for Highlighted */}
+                            {isHighlighted && (
+                                <div className="absolute -top-2 -right-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded-full shadow-lg animate-bounce z-10">
+                                    🔥 {daysLeft === 0 ? 'TODAY!' : daysLeft === 1 ? 'TOMORROW!' : `${daysLeft} days`}
+                                </div>
+                            )}
+
+                            {/* Index or Star Badge */}
+                            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${(c as any).priority ? 'bg-black text-white' : 'bg-black/10 text-black'
+                                }`}>
+                                {(c as any).priority ? '★' : i + 1}
+                            </div>
+
+                            {/* Icon */}
+                            <div className="flex-1 flex items-center justify-center">
+                                <span className={`text-5xl md:text-6xl group-hover:scale-110 transition-transform duration-300 ${isHighlighted ? 'animate-bounce' : ''}`}>
+                                    {c.icon}
+                                </span>
+                            </div>
+
+                            {/* Text Content */}
+                            <div>
+                                <h4 className="font-heading font-bold text-lg md:text-xl text-black mb-1 leading-tight">
+                                    {c.title}
+                                </h4>
+                                <p className="text-xs md:text-sm text-black/60 leading-tight">
+                                    {c.subtitle}
+                                </p>
+                            </div>
+                        </a>
+                    );
+                })}
+            </div>
+
+            {/* Mobile swipe indicator */}
+            <div className="flex md:hidden items-center justify-center gap-1 mt-6 text-gray-400 text-xs">
+                <span>←</span>
+                <span>Swipe to see more</span>
+                <span>→</span>
             </div>
         </Section>
     )
@@ -268,12 +881,18 @@ const trendingItems = [
 export const TrendingLevitation = () => {
     return (
         <Section>
-            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4 select-none">
-                <div>
-                    <span className="text-brand-dark font-bold uppercase tracking-widest text-xs mb-2 block">Trending Now</span>
-                    <h2 className="text-4xl md:text-5xl font-heading font-extrabold">Curated for You</h2>
+            {/* Section Header - Minimal Style */}
+            <div className="flex items-center justify-between mb-10 md:mb-14">
+                <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 bg-gray-900 rounded-full flex items-center justify-center">
+                        <TrendingUp className="text-white" size={18} />
+                    </div>
+                    <div>
+                        <h2 className="text-lg md:text-xl font-bold text-gray-900">Trending Right Now</h2>
+                        <p className="text-[11px] md:text-xs text-gray-400">What everyone is loving today</p>
+                    </div>
                 </div>
-                <Button variant="outline" className="hidden md:flex">View All Collections</Button>
+                <Button variant="outline" className="hidden md:flex text-xs">View All</Button>
             </div>
 
             <div className="columns-2 md:columns-4 gap-6 space-y-6">
