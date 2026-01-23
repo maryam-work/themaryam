@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   ShoppingBag,
   User,
@@ -14,32 +15,91 @@ import {
   Youtube,
   Twitter,
   Linkedin,
-  Mail
+  Mail,
+  FileText,
+  Phone,
+  Shield,
+  MapPin,
+  Truck,
+  Facebook,
+  MessageCircle
 } from 'lucide-react';
 import { Container } from './UI';
 
 export const TopBar: React.FC = () => {
   return (
-    <div className="w-full bg-black text-white py-2 hidden md:block">
-      <Container className="flex justify-between items-center text-[11px] font-medium tracking-wide">
-        <div className="flex items-center gap-2">
-          <Zap size={12} className="text-yellow-400 fill-yellow-400" />
-          <span className="animate-pulse">AI-Powered Customization is here!</span>
-        </div>
-        <div className="flex gap-4">
-          <a href="#" className="hover:text-gray-300">Track Order</a>
-          <a href="#" className="hover:text-gray-300">Support</a>
-        </div>
+    <div className="hidden lg:block w-full py-2.5 relative overflow-hidden bg-gray-900">
+      {/* Shimmer effect */}
+      <div
+        className="absolute inset-0 opacity-30"
+        style={{
+          background: 'linear-gradient(90deg, transparent 0%, rgba(236,72,153,0.2) 50%, transparent 100%)',
+          animation: 'shimmer 4s infinite'
+        }}
+      />
+      <Container className="relative z-10 flex justify-center items-center text-center px-2">
+        <p className="text-[12px] tracking-wide whitespace-nowrap font-inter">
+          <span className="font-bold uppercase tracking-wider text-white">99% DELIVERY DISCOUNT!!!</span>
+          <span className="font-normal ml-1.5 text-white/80">You pay for the feeling. Gifts are on us.</span>
+          <span className="ml-1">🤞🏻</span>
+        </p>
       </Container>
     </div>
   );
 };
 
 export const Header: React.FC = () => {
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const searchInputRef = React.useRef<HTMLInputElement>(null);
+  const [placeholder, setPlaceholder] = useState('');
+
+  // Typewriter animation for search bar
+  useEffect(() => {
+    const phrases = [
+      "Girlfriend ke liye gift dhundho...",
+      "Bhai ka birthday hai...",
+      "₹500 mein best gift batao...",
+      "Father's Day ke liye special...",
+      "Sorry bolne ke liye gift...",
+      "Long distance ke liye kuch...",
+      "Office colleague ke liye thank you...",
+    ];
+
+    let currentPhraseIndex = 0;
+    let currentCharIndex = 0;
+    let isDeleting = false;
+    let timer: NodeJS.Timeout;
+
+    const type = () => {
+      const currentPhrase = phrases[currentPhraseIndex];
+      let typingSpeed = 80;
+
+      if (isDeleting) {
+        setPlaceholder(currentPhrase.substring(0, currentCharIndex - 1));
+        currentCharIndex--;
+        typingSpeed = 40;
+      } else {
+        setPlaceholder(currentPhrase.substring(0, currentCharIndex + 1));
+        currentCharIndex++;
+        typingSpeed = 80;
+      }
+
+      if (!isDeleting && currentCharIndex === currentPhrase.length) {
+        isDeleting = true;
+        typingSpeed = 2000; // Pause at end
+      } else if (isDeleting && currentCharIndex === 0) {
+        isDeleting = false;
+        currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+        typingSpeed = 400;
+      }
+
+      timer = setTimeout(type, typingSpeed);
+    };
+
+    timer = setTimeout(type, 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,145 +109,218 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Focus input when search opens
-  useEffect(() => {
-    if (searchOpen && searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  }, [searchOpen]);
-
-  // Close search on escape key
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && searchOpen) {
-        setSearchOpen(false);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [searchOpen]);
+  // FNP Style Categories
+  const categories = [
+    'Birthday', 'Occasions', 'Anniversary', 'Flowers', 'Cakes',
+    'Personalised', 'Plants', 'Chocolates', 'Luxe', 'Hampers'
+  ];
 
   return (
-    <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-white py-4'}`}>
-      <Container className="flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex-shrink-0 flex items-center gap-2">
-          <a href="#" className="text-2xl font-heading font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-black to-gray-600">
-            themaryam.in
-          </a>
-        </div>
+    <>
+      {/* ===== MOBILE HEADER - COMPLETELY INDEPENDENT, NO CONTAINER ===== */}
 
-        {/* Desktop Nav - Functional */}
-        <nav className="hidden lg:flex items-center gap-8 font-medium text-sm text-gray-800">
-          <a href="#" className="hover:text-brand-dark transition-colors font-semibold">Custom Frames</a>
-          <a href="#" className="hover:text-brand-dark transition-colors font-semibold">Neon Lights</a>
-          <a href="#" className="hover:text-brand-dark transition-colors font-semibold">3D Dolls</a>
-          <a href="#" className="hover:text-brand-dark transition-colors font-semibold">Corporate</a>
-        </nav>
-
-        {/* Icons */}
-        <div className="flex items-center gap-4">
-          {/* Premium Expandable Search - Desktop */}
-          <div className="hidden md:flex items-center relative">
-            <div
-              className={`flex items-center overflow-hidden transition-all duration-300 ease-out ${searchOpen
-                  ? 'w-56 bg-gray-100/90 backdrop-blur-sm rounded-full border border-gray-200/60 shadow-sm'
-                  : 'w-9 h-9'
-                }`}
-            >
-              {/* Search Icon Button */}
-              <button
-                onClick={() => setSearchOpen(!searchOpen)}
-                className={`flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-full transition-all duration-200 ease-out ${searchOpen
-                    ? 'text-gray-500 hover:text-gray-700'
-                    : 'text-gray-600 hover:text-brand-dark hover:bg-gray-100'
-                  }`}
-                aria-label={searchOpen ? 'Close search' : 'Open search'}
-              >
-                {searchOpen ? (
-                  <X size={16} className="transition-transform duration-200" />
-                ) : (
-                  <Search size={18} className="transition-transform duration-200" />
-                )}
-              </button>
-
-              {/* Search Input */}
-              <input
-                ref={searchInputRef}
-                type="text"
-                placeholder="Search products..."
-                className={`bg-transparent text-xs font-medium text-gray-700 placeholder-gray-400 focus:outline-none transition-all duration-300 ease-out ${searchOpen ? 'w-full pr-3 opacity-100' : 'w-0 opacity-0'
-                  }`}
-                onBlur={() => setTimeout(() => setSearchOpen(false), 150)}
-              />
-            </div>
-          </div>
-
-          {/* Mobile Search Icon */}
-          <button
-            className="md:hidden text-gray-600 hover:text-brand-dark transition-colors"
-            onClick={() => setSearchOpen(!searchOpen)}
-            aria-label="Search"
-          >
-            <Search size={20} />
-          </button>
-
-          <button className="hidden sm:block hover:text-brand-dark transition-colors"><User size={20} /></button>
-          <button className="hidden sm:block hover:text-brand-dark transition-colors relative">
-            <Heart size={20} />
-          </button>
-          <button className="hover:text-brand-dark transition-colors relative">
-            <ShoppingBag size={20} />
-            <span className="absolute -top-1.5 -right-1.5 bg-brand-dark text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">2</span>
-          </button>
-          <button
-            className="lg:hidden"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </Container>
-
-      {/* Mobile Search Overlay - Slides Down */}
-      <div
-        className={`md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-lg overflow-hidden transition-all duration-300 ease-out ${searchOpen ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
-          }`}
-      >
-        <div className="px-4 py-3">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search products..."
-              className="w-full bg-gray-100 rounded-full py-2.5 pl-10 pr-4 text-sm font-medium text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-dark/20 transition-all"
-            />
-            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
-            <button
-              onClick={() => setSearchOpen(false)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-            >
-              <X size={16} />
+      {/* Sticky Container for Location Row ONLY */}
+      <div className="lg:hidden sticky top-0 z-50 bg-white shadow-sm">
+        {/* Location Row - Clean borders */}
+        <div className="px-4 py-3 border-b border-gray-300">
+          <div className="flex items-center justify-between">
+            <button className="flex items-center gap-3 min-w-0 flex-1">
+              <img src="https://flagcdn.com/w40/in.png" alt="India" className="w-8 h-6 object-cover rounded flex-shrink-0 shadow-sm" />
+              <div className="text-left min-w-0">
+                <p className="text-[15px] font-bold text-gray-900 truncate" style={{ fontFamily: 'Inter, sans-serif' }}>Where to deliver?</p>
+                <p className="text-[13px] font-medium text-red-500 flex items-center" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  <span className="truncate">Location missing</span>
+                  <svg className="w-4 h-4 ml-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>
+                </p>
+              </div>
             </button>
+            <div className="flex items-center gap-3 flex-shrink-0">
+              {/* Cart Button - Clear border */}
+              <a href="https://shop.themaryam.in/cart" className="w-11 h-11 rounded-xl bg-white flex items-center justify-center text-gray-600 border border-gray-300 relative">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                </svg>
+                <span className="absolute -top-1 -right-1 bg-amber-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-xl py-6 px-6 flex flex-col gap-4 animate-fade-in-down">
-          <a href="#" className="text-lg font-medium">Custom Frames</a>
-          <a href="#" className="text-lg font-medium">Neon Lights</a>
-          <a href="#" className="text-lg font-medium">3D Dolls</a>
-          <a href="#" className="text-lg font-medium">Occasions</a>
+      {/* Search Bar - Clickable, navigates to /search */}
+      <div className="lg:hidden px-4 pt-3 pb-3">
+        <div
+          className="relative cursor-pointer"
+          onClick={() => navigate('/search')}
+        >
+          <div className="w-full bg-white border border-rose-300 rounded-xl py-3 pl-12 pr-14 text-[15px] font-medium text-gray-400 transition-all hover:border-rose-400 hover:shadow-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
+            {placeholder || "Kuch bhi batao..."}
+          </div>
+          {/* Search Icon */}
+          <div className="absolute left-4 top-1/2 -translate-y-1/2">
+            <Search className="w-5 h-5 text-rose-400" />
+          </div>
+          {/* Voice/Mic Icon with Separator */}
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center">
+            <div className="w-[1px] h-6 bg-rose-200 mr-3"></div>
+            <div className="text-rose-400 p-1">
+              <i className="fas fa-microphone text-lg"></i>
+            </div>
+          </div>
         </div>
-      )}
-    </header>
+      </div>
+
+      {/* Delivery Banner - IMAGE - NO CONTAINER - FULL VISIBILITY */}
+      <img src="/HERO_BANNER.png" alt="99% Delivery Discount" className="lg:hidden w-[calc(100%-2rem)] mx-4 mt-0" />
+
+      {/* ===== DESKTOP HEADER ONLY ===== */}
+      <header className={`hidden lg:block sticky top-0 z-50 w-full bg-white transition-shadow duration-300 ${isScrolled ? 'shadow-md' : ''}`}>
+        {/* Row 1: Logo, Location, Search, Icons */}
+        <Container className="flex items-center justify-between py-4 border-b border-gray-200">
+          {/* Logo */}
+          <a href="/" className="flex items-center gap-2.5 group">
+            <img src="/Maryam_Rounded_sides_image (1).png" alt="The Maryam" className="h-10 w-auto" />
+            <span className="text-xl font-bold tracking-tight text-gray-900 group-hover:text-gray-700 transition-colors" style={{ fontFamily: 'Inter, sans-serif' }}>
+              themaryam.in
+            </span>
+          </a>
+
+          {/* Location Picker */}
+          <button className="flex items-center gap-3 text-sm text-gray-700 hover:text-gray-900 transition-colors group ml-6">
+            <img
+              src="https://flagcdn.com/w40/in.png"
+              alt="India"
+              className="w-7 h-5 object-cover rounded-sm shadow-sm"
+            />
+            <div className="text-left">
+              <p className="font-bold text-gray-900" style={{ fontFamily: 'Inter, sans-serif' }}>Where to deliver?</p>
+              <p className="text-xs font-medium text-red-500 flex items-center gap-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Location missing
+                <svg className="w-3 h-3 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>
+              </p>
+            </div>
+          </button>
+
+          {/* Search Bar - Clean Design */}
+          <div className="flex-1 max-w-xl mx-8">
+            <div className="relative group">
+              <input
+                type="text"
+                placeholder={placeholder || "Kuch bhi batao..."}
+                className="w-full bg-white border border-gray-300 rounded-xl py-3 pl-12 pr-14 text-sm font-medium text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-all"
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              />
+              {/* Search Icon */}
+              <div className="absolute left-4 top-1/2 -translate-y-1/2">
+                <Search className="w-5 h-5 text-gray-500" />
+              </div>
+              {/* Voice/Mic Icon with Separator */}
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center">
+                <div className="w-[1px] h-6 bg-gray-200 mr-3"></div>
+                <button className="text-[#6B7D3A] hover:text-[#5a6b30] transition-colors p-1">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Icon Strip */}
+          <div className="flex items-center gap-2">
+            {/* INR */}
+            <button className="flex flex-col items-center justify-center w-14 h-14 rounded-xl hover:bg-gray-100 transition-colors group">
+              <span className="text-base font-semibold text-gray-600 group-hover:text-gray-900 transition-colors" style={{ fontFamily: 'Inter, sans-serif' }}>₹</span>
+              <span className="text-[10px] font-semibold text-gray-500 mt-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>INR</span>
+            </button>
+            {/* Cart */}
+            <a href="https://shop.themaryam.in/cart" className="flex flex-col items-center justify-center w-14 h-14 rounded-xl hover:bg-gray-100 transition-colors group relative">
+              <svg className="w-5 h-5 text-gray-600 group-hover:text-gray-900 transition-colors" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+              </svg>
+              <span className="text-[10px] font-semibold text-gray-500 mt-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>Cart</span>
+              <span className="absolute top-1.5 right-2.5 bg-gray-900 text-white text-[8px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+            </a>
+            {/* More */}
+            <button className="flex flex-col items-center justify-center w-14 h-14 rounded-xl hover:bg-gray-100 transition-colors group">
+              <svg className="w-5 h-5 text-gray-600 group-hover:text-gray-900 transition-colors" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+              <span className="text-[10px] font-semibold text-gray-500 mt-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>More</span>
+            </button>
+          </div>
+        </Container>
+
+        {/* Row 2: Category Navigation */}
+        <div className="bg-white border-b border-gray-200">
+          <Container>
+            <nav className="flex items-center justify-center gap-0 py-2.5 overflow-x-auto scrollbar-hide">
+              {categories.map((cat, i) => {
+                const categoryLinks: Record<string, string> = {
+                  'Birthday': '/birthday-gifts.html',
+                  'Occasions': 'https://shop.themaryam.in/collections/all',
+                  'Anniversary': '/anniversary-gifts.html',
+                  'Flowers': '/flowers.html',
+                  'Cakes': '/cakes.html',
+                  'Personalised': 'https://shop.themaryam.in/collections/all',
+                  'Plants': 'https://shop.themaryam.in/collections/all',
+                  'Chocolates': 'https://shop.themaryam.in/collections/all',
+                  'Luxe': 'https://shop.themaryam.in/collections/all',
+                  'Hampers': 'https://shop.themaryam.in/collections/all',
+                };
+                return (
+                  <a
+                    key={cat}
+                    href={categoryLinks[cat] || 'https://shop.themaryam.in'}
+                    className="flex items-center gap-1 px-4 py-2 text-sm font-semibold text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg whitespace-nowrap transition-colors group"
+                    style={{ fontFamily: 'Inter, sans-serif' }}
+                  >
+                    {cat}
+                    <svg className="w-3 h-3 opacity-40 group-hover:opacity-70 transition-opacity" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                  </a>
+                )
+              })}
+              <a href="https://shop.themaryam.in/collections/all" className="px-4 py-2 text-sm font-bold text-gray-900 bg-gray-100 rounded-lg whitespace-nowrap" style={{ fontFamily: 'Inter, sans-serif' }}>
+                On Trend
+              </a>
+            </nav>
+          </Container>
+        </div >
+      </header >
+
+      {/* Mobile Menu - Full Screen Overlay */}
+      {
+        mobileMenuOpen && (
+          <div className="lg:hidden fixed inset-0 bg-white z-50 animate-fade-in-up overflow-y-auto">
+            <div className="flex items-center justify-between p-4 border-b">
+              <span className="text-xl font-bold">🎁 themaryam.in</span>
+              <button onClick={() => setMobileMenuOpen(false)}>
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <nav className="p-6 space-y-4">
+              {categories.map((cat) => (
+                <a key={cat} href="#" className="block text-lg font-medium text-gray-800 py-2 border-b border-gray-100">{cat}</a>
+              ))}
+            </nav>
+          </div>
+        )
+      }
+    </>
   );
 };
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-black text-white pt-20 pb-8 overflow-hidden">
+    <footer
+      className="bg-black text-white pt-20 pb-8 overflow-hidden"
+      itemScope
+      itemType="https://schema.org/WPFooter"
+      role="contentinfo"
+      aria-label="Site Footer"
+    >
       <Container>
         {/* Top Section: CTA Swiss Style */}
         <div className="flex flex-col md:flex-row justify-between items-end border-b border-gray-800 pb-16 mb-16">
@@ -204,96 +337,264 @@ export const Footer: React.FC = () => {
             </h2>
           </div>
           <div className="mt-8 md:mt-0">
-            <button className="group bg-white text-black px-8 py-4 rounded-full font-bold text-lg flex items-center gap-2 hover:bg-gray-200 transition-colors">
+            <a
+              href="https://shop.themaryam.in"
+              className="group bg-white text-black px-8 py-4 rounded-full font-bold text-lg flex items-center gap-2 hover:bg-gray-200 transition-colors"
+              aria-label="Start shopping for personalized gifts"
+            >
               Start Creating
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </button>
+            </a>
           </div>
         </div>
 
-        {/* SWISS GRID LINKS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border-l border-gray-800">
+        {/* SWISS GRID LINKS - 5 COLUMNS */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0 border-l border-gray-800">
 
-          {/* Column 1 */}
-          <div className="border-r border-gray-800 p-8 hover:bg-gray-900 transition-colors duration-500 group">
-            <h4 className="text-gray-500 text-xs mb-8 uppercase tracking-widest font-bold flex items-center gap-2">
+          {/* Column 1 - Products */}
+          <nav className="border-r border-b lg:border-b-0 border-gray-800 p-6 md:p-8 hover:bg-gray-900 transition-colors duration-500" aria-label="Product Categories">
+            <h4 className="text-gray-500 text-xs mb-6 md:mb-8 uppercase tracking-widest font-bold flex items-center gap-2">
               <Sparkles size={12} /> Products
             </h4>
-            <ul className="space-y-6">
-              {['Neon Lights', '3D Miniatures', 'Spotify Plaques', 'QR Cards', 'Vintage Letters'].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-lg font-medium flex items-center justify-between group/link">
-                    {item}
-                    <ArrowRight size={16} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300 text-gray-500" />
+            <ul className="space-y-4 md:space-y-5">
+              {[
+                { name: 'Neon Lights', href: '/collections/neon-lights' },
+                { name: '3D Miniatures', href: '/collections/3d-miniatures' },
+                { name: 'Photo Frames', href: '/collections/photo-frames' },
+                { name: 'Custom Mugs', href: '/collections/mugs' },
+                { name: 'Engraved Jewelry', href: '/collections/jewelry' }
+              ].map((item) => (
+                <li key={item.name}>
+                  <a href={item.href} className="text-sm md:text-base font-medium flex items-center justify-between group/link hover:text-gray-300 transition-colors">
+                    {item.name}
+                    <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300 text-gray-500" />
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Column 2 */}
-          <div className="border-r border-gray-800 p-8 hover:bg-gray-900 transition-colors duration-500">
-            <h4 className="text-gray-500 text-xs mb-8 uppercase tracking-widest font-bold flex items-center gap-2">
-              <Globe size={12} /> Company
+          {/* Column 2 - Occasions */}
+          <nav className="border-r border-b lg:border-b-0 border-gray-800 p-6 md:p-8 hover:bg-gray-900 transition-colors duration-500" aria-label="Shop by Occasion">
+            <h4 className="text-gray-500 text-xs mb-6 md:mb-8 uppercase tracking-widest font-bold flex items-center gap-2">
+              <Heart size={12} /> Occasions
             </h4>
-            <ul className="space-y-6">
-              {['Our Story', 'Careers', 'Blog', 'Press', 'Sitemap'].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-lg font-medium flex items-center justify-between group/link">
-                    {item}
-                    <ArrowRight size={16} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300 text-gray-500" />
+            <ul className="space-y-4 md:space-y-5">
+              {[
+                { name: 'Birthday Gifts', href: '/collections/birthday' },
+                { name: 'Anniversary Gifts', href: '/collections/anniversary' },
+                { name: 'Wedding Gifts', href: '/collections/wedding' },
+                { name: 'Diwali Gifts', href: '/collections/diwali' },
+                { name: 'Valentine Gifts', href: '/collections/valentines-day' }
+              ].map((item) => (
+                <li key={item.name}>
+                  <a href={item.href} className="text-sm md:text-base font-medium flex items-center justify-between group/link hover:text-gray-300 transition-colors">
+                    {item.name}
+                    <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300 text-gray-500" />
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Column 3 */}
-          <div className="border-r border-gray-800 p-8 hover:bg-gray-900 transition-colors duration-500">
-            <h4 className="text-gray-500 text-xs mb-8 uppercase tracking-widest font-bold flex items-center gap-2">
-              <Mail size={12} /> Connect
+          {/* Column 3 - Legal & Policies */}
+          <nav className="border-r border-b lg:border-b-0 border-gray-800 p-6 md:p-8 hover:bg-gray-900 transition-colors duration-500" aria-label="Legal and Policies">
+            <h4 className="text-gray-500 text-xs mb-6 md:mb-8 uppercase tracking-widest font-bold flex items-center gap-2">
+              <FileText size={12} /> Policies
             </h4>
-            <div className="flex gap-4 mb-8">
-              <a href="#" className="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all"><Instagram size={18} /></a>
-              <a href="#" className="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all"><Twitter size={18} /></a>
-              <a href="#" className="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all"><Youtube size={18} /></a>
-              <a href="#" className="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all"><Linkedin size={18} /></a>
+            <ul className="space-y-4 md:space-y-5">
+              <li>
+                <a href="/policies/terms-of-service" className="text-sm md:text-base font-medium flex items-center justify-between group/link hover:text-gray-300 transition-colors" rel="nofollow">
+                  Terms of Service
+                  <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300 text-gray-500" />
+                </a>
+              </li>
+              <li>
+                <a href="/policies/shipping-policy" className="text-sm md:text-base font-medium flex items-center justify-between group/link hover:text-gray-300 transition-colors">
+                  Shipping Policy
+                  <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300 text-gray-500" />
+                </a>
+              </li>
+              <li>
+                <a href="/policies/refund-policy" className="text-sm md:text-base font-medium flex items-center justify-between group/link hover:text-gray-300 transition-colors">
+                  Return & Refund
+                  <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300 text-gray-500" />
+                </a>
+              </li>
+              <li>
+                <a href="/policies/privacy-policy" className="text-sm md:text-base font-medium flex items-center justify-between group/link hover:text-gray-300 transition-colors" rel="nofollow">
+                  Privacy Policy
+                  <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300 text-gray-500" />
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          {/* Column 4 - Support & Contact */}
+          <nav className="border-r border-gray-800 p-6 md:p-8 hover:bg-gray-900 transition-colors duration-500" aria-label="Customer Support">
+            <h4 className="text-gray-500 text-xs mb-6 md:mb-8 uppercase tracking-widest font-bold flex items-center gap-2">
+              <Phone size={12} /> Support
+            </h4>
+            <ul className="space-y-4 md:space-y-5">
+              <li>
+                <a href="/pages/contact" className="text-sm md:text-base font-medium flex items-center justify-between group/link hover:text-gray-300 transition-colors">
+                  Contact Us
+                  <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300 text-gray-500" />
+                </a>
+              </li>
+              <li>
+                <a href="/pages/track-order" className="text-sm md:text-base font-medium flex items-center justify-between group/link hover:text-gray-300 transition-colors">
+                  Track Order
+                  <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300 text-gray-500" />
+                </a>
+              </li>
+              <li>
+                <a href="/pages/faq" className="text-sm md:text-base font-medium flex items-center justify-between group/link hover:text-gray-300 transition-colors">
+                  FAQs
+                  <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300 text-gray-500" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/917359033087"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm md:text-base font-medium flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors"
+                >
+                  <MessageCircle size={14} />
+                  WhatsApp Support
+                </a>
+              </li>
+            </ul>
+            {/* Contact Info */}
+            <div className="mt-6 pt-4 border-t border-gray-800">
+              <p className="text-xs text-gray-500 mb-2">Email</p>
+              <a href="mailto:support@themaryam.in" className="text-sm hover:text-gray-300 transition-colors">support@themaryam.in</a>
+              <p className="text-xs text-gray-500 mt-3 mb-2">Phone</p>
+              <a href="tel:+917359033087" className="text-sm hover:text-gray-300 transition-colors">+91 7359033087</a>
             </div>
-            <h4 className="text-gray-500 text-xs mb-4 uppercase tracking-widest font-bold">Newsletter</h4>
-            <div className="relative">
-              <input type="email" placeholder="Email address" className="bg-transparent border-b border-gray-700 w-full pb-2 text-sm focus:outline-none focus:border-white transition-colors" />
-              <button className="absolute right-0 bottom-2 text-gray-400 hover:text-white"><ArrowRight size={16} /></button>
+          </nav>
+
+          {/* Column 5 - Connect & Social */}
+          <div className="border-r border-gray-800 p-6 md:p-8 hover:bg-gray-900 transition-colors duration-500 col-span-2 md:col-span-1">
+            <h4 className="text-gray-500 text-xs mb-6 md:mb-8 uppercase tracking-widest font-bold flex items-center gap-2">
+              <Globe size={12} /> Connect
+            </h4>
+            {/* Social Links */}
+            <div className="flex flex-wrap gap-3 mb-6">
+              <a
+                href="https://www.instagram.com/themaryam"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all"
+                aria-label="Follow us on Instagram"
+              >
+                <Instagram size={18} />
+              </a>
+              <a
+                href="https://www.facebook.com/wrapy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all"
+                aria-label="Follow us on Facebook"
+              >
+                <Facebook size={18} />
+              </a>
+              <a
+                href="https://twitter.com/wrapyindia"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all"
+                aria-label="Follow us on Twitter"
+              >
+                <Twitter size={18} />
+              </a>
+              <a
+                href="https://www.youtube.com/@wrapyindia"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all"
+                aria-label="Subscribe on YouTube"
+              >
+                <Youtube size={18} />
+              </a>
+            </div>
+
+            {/* Newsletter */}
+            <h4 className="text-gray-500 text-xs mb-3 uppercase tracking-widest font-bold">Newsletter</h4>
+            <form className="relative mb-6" action="#" method="POST">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email address"
+                className="bg-transparent border-b border-gray-700 w-full pb-2 text-sm focus:outline-none focus:border-white transition-colors"
+                aria-label="Email for newsletter"
+                required
+              />
+              <button type="submit" className="absolute right-0 bottom-2 text-gray-400 hover:text-white" aria-label="Subscribe to newsletter">
+                <ArrowRight size={16} />
+              </button>
+            </form>
+
+            {/* Address */}
+            <div
+              className="text-xs text-gray-500"
+              itemScope
+              itemType="https://schema.org/LocalBusiness"
+            >
+              <div className="flex items-start gap-2 mb-2">
+                <MapPin size={12} className="mt-0.5 flex-shrink-0" />
+                <address className="not-italic" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+                  <span itemProp="streetAddress">Gorwa</span>,
+                  <span itemProp="addressLocality"> Vadodara</span>,
+                  <span itemProp="addressRegion"> Gujarat</span> -
+                  <span itemProp="postalCode"> 390016</span>,
+                  <span itemProp="addressCountry"> India</span>
+                </address>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Column 4 - Support */}
-          <div className="border-r border-gray-800 p-8 hover:bg-gray-900 transition-colors duration-500">
-            <h4 className="text-gray-500 text-xs mb-8 uppercase tracking-widest font-bold flex items-center gap-2">
-              <User size={12} /> Support
-            </h4>
-            <ul className="space-y-6">
-              {['Help Center', 'Track Order', 'Returns', 'Shipping Info', 'Contact Us'].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-lg font-medium flex items-center justify-between group/link">
-                    {item}
-                    <ArrowRight size={16} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300 text-gray-500" />
-                  </a>
-                </li>
-              ))}
-            </ul>
+        {/* Trust Badges & Payment */}
+        <div className="border-t border-gray-800 mt-0 pt-8 pb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex items-center gap-4 flex-wrap justify-center">
+              <div className="flex items-center gap-2 text-xs text-gray-500">
+                <Shield size={14} className="text-green-500" />
+                <span>100% Secure Payments</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-gray-500">
+                <Truck size={14} className="text-blue-400" />
+                <span>Pan India Delivery</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-gray-500">
+                <Sparkles size={14} className="text-yellow-400" />
+                <span>Premium Quality</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 text-xs text-gray-600">
+              <span>We Accept:</span>
+              <span className="px-2 py-1 bg-gray-800 rounded">Visa</span>
+              <span className="px-2 py-1 bg-gray-800 rounded">Mastercard</span>
+              <span className="px-2 py-1 bg-gray-800 rounded">UPI</span>
+              <span className="px-2 py-1 bg-gray-800 rounded">COD</span>
+            </div>
           </div>
         </div>
 
         {/* MASSIVE FOOTER TEXT */}
-        <div className="relative w-full text-center border-t border-gray-900 pt-20 mt-0">
-          <h1 className="text-[12vw] md:text-[15.5vw] font-heading font-black leading-none tracking-tighter text-white/5 select-none pointer-events-none hover:text-white/10 transition-colors duration-700">
+        <div className="relative w-full text-center border-t border-gray-900 pt-16 mt-4">
+          <h1 className="text-[12vw] md:text-[15.5vw] font-heading font-black leading-none tracking-tighter text-white/5 select-none pointer-events-none hover:text-white/10 transition-colors duration-700" aria-hidden="true">
             THE MARYAM
           </h1>
           <div className="flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 mt-8 absolute bottom-4 w-full px-4 font-mono uppercase tracking-wider">
-            <p>© 2024 The Maryam Inc. Crafted with Love & AI.</p>
-            <div className="flex gap-6 mt-2 md:mt-0">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <p>© 2024-2026 The Maryam. All Rights Reserved. Made with Love in India.</p>
+            <div className="flex gap-4 md:gap-6 mt-2 md:mt-0 flex-wrap justify-center">
+              <a href="/policies/privacy-policy" className="hover:text-white transition-colors">Privacy</a>
+              <a href="/policies/terms-of-service" className="hover:text-white transition-colors">Terms</a>
+              <a href="/policies/refund-policy" className="hover:text-white transition-colors">Refunds</a>
+              <a href="/sitemap.xml" className="hover:text-white transition-colors">Sitemap</a>
             </div>
           </div>
         </div>
