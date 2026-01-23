@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { TopBar, Header, Footer } from './components/Layout';
 import {
   Hero,
@@ -11,9 +12,13 @@ import {
   LoveWall,
   UnboxingStream
 } from './components/Sections';
+import SearchPage from './pages/SearchPage';
 import { matchProducts, MatchedProduct } from './lib/aiService';
+import { useLenis } from './hooks/useLenis';
 
-const App: React.FC = () => {
+// Home Page Component
+const HomePage: React.FC = () => {
+  const lenisRef = useLenis();
   const [showResults, setShowResults] = useState(false);
   const [matchedProducts, setMatchedProducts] = useState<MatchedProduct[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -24,9 +29,13 @@ const App: React.FC = () => {
       const products = await matchProducts(query);
       setMatchedProducts(products);
       setShowResults(true);
-      // Scroll to results after a short delay
       setTimeout(() => {
-        document.getElementById('ai-results')?.scrollIntoView({ behavior: 'smooth' });
+        const target = document.getElementById('ai-results');
+        if (target && lenisRef.current) {
+          lenisRef.current.scrollTo(target, { offset: -80, duration: 1.5 });
+        } else if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
       }, 100);
     } catch (error) {
       console.error('Search error:', error);
@@ -36,42 +45,33 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="font-sans text-primary antialiased selection:bg-brand selection:text-white bg-white">
-      {/* Layout Header */}
+    <>
       <TopBar />
       <Header />
-
-      {/* Main Content Flow - Storytelling Approach */}
       <main className="flex flex-col gap-0 w-full overflow-x-hidden">
-
-        {/* 1. The Hook: AI Magic */}
         <Hero onSearch={handleSearch} isLoading={isLoading} />
         <AIResults visible={showResults} products={matchedProducts} />
-
-        {/* 2. Exploration: Shop By Relation (Arch Cards) */}
         <CategoryArches />
-
-        {/* 3. Desire: Trending Products (Levitating Grid) */}
         <TrendingLevitation />
-
-        {/* 4. Innovation: The Feature Product (QR Codes - Dark Mode) */}
         <TechLove />
-
-        {/* 5. Depth: All Categories (Bento Grid) */}
         <CollectionsBento />
-
-        {/* 6. Trust: How it works (Timeline) */}
         <ProcessFlow />
-
-        {/* 7. Proof: Testimonials (Marquee) */}
         <LoveWall />
-
-        {/* 8. Engagement: Instagram (Infinite Stream) */}
         <UnboxingStream />
       </main>
-
-      {/* Layout Footer */}
       <Footer />
+    </>
+  );
+};
+
+// Main App with Routes
+const App: React.FC = () => {
+  return (
+    <div className="font-sans text-primary antialiased selection:bg-brand selection:text-white bg-white">
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/search" element={<SearchPage />} />
+      </Routes>
     </div>
   );
 };
