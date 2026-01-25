@@ -296,21 +296,21 @@ export const Hero = ({ onSearch, isLoading }: { onSearch: (query: string) => voi
                             {/* Right divider */}
                             <div className="absolute right-0 top-2 bottom-2 w-px bg-rose-200"></div>
                         </a>
-                        <a href="/letters" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
+                        <a href="https://shop.themaryam.in/collections/letters" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
                             <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/letter_hero_image_800x800.jpg?v=1769150971" alt="Letters" className="w-full h-full object-cover" />
                             </div>
                             <span className="text-[11px] font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Letters</span>
                             <div className="absolute right-0 top-2 bottom-2 w-px bg-rose-200"></div>
                         </a>
-                        <a href="/bouquets" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
+                        <a href="https://shop.themaryam.in/collections/bouquets" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
                             <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/bouquet_hero_image_800x800.jpg?v=1769151295" alt="Bouquets" className="w-full h-full object-cover" />
                             </div>
                             <span className="text-[11px] font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Bouquets</span>
                             <div className="absolute right-0 top-2 bottom-2 w-px bg-rose-200"></div>
                         </a>
-                        <a href="/hampers" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors">
+                        <a href="https://shop.themaryam.in/collections/hampers" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors">
                             <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/hamper_hero_image_800x800.jpg?v=1769151314" alt="Hampers" className="w-full h-full object-cover" />
                             </div>
@@ -323,21 +323,21 @@ export const Hero = ({ onSearch, isLoading }: { onSearch: (query: string) => voi
 
                     {/* Row 2 */}
                     <div className="grid grid-cols-4 gap-0">
-                        <a href="/cards" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
+                        <a href="https://shop.themaryam.in/collections/cards" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
                             <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/cards_hero_image_800x800.jpg?v=1769151376" alt="Cards" className="w-full h-full object-cover" />
                             </div>
                             <span className="text-[11px] font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Cards</span>
                             <div className="absolute right-0 top-2 bottom-2 w-px bg-rose-200"></div>
                         </a>
-                        <a href="/wearables" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
+                        <a href="https://shop.themaryam.in/collections/wearables" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
                             <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/wearables_hero_image_800x800.jpg?v=1769151421" alt="Wearables" className="w-full h-full object-cover" />
                             </div>
                             <span className="text-[11px] font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Wearables</span>
                             <div className="absolute right-0 top-2 bottom-2 w-px bg-rose-200"></div>
                         </a>
-                        <a href="/frames" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
+                        <a href="https://shop.themaryam.in/collections/frames" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
                             <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/frames_hero_image_800x800.jpg?v=1769151477" alt="Frames" className="w-full h-full object-cover" />
                             </div>
@@ -365,42 +365,42 @@ export const Hero = ({ onSearch, isLoading }: { onSearch: (query: string) => voi
                             <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Valentine</span>
                             <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
                         </a>
-                        <a href="/letters" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
+                        <a href="https://shop.themaryam.in/collections/letters" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
                             <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/letter_hero_image_800x800.jpg?v=1769150971" alt="Letters" className="w-full h-full object-cover" />
                             </div>
                             <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Letters</span>
                             <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
                         </a>
-                        <a href="/bouquets" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
+                        <a href="https://shop.themaryam.in/collections/bouquets" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
                             <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/bouquet_hero_image_800x800.jpg?v=1769151295" alt="Bouquets" className="w-full h-full object-cover" />
                             </div>
                             <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Bouquets</span>
                             <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
                         </a>
-                        <a href="/hampers" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
+                        <a href="https://shop.themaryam.in/collections/hampers" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
                             <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/hamper_hero_image_800x800.jpg?v=1769151314" alt="Hampers" className="w-full h-full object-cover" />
                             </div>
                             <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Hampers</span>
                             <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
                         </a>
-                        <a href="/cards" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
+                        <a href="https://shop.themaryam.in/collections/cards" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
                             <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/cards_hero_image_800x800.jpg?v=1769151376" alt="Cards" className="w-full h-full object-cover" />
                             </div>
                             <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Cards</span>
                             <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
                         </a>
-                        <a href="/wearables" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
+                        <a href="https://shop.themaryam.in/collections/wearables" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
                             <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/wearables_hero_image_800x800.jpg?v=1769151421" alt="Wearables" className="w-full h-full object-cover" />
                             </div>
                             <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Wearables</span>
                             <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
                         </a>
-                        <a href="/frames" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
+                        <a href="https://shop.themaryam.in/collections/frames" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
                             <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/frames_hero_image_800x800.jpg?v=1769151477" alt="Frames" className="w-full h-full object-cover" />
                             </div>
