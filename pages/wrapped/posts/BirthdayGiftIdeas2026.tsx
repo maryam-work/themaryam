@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Twitter, Facebook, Linkedin, Link2, Check, Clock, Calendar, Brain, BookOpen } from 'lucide-react';
 import { WrappedHeader, Sidebar, WrappedFooter } from '../components/WrappedShared';
@@ -7,6 +7,36 @@ const BirthdayGiftIdeas2026: React.FC = () => {
     const [copied, setCopied] = useState(false);
     const [email, setEmail] = useState('');
     const [sidebarOpen, setSidebarOpen] = useState(false);
+
+    useEffect(() => {
+        const articleSchema = {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Birthday Gifting: It's About the Memory - Gift Psychology 2026",
+            "description": "Learn the psychology behind memorable birthday gifts. Discover why some gifts become treasured keepsakes while others get forgotten.",
+            "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
+            "author": { "@type": "Person", "name": "Priya Nair", "jobTitle": "Consumer Psychologist" },
+            "publisher": { "@type": "Organization", "name": "The Maryam", "logo": { "@type": "ImageObject", "url": "https://themaryam.in/logo.png" } },
+            "datePublished": "2026-01-10",
+            "dateModified": "2026-01-25",
+            "mainEntityOfPage": { "@type": "WebPage", "@id": "https://themaryam.in/wrapped/birthday-gift-ideas-2026" },
+            "keywords": ["birthday gifts", "gift psychology", "memorable gifts", "birthday gift ideas", "personalized birthday gifts"],
+            "inLanguage": "en-IN"
+        };
+        const breadcrumbSchema = {
+            "@context": "https://schema.org", "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://themaryam.in" },
+                { "@type": "ListItem", "position": 2, "name": "Wrapped", "item": "https://themaryam.in/wrapped" },
+                { "@type": "ListItem", "position": 3, "name": "Birthday Gift Ideas 2026", "item": "https://themaryam.in/wrapped/birthday-gift-ideas-2026" }
+            ]
+        };
+        const s1 = document.createElement('script'); s1.type = 'application/ld+json'; s1.text = JSON.stringify(articleSchema); s1.id = 'article-schema';
+        const s2 = document.createElement('script'); s2.type = 'application/ld+json'; s2.text = JSON.stringify(breadcrumbSchema); s2.id = 'breadcrumb-schema';
+        document.head.appendChild(s1); document.head.appendChild(s2);
+        document.title = "Birthday Gifting: It's About the Memory | Gift Psychology | The Maryam";
+        return () => { document.getElementById('article-schema')?.remove(); document.getElementById('breadcrumb-schema')?.remove(); };
+    }, []);
 
     const handleShare = (platform: string) => {
         const url = window.location.href;
