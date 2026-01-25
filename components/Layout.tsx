@@ -52,18 +52,17 @@ export const Header: React.FC = () => {
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchExpanded, setSearchExpanded] = useState(false);
   const [placeholder, setPlaceholder] = useState('');
 
   // Typewriter animation for search bar
   useEffect(() => {
     const phrases = [
-      "Girlfriend ke liye gift dhundho...",
-      "Bhai ka birthday hai...",
-      "₹500 mein best gift batao...",
-      "Father's Day ke liye special...",
-      "Sorry bolne ke liye gift...",
-      "Long distance ke liye kuch...",
-      "Office colleague ke liye thank you...",
+      "Search for gifts...",
+      "Birthday gifts...",
+      "Valentine special...",
+      "Gifts for her...",
+      "Personalized gifts...",
     ];
 
     let currentPhraseIndex = 0;
@@ -87,7 +86,7 @@ export const Header: React.FC = () => {
 
       if (!isDeleting && currentCharIndex === currentPhrase.length) {
         isDeleting = true;
-        typingSpeed = 2000; // Pause at end
+        typingSpeed = 2000;
       } else if (isDeleting && currentCharIndex === 0) {
         isDeleting = false;
         currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
@@ -103,11 +102,48 @@ export const Header: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Custom Icon Components with micro-animations
+  const MenuIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" className="transition-transform duration-200 group-hover:scale-110">
+      <path fill="currentColor" fillRule="evenodd" d="M22 6a1 1 0 0 1-1 1H3a1 1 0 0 1 0-2h18a1 1 0 0 1 1 1m-6 6a1 1 0 0 1-1 1H3a1 1 0 1 1 0-2h12a1 1 0 0 1 1 1m6 6a1 1 0 0 1-1 1H3a1 1 0 1 1 0-2h18a1 1 0 0 1 1 1" clipRule="evenodd" />
+    </svg>
+  );
+
+  const SearchIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-200 group-hover:scale-110 group-hover:rotate-12">
+      <path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+      <path d="M21 21l-6 -6" />
+    </svg>
+  );
+
+  const HeartIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-all duration-200 group-hover:scale-110 group-hover:text-rose-500">
+      <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
+    </svg>
+  );
+
+  const CartIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-200 group-hover:scale-110">
+      <path d="M2 3h1a2 2 0 0 1 2 2v10a2 2 0 0 0 2 2h15" />
+      <path d="M9 9a3 3 0 0 1 3 -3h4a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-4a3 3 0 0 1 -3 -3l0 -2" />
+      <path d="M7 19a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+      <path d="M16 19a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+    </svg>
+  );
+
+  const ProfileIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-200 group-hover:scale-110">
+      <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+      <path d="M9 10a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+      <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+    </svg>
+  );
 
   // FNP Style Categories
   const categories = [
@@ -117,145 +153,154 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      {/* ===== MOBILE HEADER - COMPLETELY INDEPENDENT, NO CONTAINER ===== */}
-
-      {/* Sticky Container for Location Row ONLY */}
-      <div className="lg:hidden sticky top-0 z-50 bg-white shadow-sm">
-        {/* Location Row - Clean borders */}
-        <div className="px-4 py-3 border-b border-gray-300">
+      {/* ===== MOBILE HEADER ===== */}
+      <header className={`lg:hidden sticky top-0 z-50 bg-white transition-all duration-300 ${isScrolled ? 'shadow-md' : 'shadow-sm'}`}>
+        <div className="px-4 py-3">
           <div className="flex items-center justify-between">
-            <button className="flex items-center gap-3 min-w-0 flex-1">
-              <img src="https://flagcdn.com/w40/in.png" alt="India" className="w-8 h-6 object-cover rounded flex-shrink-0 shadow-sm" />
-              <div className="text-left min-w-0">
-                <p className="text-[15px] font-bold text-gray-900 truncate" style={{ fontFamily: 'Inter, sans-serif' }}>Where to deliver?</p>
-                <p className="text-[13px] font-medium text-red-500 flex items-center" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  <span className="truncate">Location missing</span>
-                  <svg className="w-4 h-4 ml-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>
-                </p>
-              </div>
-            </button>
-            <div className="flex items-center gap-3 flex-shrink-0">
-              {/* Cart Button - Clear border */}
-              <a href="https://shop.themaryam.in/cart" className="w-11 h-11 rounded-xl bg-white flex items-center justify-center text-gray-600 border border-gray-300 relative">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                </svg>
-                <span className="absolute -top-1 -right-1 bg-amber-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+            {/* Left: Menu + Logo */}
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setMobileMenuOpen(true)}
+                className="p-2 -ml-2 text-gray-700 hover:text-gray-900 transition-colors group"
+                aria-label="Open menu"
+              >
+                <MenuIcon />
+              </button>
+              <a href="/" className="flex items-center">
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/themaryam_logo_header_main_800x800.png?v=1769320607"
+                  alt="The Maryam"
+                  className="h-8 w-auto transition-transform duration-200 hover:scale-105"
+                />
+              </a>
+            </div>
+
+            {/* Right: Icons */}
+            <div className="flex items-center gap-1">
+              <button
+                onClick={() => navigate('/search')}
+                className="p-2.5 text-gray-600 hover:text-gray-900 transition-all duration-200 group rounded-full hover:bg-gray-100"
+                aria-label="Search"
+              >
+                <SearchIcon />
+              </button>
+              <a
+                href="https://shop.themaryam.in/wishlist"
+                className="p-2.5 text-gray-600 hover:text-rose-500 transition-all duration-200 group rounded-full hover:bg-rose-50"
+                aria-label="Wishlist"
+              >
+                <HeartIcon />
+              </a>
+              <a
+                href="https://shop.themaryam.in/cart"
+                className="p-2.5 text-gray-600 hover:text-gray-900 transition-all duration-200 group rounded-full hover:bg-gray-100 relative"
+                aria-label="Cart"
+              >
+                <CartIcon />
+                <span className="absolute top-1 right-1 bg-rose-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center animate-pulse">0</span>
+              </a>
+              <a
+                href="https://shop.themaryam.in/account"
+                className="p-2.5 text-gray-600 hover:text-gray-900 transition-all duration-200 group rounded-full hover:bg-gray-100"
+                aria-label="Account"
+              >
+                <ProfileIcon />
               </a>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Search Bar - Clickable, navigates to /search */}
-      <div className="lg:hidden px-4 pt-3 pb-3">
-        <div
-          className="relative cursor-pointer"
-          onClick={() => navigate('/search')}
-        >
-          <div className="w-full bg-white border border-rose-300 rounded-xl py-3 pl-12 pr-14 text-[15px] font-medium text-gray-400 transition-all hover:border-rose-400 hover:shadow-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
-            {placeholder || "Kuch bhi batao..."}
-          </div>
-          {/* Search Icon */}
-          <div className="absolute left-4 top-1/2 -translate-y-1/2">
-            <Search className="w-5 h-5 text-rose-400" />
-          </div>
-          {/* Voice/Mic Icon with Separator */}
-          <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center">
-            <div className="w-[1px] h-6 bg-rose-200 mr-3"></div>
-            <div className="text-rose-400 p-1">
-              <i className="fas fa-microphone text-lg"></i>
+        {/* Mobile Search Bar */}
+        <div className="px-4 pb-3">
+          <div
+            className="relative cursor-pointer"
+            onClick={() => navigate('/search')}
+          >
+            <div className="w-full bg-gray-50 border border-gray-200 rounded-full py-2.5 pl-11 pr-4 text-sm font-medium text-gray-400 transition-all hover:border-gray-300 hover:bg-gray-100" style={{ fontFamily: 'Inter, sans-serif' }}>
+              {placeholder || "Search for gifts..."}
+            </div>
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+              <SearchIcon />
             </div>
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* Delivery Banner - IMAGE - NO CONTAINER - FULL VISIBILITY */}
-      <img src="/HERO_BANNER.png" alt="99% Delivery Discount" className="lg:hidden w-[calc(100%-2rem)] mx-4 mt-0" />
-
-      {/* ===== DESKTOP HEADER ONLY ===== */}
-      <header className={`hidden lg:block sticky top-0 z-50 w-full bg-white transition-shadow duration-300 ${isScrolled ? 'shadow-md' : ''}`}>
-        {/* Row 1: Logo, Location, Search, Icons */}
-        <Container className="flex items-center justify-between py-4 border-b border-gray-200">
-          {/* Logo */}
-          <a href="/" className="flex items-center gap-2.5 group">
-            <img src="/Maryam_Rounded_sides_image (1).png" alt="The Maryam" className="h-10 w-auto" />
-            <span className="text-xl font-bold tracking-tight text-gray-900 group-hover:text-gray-700 transition-colors" style={{ fontFamily: 'Inter, sans-serif' }}>
-              themaryam.in
-            </span>
-          </a>
-
-          {/* Location Picker */}
-          <button className="flex items-center gap-3 text-sm text-gray-700 hover:text-gray-900 transition-colors group ml-6">
-            <img
-              src="https://flagcdn.com/w40/in.png"
-              alt="India"
-              className="w-7 h-5 object-cover rounded-sm shadow-sm"
-            />
-            <div className="text-left">
-              <p className="font-bold text-gray-900" style={{ fontFamily: 'Inter, sans-serif' }}>Where to deliver?</p>
-              <p className="text-xs font-medium text-red-500 flex items-center gap-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Location missing
-                <svg className="w-3 h-3 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>
-              </p>
-            </div>
-          </button>
-
-          {/* Search Bar - Clean Design */}
-          <div className="flex-1 max-w-xl mx-8">
-            <div className="relative group">
-              <input
-                type="text"
-                placeholder={placeholder || "Kuch bhi batao..."}
-                className="w-full bg-white border border-gray-300 rounded-xl py-3 pl-12 pr-14 text-sm font-medium text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-all"
-                style={{ fontFamily: 'Inter, sans-serif' }}
+      {/* ===== DESKTOP HEADER ===== */}
+      <header className={`hidden lg:block sticky top-0 z-50 w-full bg-white transition-all duration-300 ${isScrolled ? 'shadow-md' : 'border-b border-gray-100'}`}>
+        <Container className="flex items-center justify-between py-3">
+          {/* Left: Menu + Logo */}
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setMobileMenuOpen(true)}
+              className="p-2 text-gray-700 hover:text-gray-900 transition-colors group rounded-lg hover:bg-gray-100"
+              aria-label="Open menu"
+            >
+              <MenuIcon />
+            </button>
+            <a href="/" className="flex items-center group">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/themaryam_logo_header_main_800x800.png?v=1769320607"
+                alt="The Maryam"
+                className="h-10 w-auto transition-all duration-300 group-hover:scale-105"
               />
-              {/* Search Icon */}
-              <div className="absolute left-4 top-1/2 -translate-y-1/2">
-                <Search className="w-5 h-5 text-gray-500" />
+            </a>
+          </div>
+
+          {/* Center: Search Bar */}
+          <div className="flex-1 max-w-xl mx-8">
+            <div
+              className="relative group cursor-pointer"
+              onClick={() => navigate('/search')}
+            >
+              <div className="w-full bg-gray-50 border border-gray-200 rounded-full py-2.5 pl-12 pr-4 text-sm font-medium text-gray-500 transition-all group-hover:border-gray-300 group-hover:bg-gray-100 group-hover:shadow-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
+                {placeholder || "Search for gifts..."}
               </div>
-              {/* Voice/Mic Icon with Separator */}
-              <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center">
-                <div className="w-[1px] h-6 bg-gray-200 mr-3"></div>
-                <button className="text-[#6B7D3A] hover:text-[#5a6b30] transition-colors p-1">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
-                  </svg>
-                </button>
+              <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-hover:text-gray-600 transition-colors">
+                <SearchIcon />
               </div>
             </div>
           </div>
 
-          {/* Icon Strip */}
-          <div className="flex items-center gap-2">
-            {/* INR */}
-            <button className="flex flex-col items-center justify-center w-14 h-14 rounded-xl hover:bg-gray-100 transition-colors group">
-              <span className="text-base font-semibold text-gray-600 group-hover:text-gray-900 transition-colors" style={{ fontFamily: 'Inter, sans-serif' }}>₹</span>
-              <span className="text-[10px] font-semibold text-gray-500 mt-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>INR</span>
+          {/* Right: Icons */}
+          <div className="flex items-center gap-1">
+            <button
+              onClick={() => navigate('/search')}
+              className="p-3 text-gray-600 hover:text-gray-900 transition-all duration-200 group rounded-full hover:bg-gray-100"
+              aria-label="Search"
+            >
+              <SearchIcon />
             </button>
-            {/* Cart */}
-            <a href="https://shop.themaryam.in/cart" className="flex flex-col items-center justify-center w-14 h-14 rounded-xl hover:bg-gray-100 transition-colors group relative">
-              <svg className="w-5 h-5 text-gray-600 group-hover:text-gray-900 transition-colors" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-              </svg>
-              <span className="text-[10px] font-semibold text-gray-500 mt-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>Cart</span>
-              <span className="absolute top-1.5 right-2.5 bg-gray-900 text-white text-[8px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+            <a
+              href="https://shop.themaryam.in/wishlist"
+              className="p-3 text-gray-600 hover:text-rose-500 transition-all duration-200 group rounded-full hover:bg-rose-50"
+              aria-label="Wishlist"
+            >
+              <HeartIcon />
             </a>
-            {/* More */}
-            <button className="flex flex-col items-center justify-center w-14 h-14 rounded-xl hover:bg-gray-100 transition-colors group">
-              <svg className="w-5 h-5 text-gray-600 group-hover:text-gray-900 transition-colors" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              </svg>
-              <span className="text-[10px] font-semibold text-gray-500 mt-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>More</span>
-            </button>
+            <a
+              href="https://shop.themaryam.in/cart"
+              className="p-3 text-gray-600 hover:text-gray-900 transition-all duration-200 group rounded-full hover:bg-gray-100 relative"
+              aria-label="Cart"
+            >
+              <CartIcon />
+              <span className="absolute top-1 right-1 bg-rose-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+            </a>
+            <a
+              href="https://shop.themaryam.in/account"
+              className="p-3 text-gray-600 hover:text-gray-900 transition-all duration-200 group rounded-full hover:bg-gray-100"
+              aria-label="Account"
+            >
+              <ProfileIcon />
+            </a>
           </div>
         </Container>
 
-        {/* Row 2: Category Navigation */}
-        <div className="bg-white border-b border-gray-200">
+        {/* Category Navigation */}
+        <div className="bg-white border-t border-gray-100">
           <Container>
-            <nav className="flex items-center justify-center gap-0 py-2.5 overflow-x-auto scrollbar-hide">
-              {categories.map((cat, i) => {
+            <nav className="flex items-center justify-center gap-0 py-2 overflow-x-auto scrollbar-hide">
+              {categories.map((cat) => {
                 const categoryLinks: Record<string, string> = {
                   'Birthday': '/birthday-gifts.html',
                   'Occasions': 'https://shop.themaryam.in/collections/all',
@@ -272,7 +317,7 @@ export const Header: React.FC = () => {
                   <a
                     key={cat}
                     href={categoryLinks[cat] || 'https://shop.themaryam.in'}
-                    className="flex items-center gap-1 px-4 py-2 text-sm font-semibold text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg whitespace-nowrap transition-colors group"
+                    className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg whitespace-nowrap transition-all duration-200 group"
                     style={{ fontFamily: 'Inter, sans-serif' }}
                   >
                     {cat}
@@ -280,34 +325,83 @@ export const Header: React.FC = () => {
                   </a>
                 )
               })}
-              <a href="https://shop.themaryam.in/collections/all" className="px-4 py-2 text-sm font-bold text-gray-900 bg-gray-100 rounded-lg whitespace-nowrap" style={{ fontFamily: 'Inter, sans-serif' }}>
-                On Trend
+              <a href="https://shop.themaryam.in/collections/all" className="px-4 py-2 text-sm font-bold text-white bg-gradient-to-r from-rose-500 to-pink-500 rounded-full whitespace-nowrap hover:from-rose-600 hover:to-pink-600 transition-all duration-200 shadow-sm hover:shadow-md" style={{ fontFamily: 'Inter, sans-serif' }}>
+                ✨ On Trend
               </a>
             </nav>
           </Container>
-        </div >
-      </header >
+        </div>
+      </header>
 
-      {/* Mobile Menu - Full Screen Overlay */}
-      {
-        mobileMenuOpen && (
-          <div className="lg:hidden fixed inset-0 bg-white z-50 animate-fade-in-up overflow-y-auto">
-            <div className="flex items-center justify-between p-4 border-b">
-              <span className="text-xl font-bold">🎁 themaryam.in</span>
-              <button onClick={() => setMobileMenuOpen(false)}>
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
+      {/* Mobile Sidebar Menu */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-[100]">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm animate-fade-in"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+          {/* Sidebar */}
+          <div className="absolute left-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl animate-slide-in-left">
+            {/* Header */}
+            <div className="flex items-center justify-between p-4 border-b border-gray-100">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/themaryam_logo_header_main_800x800.png?v=1769320607"
+                alt="The Maryam"
+                className="h-8 w-auto"
+              />
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 text-gray-500 hover:text-gray-900 transition-colors rounded-full hover:bg-gray-100"
+              >
+                <X size={22} />
               </button>
             </div>
-            <nav className="p-6 space-y-4">
+            {/* Menu Items */}
+            <nav className="p-4 space-y-1">
               {categories.map((cat) => (
-                <a key={cat} href="#" className="block text-lg font-medium text-gray-800 py-2 border-b border-gray-100">{cat}</a>
+                <a
+                  key={cat}
+                  href="#"
+                  className="flex items-center justify-between px-4 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all duration-200 group"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                >
+                  {cat}
+                  <ArrowRight size={16} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200" />
+                </a>
               ))}
             </nav>
+            {/* Bottom CTA */}
+            <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-100 bg-white">
+              <a
+                href="https://shop.themaryam.in"
+                className="flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-rose-500 to-pink-500 text-white font-semibold rounded-xl hover:from-rose-600 hover:to-pink-600 transition-all duration-200 shadow-lg"
+              >
+                <Sparkles size={18} />
+                Explore Gifts
+              </a>
+            </div>
           </div>
-        )
-      }
+        </div>
+      )}
+
+      {/* CSS for animations */}
+      <style>{`
+        @keyframes fade-in {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes slide-in-left {
+          from { transform: translateX(-100%); }
+          to { transform: translateX(0); }
+        }
+        .animate-fade-in {
+          animation: fade-in 0.2s ease-out;
+        }
+        .animate-slide-in-left {
+          animation: slide-in-left 0.3s ease-out;
+        }
+      `}</style>
     </>
   );
 };
