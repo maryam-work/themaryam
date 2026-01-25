@@ -1,7 +1,7 @@
 # =============================================================================
 # ROBOTS.TXT - The Maryam | Personalized Gift Store
 # Domain: themaryam.in | wrapy.in
-# Last Updated: 2026-01-24
+# Last Updated: 2026-01-25
 # =============================================================================
 
 # ========== GENERAL CRAWLERS ==========
