@@ -58,11 +58,13 @@ export const Header: React.FC = () => {
   // Typewriter animation for search bar
   useEffect(() => {
     const phrases = [
-      "Search for gifts...",
-      "Birthday gifts...",
-      "Valentine special...",
-      "Gifts for her...",
-      "Personalized gifts...",
+      "Girlfriend ke liye gift dhundho...",
+      "Bhai ka birthday hai...",
+      "₹500 mein best gift batao...",
+      "Father's Day ke liye special...",
+      "Sorry bolne ke liye gift...",
+      "Long distance ke liye kuch...",
+      "Office colleague ke liye thank you...",
     ];
 
     let currentPhraseIndex = 0;
@@ -216,11 +218,19 @@ export const Header: React.FC = () => {
             className="relative cursor-pointer"
             onClick={() => navigate('/search')}
           >
-            <div className="w-full bg-gray-50 border border-gray-200 rounded-full py-2.5 pl-11 pr-4 text-sm font-medium text-gray-400 transition-all hover:border-gray-300 hover:bg-gray-100" style={{ fontFamily: 'Inter, sans-serif' }}>
-              {placeholder || "Search for gifts..."}
+            <div className="w-full bg-white border border-rose-300 rounded-xl py-3 pl-12 pr-14 text-[15px] font-medium text-gray-400 transition-all hover:border-rose-400 hover:shadow-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
+              {placeholder || "Kuch bhi batao..."}
             </div>
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-              <SearchIcon />
+            {/* Search Icon */}
+            <div className="absolute left-4 top-1/2 -translate-y-1/2">
+              <Search className="w-5 h-5 text-rose-400" />
+            </div>
+            {/* Voice/Mic Icon with Separator */}
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center">
+              <div className="w-[1px] h-6 bg-rose-200 mr-3"></div>
+              <div className="text-rose-400 p-1">
+                <i className="fas fa-microphone text-lg"></i>
+              </div>
             </div>
           </div>
         </div>
