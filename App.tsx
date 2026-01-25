@@ -13,6 +13,15 @@ import {
   UnboxingStream
 } from './components/Sections';
 import SearchPage from './pages/SearchPage';
+import WrappedListPage from './pages/wrapped/WrappedListPage';
+
+// Individual blog post pages
+import ValentineGifts2026 from './pages/wrapped/posts/ValentineGifts2026';
+import BestGiftsGirlfriend2026 from './pages/wrapped/posts/BestGiftsGirlfriend2026';
+import BirthdayGiftIdeas2026 from './pages/wrapped/posts/BirthdayGiftIdeas2026';
+import VadodaraGiftDelivery from './pages/wrapped/posts/VadodaraGiftDelivery';
+import AIGiftFinderGuide from './pages/wrapped/posts/AIGiftFinderGuide';
+
 import { matchProducts, MatchedProduct } from './lib/aiService';
 import { useLenis } from './hooks/useLenis';
 
@@ -71,6 +80,14 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/wrapped" element={<WrappedListPage />} />
+
+        {/* Individual blog post routes */}
+        <Route path="/wrapped/valentine-gifts-2026" element={<ValentineGifts2026 />} />
+        <Route path="/wrapped/best-gifts-girlfriend-2026" element={<BestGiftsGirlfriend2026 />} />
+        <Route path="/wrapped/birthday-gift-ideas-2026" element={<BirthdayGiftIdeas2026 />} />
+        <Route path="/wrapped/vadodara-gift-delivery" element={<VadodaraGiftDelivery />} />
+        <Route path="/wrapped/ai-gift-finder-guide" element={<AIGiftFinderGuide />} />
       </Routes>
     </div>
   );
