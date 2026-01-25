@@ -260,15 +260,25 @@ export const Header: React.FC = () => {
 
           {/* Center: Search Bar */}
           <div className="flex-1 max-w-xl mx-8">
-            <div
-              className="relative group cursor-pointer"
-              onClick={() => navigate('/search')}
-            >
-              <div className="w-full bg-gray-50 border border-gray-200 rounded-full py-2.5 pl-12 pr-4 text-sm font-medium text-gray-500 transition-all group-hover:border-gray-300 group-hover:bg-gray-100 group-hover:shadow-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
-                {placeholder || "Search for gifts..."}
+            <div className="relative group">
+              <input
+                type="text"
+                placeholder={placeholder || "Kuch bhi batao..."}
+                className="w-full bg-white border border-gray-300 rounded-xl py-3 pl-12 pr-14 text-sm font-medium text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-all"
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              />
+              {/* Search Icon */}
+              <div className="absolute left-4 top-1/2 -translate-y-1/2">
+                <Search className="w-5 h-5 text-gray-500" />
               </div>
-              <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-hover:text-gray-600 transition-colors">
-                <SearchIcon />
+              {/* Voice/Mic Icon with Separator */}
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center">
+                <div className="w-[1px] h-6 bg-gray-200 mr-3"></div>
+                <button className="text-[#6B7D3A] hover:text-[#5a6b30] transition-colors p-1">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
@@ -322,7 +332,7 @@ export const Header: React.FC = () => {
                   'Plants': 'https://shop.themaryam.in/collections/all',
                   'Chocolates': 'https://shop.themaryam.in/collections/all',
                   'Luxe': 'https://shop.themaryam.in/collections/all',
-                  'Hampers': 'https://shop.themaryam.in/collections/all',
+                  'Hampers': 'https://shop.themaryam.in/collections/hampers',
                 };
                 return (
                   <a
