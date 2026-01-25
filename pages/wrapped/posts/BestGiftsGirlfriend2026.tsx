@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Twitter, Facebook, Linkedin, Link2, Check, Clock, Calendar, Gift, Target } from 'lucide-react';
 import { WrappedHeader, Sidebar, WrappedFooter } from '../components/WrappedShared';
@@ -7,6 +7,62 @@ const BestGiftsGirlfriend2026: React.FC = () => {
     const [copied, setCopied] = useState(false);
     const [email, setEmail] = useState('');
     const [sidebarOpen, setSidebarOpen] = useState(false);
+
+    // JSON-LD Schema for SEO
+    useEffect(() => {
+        const articleSchema = {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "How to Actually Pick a Gift She'll Love - Gift Guide 2026",
+            "description": "Learn the art of picking gifts that matter. Expert tips on understanding what she really wants and giving gifts that show you pay attention.",
+            "image": "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=1200&q=80",
+            "author": {
+                "@type": "Person",
+                "name": "Arjun Mehta",
+                "jobTitle": "Relationship Coach and Writer"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "The Maryam",
+                "logo": { "@type": "ImageObject", "url": "https://themaryam.in/logo.png" }
+            },
+            "datePublished": "2026-01-12",
+            "dateModified": "2026-01-25",
+            "mainEntityOfPage": { "@type": "WebPage", "@id": "https://themaryam.in/wrapped/best-gifts-girlfriend-2026" },
+            "keywords": ["gifts for girlfriend", "gift ideas for her", "personalized gifts", "romantic gifts", "relationship gifts"],
+            "inLanguage": "en-IN"
+        };
+
+        const breadcrumbSchema = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://themaryam.in" },
+                { "@type": "ListItem", "position": 2, "name": "Wrapped", "item": "https://themaryam.in/wrapped" },
+                { "@type": "ListItem", "position": 3, "name": "Gifts for Girlfriend 2026", "item": "https://themaryam.in/wrapped/best-gifts-girlfriend-2026" }
+            ]
+        };
+
+        const articleScript = document.createElement('script');
+        articleScript.type = 'application/ld+json';
+        articleScript.text = JSON.stringify(articleSchema);
+        articleScript.id = 'article-schema';
+
+        const breadcrumbScript = document.createElement('script');
+        breadcrumbScript.type = 'application/ld+json';
+        breadcrumbScript.text = JSON.stringify(breadcrumbSchema);
+        breadcrumbScript.id = 'breadcrumb-schema';
+
+        document.head.appendChild(articleScript);
+        document.head.appendChild(breadcrumbScript);
+
+        document.title = "How to Pick a Gift She'll Love | Gift Guide 2026 | The Maryam";
+
+        return () => {
+            document.getElementById('article-schema')?.remove();
+            document.getElementById('breadcrumb-schema')?.remove();
+        };
+    }, []);
 
     const handleShare = (platform: string) => {
         const url = window.location.href;
