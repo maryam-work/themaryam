@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Twitter, Facebook, Linkedin, Link2, Check, Clock, Calendar, MapPin, Truck } from 'lucide-react';
 import { WrappedHeader, Sidebar, WrappedFooter } from '../components/WrappedShared';
@@ -7,6 +7,36 @@ const VadodaraGiftDelivery: React.FC = () => {
     const [copied, setCopied] = useState(false);
     const [email, setEmail] = useState('');
     const [sidebarOpen, setSidebarOpen] = useState(false);
+
+    useEffect(() => {
+        const articleSchema = {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Same-Day Gift Delivery in Vadodara - Local Delivery Guide",
+            "description": "Complete guide to same-day gift delivery in Vadodara. Learn about cutoff times, priority areas, and tips for midnight deliveries.",
+            "image": "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1200&q=80",
+            "author": { "@type": "Person", "name": "Karan Patel", "jobTitle": "Local Delivery Operations" },
+            "publisher": { "@type": "Organization", "name": "The Maryam", "logo": { "@type": "ImageObject", "url": "https://themaryam.in/logo.png" } },
+            "datePublished": "2026-01-08",
+            "dateModified": "2026-01-25",
+            "mainEntityOfPage": { "@type": "WebPage", "@id": "https://themaryam.in/wrapped/vadodara-gift-delivery" },
+            "keywords": ["vadodara gift delivery", "same day delivery vadodara", "gift shop vadodara", "midnight gift delivery", "baroda gifts"],
+            "inLanguage": "en-IN"
+        };
+        const breadcrumbSchema = {
+            "@context": "https://schema.org", "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://themaryam.in" },
+                { "@type": "ListItem", "position": 2, "name": "Wrapped", "item": "https://themaryam.in/wrapped" },
+                { "@type": "ListItem", "position": 3, "name": "Vadodara Gift Delivery", "item": "https://themaryam.in/wrapped/vadodara-gift-delivery" }
+            ]
+        };
+        const s1 = document.createElement('script'); s1.type = 'application/ld+json'; s1.text = JSON.stringify(articleSchema); s1.id = 'article-schema';
+        const s2 = document.createElement('script'); s2.type = 'application/ld+json'; s2.text = JSON.stringify(breadcrumbSchema); s2.id = 'breadcrumb-schema';
+        document.head.appendChild(s1); document.head.appendChild(s2);
+        document.title = "Same-Day Gift Delivery in Vadodara | Local Delivery Guide | The Maryam";
+        return () => { document.getElementById('article-schema')?.remove(); document.getElementById('breadcrumb-schema')?.remove(); };
+    }, []);
 
     const handleShare = (platform: string) => {
         const url = window.location.href;
