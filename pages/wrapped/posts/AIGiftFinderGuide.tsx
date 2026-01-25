@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Twitter, Facebook, Linkedin, Link2, Check, Clock, Calendar, Cpu, Zap } from 'lucide-react';
 import { WrappedHeader, Sidebar, WrappedFooter } from '../components/WrappedShared';
@@ -7,6 +7,36 @@ const AIGiftFinderGuide: React.FC = () => {
     const [copied, setCopied] = useState(false);
     const [email, setEmail] = useState('');
     const [sidebarOpen, setSidebarOpen] = useState(false);
+
+    useEffect(() => {
+        const articleSchema = {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "I Let AI Pick Gifts for a Month - AI Gift Finder Review",
+            "description": "Honest review of using AI to pick gifts for a month. Learn where AI gift finders excel and where they fall short.",
+            "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80",
+            "author": { "@type": "Person", "name": "Sneha Iyer", "jobTitle": "Tech Writer and Reviewer" },
+            "publisher": { "@type": "Organization", "name": "The Maryam", "logo": { "@type": "ImageObject", "url": "https://themaryam.in/logo.png" } },
+            "datePublished": "2026-01-05",
+            "dateModified": "2026-01-25",
+            "mainEntityOfPage": { "@type": "WebPage", "@id": "https://themaryam.in/wrapped/ai-gift-finder-guide" },
+            "keywords": ["AI gift finder", "AI gift recommendations", "gift finder app", "personalized gift suggestions", "the maryam AI"],
+            "inLanguage": "en-IN"
+        };
+        const breadcrumbSchema = {
+            "@context": "https://schema.org", "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://themaryam.in" },
+                { "@type": "ListItem", "position": 2, "name": "Wrapped", "item": "https://themaryam.in/wrapped" },
+                { "@type": "ListItem", "position": 3, "name": "AI Gift Finder Guide", "item": "https://themaryam.in/wrapped/ai-gift-finder-guide" }
+            ]
+        };
+        const s1 = document.createElement('script'); s1.type = 'application/ld+json'; s1.text = JSON.stringify(articleSchema); s1.id = 'article-schema';
+        const s2 = document.createElement('script'); s2.type = 'application/ld+json'; s2.text = JSON.stringify(breadcrumbSchema); s2.id = 'breadcrumb-schema';
+        document.head.appendChild(s1); document.head.appendChild(s2);
+        document.title = "I Let AI Pick Gifts for a Month | AI Gift Finder Review | The Maryam";
+        return () => { document.getElementById('article-schema')?.remove(); document.getElementById('breadcrumb-schema')?.remove(); };
+    }, []);
 
     const handleShare = (platform: string) => {
         const url = window.location.href;
