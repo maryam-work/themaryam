@@ -170,7 +170,7 @@ export const Header: React.FC = () => {
                 <img
                   src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/themaryam_logo_header_main_production_800x800.png?v=1769321724"
                   alt="The Maryam"
-                  className="h-8 w-auto transition-transform duration-200 hover:scale-105"
+                  className="h-5 w-auto object-contain transition-transform duration-200 hover:scale-105"
                 />
               </a>
             </div>
@@ -242,7 +242,7 @@ export const Header: React.FC = () => {
               <img
                 src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/themaryam_logo_header_main_production_800x800.png?v=1769321724"
                 alt="The Maryam"
-                className="h-10 w-auto transition-all duration-300 group-hover:scale-105"
+                className="h-7 w-auto object-contain transition-all duration-300 group-hover:scale-105"
               />
             </a>
           </div>
