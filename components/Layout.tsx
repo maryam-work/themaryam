@@ -212,29 +212,30 @@ export const Header: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile Search Bar */}
-        <div className="px-4 pb-3">
-          <div
-            className="relative cursor-pointer"
-            onClick={() => navigate('/search')}
-          >
-            <div className="w-full bg-white border border-rose-300 rounded-xl py-3 pl-12 pr-14 text-[15px] font-medium text-gray-400 transition-all hover:border-rose-400 hover:shadow-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
-              {placeholder || "Kuch bhi batao..."}
-            </div>
-            {/* Search Icon */}
-            <div className="absolute left-4 top-1/2 -translate-y-1/2">
-              <Search className="w-5 h-5 text-rose-400" />
-            </div>
-            {/* Voice/Mic Icon with Separator */}
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center">
-              <div className="w-[1px] h-6 bg-rose-200 mr-3"></div>
-              <div className="text-rose-400 p-1">
-                <i className="fas fa-microphone text-lg"></i>
-              </div>
+      </header>
+
+      {/* Mobile Search Bar - Scrolls away */}
+      <div className="lg:hidden px-4 pb-3 bg-white">
+        <div
+          className="relative cursor-pointer"
+          onClick={() => navigate('/search')}
+        >
+          <div className="w-full bg-white border border-rose-300 rounded-xl py-3 pl-12 pr-14 text-[15px] font-medium text-gray-400 transition-all hover:border-rose-400 hover:shadow-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
+            {placeholder || "Kuch bhi batao..."}
+          </div>
+          {/* Search Icon */}
+          <div className="absolute left-4 top-1/2 -translate-y-1/2">
+            <Search className="w-5 h-5 text-rose-400" />
+          </div>
+          {/* Voice/Mic Icon with Separator */}
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center">
+            <div className="w-[1px] h-6 bg-rose-200 mr-3"></div>
+            <div className="text-rose-400 p-1">
+              <i className="fas fa-microphone text-lg"></i>
             </div>
           </div>
         </div>
-      </header>
+      </div>
 
       {/* ===== DESKTOP HEADER ===== */}
       <header className={`hidden lg:block sticky top-0 z-50 w-full bg-white transition-all duration-300 ${isScrolled ? 'shadow-md' : 'border-b border-gray-100'}`}>
