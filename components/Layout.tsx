@@ -236,6 +236,8 @@ export const Header: React.FC = () => {
           </div>
         </div>
       </div>
+      {/* Delivery Banner - IMAGE - Mobile Only */}
+      <img src="/HERO_BANNER.png" alt="100% Delivery Discount" className="lg:hidden w-[calc(100%-2rem)] mx-4 mt-0 mb-3" />
 
       {/* ===== DESKTOP HEADER ===== */}
       <header className={`hidden lg:block sticky top-0 z-50 w-full bg-white transition-all duration-300 ${isScrolled ? 'shadow-md' : 'border-b border-gray-100'}`}>
