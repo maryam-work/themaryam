@@ -35,6 +35,8 @@ Allow: /apple-touch-icon.png
 Allow: /site.webmanifest
 Allow: /sitemap*.xml
 Allow: /robots.txt
+Allow: /banners/
+Allow: /categories/
 
 # ========== GOOGLE ==========
 User-agent: Googlebot
