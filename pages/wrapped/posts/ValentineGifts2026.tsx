@@ -1,105 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Twitter, Facebook, Linkedin, Link2, Check, Clock, Calendar, Heart, Lightbulb } from 'lucide-react';
 import { WrappedHeader, Sidebar, WrappedFooter } from '../components/WrappedShared';
+import SEO from '../../../components/SEO';
 
 const ValentineGifts2026: React.FC = () => {
     const [copied, setCopied] = useState(false);
     const [email, setEmail] = useState('');
     const [sidebarOpen, setSidebarOpen] = useState(false);
-
-    // JSON-LD Schema for SEO
-    useEffect(() => {
-        const articleSchema = {
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": "Valentine's Day 2026: Skip the Clichés - Best Gift Ideas",
-            "description": "Discover thoughtful Valentine's Day gift ideas for 2026. Skip generic gifts and find personalized presents that actually land.",
-            "image": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=1200&q=80",
-            "author": {
-                "@type": "Person",
-                "name": "Richa Sharma",
-                "jobTitle": "Gift Curator",
-                "worksFor": {
-                    "@type": "Organization",
-                    "name": "The Maryam"
-                }
-            },
-            "publisher": {
-                "@type": "Organization",
-                "name": "The Maryam",
-                "logo": {
-                    "@type": "ImageObject",
-                    "url": "https://themaryam.in/logo.png"
-                }
-            },
-            "datePublished": "2026-01-15",
-            "dateModified": "2026-01-25",
-            "mainEntityOfPage": {
-                "@type": "WebPage",
-                "@id": "https://themaryam.in/wrapped/valentine-gifts-2026"
-            },
-            "articleSection": "Gift Guide",
-            "keywords": ["valentine gifts", "valentine gifts 2026", "personalized gifts", "gift ideas for her", "romantic gifts"],
-            "wordCount": 850,
-            "inLanguage": "en-IN"
-        };
-
-        const breadcrumbSchema = {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Home",
-                    "item": "https://themaryam.in"
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "Wrapped",
-                    "item": "https://themaryam.in/wrapped"
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 3,
-                    "name": "Valentine's Day 2026 Gift Guide",
-                    "item": "https://themaryam.in/wrapped/valentine-gifts-2026"
-                }
-            ]
-        };
-
-        // Create and inject schema scripts
-        const articleScript = document.createElement('script');
-        articleScript.type = 'application/ld+json';
-        articleScript.text = JSON.stringify(articleSchema);
-        articleScript.id = 'article-schema';
-
-        const breadcrumbScript = document.createElement('script');
-        breadcrumbScript.type = 'application/ld+json';
-        breadcrumbScript.text = JSON.stringify(breadcrumbSchema);
-        breadcrumbScript.id = 'breadcrumb-schema';
-
-        document.head.appendChild(articleScript);
-        document.head.appendChild(breadcrumbScript);
-
-        // Update document title and meta
-        document.title = "Valentine's Day 2026: Skip the Clichés | Best Gift Ideas | The Maryam";
-
-        const metaDescription = document.querySelector('meta[name="description"]');
-        if (metaDescription) {
-            metaDescription.setAttribute('content', 'Discover thoughtful Valentine\'s Day gift ideas for 2026. Skip generic gifts and find personalized presents that actually land. Expert tips from The Maryam.');
-        }
-
-        // Cleanup on unmount
-        return () => {
-            const existingArticle = document.getElementById('article-schema');
-            const existingBreadcrumb = document.getElementById('breadcrumb-schema');
-            if (existingArticle) existingArticle.remove();
-            if (existingBreadcrumb) existingBreadcrumb.remove();
-        };
-    }, []);
 
     const handleShare = (platform: string) => {
         const url = window.location.href;
@@ -128,6 +36,25 @@ const ValentineGifts2026: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-white" style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif' }}>
+            <SEO
+                title="Valentine's Day 2026: Skip the Clichés | Best Gift Ideas | The Maryam"
+                description="Discover thoughtful Valentine's Day gift ideas for 2026. Skip generic gifts and find personalized presents that actually land. Expert tips from The Maryam."
+                canonical="/wrapped/valentine-gifts-2026"
+                type="article"
+                publishedTime="2026-01-15T00:00:00+05:30"
+                modifiedTime="2026-01-25T00:00:00+05:30"
+                author="Richa Sharma"
+                image="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=1200&q=80"
+                keywords={["valentine gifts", "valentine gifts 2026", "personalized gifts", "gift ideas for her", "romantic gifts"]}
+                schema={{
+                    "@context": "https://schema.org",
+                    "@type": "Article",
+                    "headline": "Valentine's Day 2026: Skip the Clichés - Best Gift Ideas",
+                    "mainEntityOfPage": "https://themaryam.in/wrapped/valentine-gifts-2026",
+                    "articleSection": "Gift Guide",
+                    "author": { "@type": "Person", "name": "Richa Sharma" }
+                }}
+            />
             <WrappedHeader onMenuClick={() => setSidebarOpen(true)} />
             <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
