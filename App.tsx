@@ -14,6 +14,7 @@ import {
   LoveWall,
   UnboxingStream
 } from './components/Sections';
+import SEO from './components/SEO';
 import SearchPage from './pages/SearchPage';
 import WrappedListPage from './pages/wrapped/WrappedListPage';
 
@@ -58,6 +59,60 @@ const HomePage: React.FC = () => {
 
   return (
     <>
+      <SEO
+        title="The Maryam: Online Gift Shop India | AI Gift Finder"
+        description="India's #1 AI-powered gift store. Find perfect personalized gifts for birthdays, anniversaries, weddings, and festivals. Free delivery across 500+ cities."
+        canonical="/"
+        keywords={['online gift shop', 'personalized gifts', 'AI gift finder', 'birthday gifts', 'anniversary gifts', 'wedding gifts', 'same day delivery']}
+        schema={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebSite",
+              "@id": "https://themaryam.in/#website",
+              "name": "The Maryam",
+              "url": "https://themaryam.in",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://themaryam.in/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "@id": "https://themaryam.in/#navigation",
+              "name": [
+                "Anniversary Gifts", "Birthday Gifts", "Gift Sets",
+                "Chocolate Boxes", "Personalized Gifts", "Flower Bouquets",
+                "Special Gifts", "Valentine Gifts", "Miss You Gifts",
+                "Love You Gifts", "Congratulations Gifts", "Cakes",
+                "Gift Hampers", "Photo Frames", "Wedding Gifts",
+                "Friendship Gifts", "Corporate Gifts", "Handwritten Letters"
+              ],
+              "url": [
+                "https://themaryam.in/search?q=Anniversary+Gifts",
+                "https://themaryam.in/search?q=Birthday+Gifts",
+                "https://themaryam.in/search?q=Gift+Sets",
+                "https://themaryam.in/search?q=Chocolate+Gift+Boxes",
+                "https://themaryam.in/search?q=Personalized+Gifts",
+                "https://themaryam.in/search?q=Flower+Bouquets",
+                "https://themaryam.in/search?q=Special+Gifts",
+                "https://themaryam.in/search?q=Valentine+Gifts",
+                "https://themaryam.in/search?q=Miss+You+Gifts",
+                "https://themaryam.in/search?q=Love+You+Gifts",
+                "https://themaryam.in/search?q=Congratulations+Gifts",
+                "https://themaryam.in/search?q=Cakes",
+                "https://themaryam.in/search?q=Gift+Hampers",
+                "https://themaryam.in/search?q=Photo+Frames",
+                "https://themaryam.in/search?q=Wedding+Gifts",
+                "https://themaryam.in/search?q=Friendship+Gifts",
+                "https://themaryam.in/search?q=Corporate+Gifts",
+                "https://themaryam.in/search?q=Handwritten+Letters"
+              ]
+            }
+          ]
+        }}
+      />
       <TopBar />
       <Header />
       <main className="flex flex-col gap-0 w-full overflow-x-hidden">
