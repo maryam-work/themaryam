@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Search, X, Clock } from 'lucide-react';
 import { matchProducts, MatchedProduct } from '../lib/aiService';
+import SEO from '../components/SEO';
 
 // Recently searched storage
 const RECENT_SEARCHES_KEY = 'maryam_recent_searches';
@@ -229,6 +230,12 @@ const SearchPage: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-white">
+            <SEO
+                title={query ? `Search Results for "${query}" | The Maryam` : "Search Personalized Gifts | AI Gift Finder | The Maryam"}
+                description="Search for the perfect personalized gifts. Use our AI-powered search to find customized frames, mugs, jewelry, and more. Free delivery across India."
+                canonical="/search"
+                keywords={['search gifts', 'gift finder', 'custom gift search', 'personalized gifts India']}
+            />
             {/* Sticky Header with Search - Responsive */}
             <div className="sticky top-0 z-50 bg-white border-b border-rose-100 shadow-sm">
                 <div className="max-w-4xl mx-auto flex items-center gap-3 px-4 py-3">
@@ -269,8 +276,8 @@ const SearchPage: React.FC = () => {
                                 type="button"
                                 onClick={startListening}
                                 className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${isListening
-                                        ? 'bg-rose-500 text-white animate-pulse'
-                                        : 'bg-rose-50 text-rose-500 hover:bg-rose-100'
+                                    ? 'bg-rose-500 text-white animate-pulse'
+                                    : 'bg-rose-50 text-rose-500 hover:bg-rose-100'
                                     }`}
                             >
                                 <i className="fas fa-microphone"></i>
