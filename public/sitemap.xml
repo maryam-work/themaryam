@@ -9,12 +9,48 @@
   <!-- ========== HOMEPAGE ========== -->
   <url>
     <loc>https://themaryam.in/</loc>
-    <lastmod>2026-01-25</lastmod>
+    <lastmod>2026-01-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en-IN" href="https://themaryam.in/"/>
     <xhtml:link rel="alternate" hreflang="hi-IN" href="https://themaryam.in/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://themaryam.in/"/>
+    
+    <!-- Hero Banners Images -->
+    <image:image>
+      <image:loc>https://themaryam.in/banners/valentine-banner.png</image:loc>
+      <image:title>Valentine's Day Special Gifts</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://themaryam.in/banners/birthday-banner.png</image:loc>
+      <image:title>Birthday Gifts Collection</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://themaryam.in/banners/corporate-banner.png</image:loc>
+      <image:title>Corporate Gifting Solutions</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://themaryam.in/banners/wedding-banner.png</image:loc>
+      <image:title>Wedding Gift Ideas</image:title>
+    </image:image>
+    
+    <!-- Category Images -->
+    <image:image>
+      <image:loc>https://themaryam.in/categories/anniversary.png</image:loc>
+      <image:title>Anniversary Gifts</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://themaryam.in/categories/birthday.png</image:loc>
+      <image:title>Birthday Presents</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://themaryam.in/categories/hamper.png</image:loc>
+      <image:title>Gift Hampers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://themaryam.in/categories/love_you.png</image:loc>
+      <image:title>Romantic Gifts</image:title>
+    </image:image>
   </url>
   
   <!-- ========== AI SEARCH PAGE ========== -->
