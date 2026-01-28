@@ -289,32 +289,32 @@ export const Hero = ({ onSearch, isLoading }: { onSearch: (query: string) => voi
                     {/* Row 1 */}
                     <div className="grid grid-cols-4 gap-0">
                         <a href="/valentine" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
-                            <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/valentine_hero_image_800x800.jpg?v=1769151013" alt="Valentine" className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-[11px] font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Valentine</span>
+                            <span className="text-xs font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Valentine</span>
                             {/* Right divider */}
                             <div className="absolute right-0 top-2 bottom-2 w-px bg-rose-200"></div>
                         </a>
                         <a href="https://shop.themaryam.in/collections/letters" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
-                            <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/letter_hero_image_800x800.jpg?v=1769150971" alt="Letters" className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-[11px] font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Letters</span>
+                            <span className="text-xs font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Letters</span>
                             <div className="absolute right-0 top-2 bottom-2 w-px bg-rose-200"></div>
                         </a>
                         <a href="https://shop.themaryam.in/collections/bouquets" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
-                            <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/bouquet_hero_image_800x800.jpg?v=1769151295" alt="Bouquets" className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-[11px] font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Bouquets</span>
+                            <span className="text-xs font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Bouquets</span>
                             <div className="absolute right-0 top-2 bottom-2 w-px bg-rose-200"></div>
                         </a>
                         <a href="https://shop.themaryam.in/collections/hampers" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors">
-                            <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/hamper_hero_image_800x800.jpg?v=1769151314" alt="Hampers" className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-[11px] font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Hampers</span>
+                            <span className="text-xs font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Hampers</span>
                         </a>
                     </div>
 
@@ -324,31 +324,31 @@ export const Hero = ({ onSearch, isLoading }: { onSearch: (query: string) => voi
                     {/* Row 2 */}
                     <div className="grid grid-cols-4 gap-0">
                         <a href="https://shop.themaryam.in/collections/cards" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
-                            <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/cards_hero_image_800x800.jpg?v=1769151376" alt="Cards" className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-[11px] font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Cards</span>
+                            <span className="text-xs font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Cards</span>
                             <div className="absolute right-0 top-2 bottom-2 w-px bg-rose-200"></div>
                         </a>
                         <a href="https://shop.themaryam.in/collections/wearables" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
-                            <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/wearables_hero_image_800x800.jpg?v=1769151421" alt="Wearables" className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-[11px] font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Wearables</span>
+                            <span className="text-xs font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Wearables</span>
                             <div className="absolute right-0 top-2 bottom-2 w-px bg-rose-200"></div>
                         </a>
                         <a href="https://shop.themaryam.in/collections/frames" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors relative">
-                            <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/frames_hero_image_800x800.jpg?v=1769151477" alt="Frames" className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-[11px] font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Frames</span>
+                            <span className="text-xs font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Frames</span>
                             <div className="absolute right-0 top-2 bottom-2 w-px bg-rose-200"></div>
                         </a>
                         <a href="/personalised" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors">
-                            <div className="w-14 h-14 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/personalised_hero_image_800x800.jpg?v=1769150941" alt="Personalised" className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-[11px] font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Personalised</span>
+                            <span className="text-xs font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Personalised</span>
                         </a>
                     </div>
                 </div>
@@ -359,64 +359,457 @@ export const Hero = ({ onSearch, isLoading }: { onSearch: (query: string) => voi
                 <div className="border border-rose-400 rounded-2xl bg-white overflow-hidden p-4">
                     <div className="grid grid-cols-8 gap-0">
                         <a href="/valentine" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
-                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                            <div className="w-24 h-24 mb-3 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/valentine_hero_image_800x800.jpg?v=1769151013" alt="Valentine" className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Valentine</span>
+                            <span className="text-sm font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Valentine</span>
                             <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
                         </a>
                         <a href="https://shop.themaryam.in/collections/letters" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
-                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                            <div className="w-24 h-24 mb-3 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/letter_hero_image_800x800.jpg?v=1769150971" alt="Letters" className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Letters</span>
+                            <span className="text-sm font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Letters</span>
                             <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
                         </a>
                         <a href="https://shop.themaryam.in/collections/bouquets" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
-                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                            <div className="w-24 h-24 mb-3 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/bouquet_hero_image_800x800.jpg?v=1769151295" alt="Bouquets" className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Bouquets</span>
+                            <span className="text-sm font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Bouquets</span>
                             <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
                         </a>
                         <a href="https://shop.themaryam.in/collections/hampers" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
-                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                            <div className="w-24 h-24 mb-3 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/hamper_hero_image_800x800.jpg?v=1769151314" alt="Hampers" className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Hampers</span>
+                            <span className="text-sm font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Hampers</span>
                             <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
                         </a>
                         <a href="https://shop.themaryam.in/collections/cards" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
-                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                            <div className="w-24 h-24 mb-3 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/cards_hero_image_800x800.jpg?v=1769151376" alt="Cards" className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Cards</span>
+                            <span className="text-sm font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Cards</span>
                             <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
                         </a>
                         <a href="https://shop.themaryam.in/collections/wearables" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
-                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                            <div className="w-24 h-24 mb-3 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/wearables_hero_image_800x800.jpg?v=1769151421" alt="Wearables" className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Wearables</span>
+                            <span className="text-sm font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Wearables</span>
                             <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
                         </a>
                         <a href="https://shop.themaryam.in/collections/frames" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
-                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                            <div className="w-24 h-24 mb-3 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/frames_hero_image_800x800.jpg?v=1769151477" alt="Frames" className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Frames</span>
+                            <span className="text-sm font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Frames</span>
                             <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
                         </a>
                         <a href="/personalised" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors">
-                            <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
+                            <div className="w-24 h-24 mb-3 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/personalised_hero_image_800x800.jpg?v=1769150941" alt="Personalised" className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-xs font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Personalised</span>
+                            <span className="text-sm font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Personalised</span>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
+    );
+};
+
+// =============================================================================
+// CATEGORIES GRID - 18 Categories with Synchronized Scroll (Mobile 2 rows, Desktop 1 row)
+// =============================================================================
+export const CategoriesGrid: React.FC = () => {
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+    const [isDragging, setIsDragging] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
+
+    // All 18 categories with placeholder images
+    const categories = [
+        { id: 1, name: 'Anniversary', image: '/categories/anniversary.png', link: '#' },
+        { id: 2, name: 'Birthday', image: '/categories/birthday.png', link: '#' },
+        { id: 3, name: 'Gift Sets', image: '/categories/gift-sets.png', link: '#' },
+        { id: 4, name: 'Chocolates', image: '/categories/chocolates.png', link: '#' },
+        { id: 5, name: 'Personalised', image: '/categories/personalised.png', link: '#' },
+        { id: 6, name: 'Bouquets', image: '/categories/bouquets.png', link: '#' },
+        { id: 7, name: 'Specials', image: '/categories/specials.png', link: '#' },
+        { id: 8, name: 'Valentine Gifts', image: '/categories/valentine-gifts.png', link: '#' },
+        { id: 9, name: 'Miss You', image: '/categories/miss-you.png', link: '#' },
+        { id: 10, name: 'Love You', image: '/categories/love-you.png', link: '#' },
+        { id: 11, name: 'Congratulations', image: '/categories/congratulations.png', link: '#' },
+        { id: 12, name: 'Cakes', image: '/categories/cakes.png', link: '#' },
+        { id: 13, name: 'Gift Hampers', image: '/categories/gift-hampers.png', link: '#' },
+        { id: 14, name: 'Frames', image: '/categories/frames.png', link: '#' },
+        { id: 15, name: 'Wedding Gifts', image: '/categories/wedding-gifts.png', link: '#' },
+        { id: 16, name: 'Friendship', image: '/categories/friendship.png', link: '#' },
+        { id: 17, name: 'Corporate Gifts', image: '/categories/corporate-gifts.png', link: '#' },
+        { id: 18, name: 'Letters', image: '/categories/letters.png', link: '#' },
+    ];
+
+    // Split into 2 rows for mobile
+    const topRow = categories.slice(0, 9);
+    const bottomRow = categories.slice(9, 18);
+
+    // Touch/Mouse handlers for synchronized scrolling
+    const handleMouseDown = (e: React.MouseEvent) => {
+        if (!scrollContainerRef.current) return;
+        setIsDragging(true);
+        setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+        setScrollLeft(scrollContainerRef.current.scrollLeft);
+    };
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (!isDragging || !scrollContainerRef.current) return;
+        e.preventDefault();
+        const x = e.pageX - scrollContainerRef.current.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+    };
+
+    const handleMouseUp = () => setIsDragging(false);
+    const handleMouseLeave = () => setIsDragging(false);
+
+    // Single category card component
+    const CategoryCard = ({ category }: { category: typeof categories[0] }) => (
+        <a
+            href={category.link}
+            className="flex-shrink-0 flex flex-col items-center group"
+            itemProp="itemListElement"
+            itemScope
+            itemType="https://schema.org/ListItem"
+        >
+            <meta itemProp="position" content={String(category.id)} />
+            <div className="w-[72px] h-[72px] lg:w-20 lg:h-20 rounded-2xl overflow-hidden bg-gradient-to-br from-amber-50 to-orange-50 shadow-sm border border-gray-100 group-hover:shadow-md group-hover:scale-105 transition-all duration-300">
+                <img
+                    src={category.image}
+                    alt={`${category.name} Gifts - Shop Now`}
+                    itemProp="image"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                />
+            </div>
+            <span
+                className="mt-1.5 text-[11px] lg:text-xs font-medium text-gray-700 text-center leading-tight max-w-[72px] lg:max-w-20 group-hover:text-rose-500 transition-colors"
+                itemProp="name"
+            >
+                {category.name}
+            </span>
+        </a>
+    );
+
+    return (
+        <section
+            className="w-full py-4"
+            aria-label="Gift Categories"
+            itemScope
+            itemType="https://schema.org/ItemList"
+        >
+            <meta itemProp="numberOfItems" content={String(categories.length)} />
+            <meta itemProp="name" content="Gift Categories - The Maryam" />
+
+            {/* Mobile: 2 rows synchronized scroll */}
+            <div className="lg:hidden">
+                <div
+                    ref={scrollContainerRef}
+                    className="overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing"
+                    onMouseDown={handleMouseDown}
+                    onMouseMove={handleMouseMove}
+                    onMouseUp={handleMouseUp}
+                    onMouseLeave={handleMouseLeave}
+                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                >
+                    <div className="px-4 space-y-4" style={{ width: 'max-content' }}>
+                        {/* Top Row - First 9 */}
+                        <div className="flex gap-6">
+                            {topRow.map(cat => (
+                                <a
+                                    key={cat.id}
+                                    href={cat.link}
+                                    className="flex-shrink-0 flex flex-col items-center group"
+                                    itemProp="itemListElement"
+                                    itemScope
+                                    itemType="https://schema.org/ListItem"
+                                >
+                                    <meta itemProp="position" content={String(cat.id)} />
+                                    <div className="w-[100px] h-[100px] rounded-2xl overflow-hidden group-hover:scale-105 transition-all duration-300">
+                                        <img
+                                            src={cat.image}
+                                            alt={`${cat.name} Gifts - Shop Now`}
+                                            itemProp="image"
+                                            className="w-full h-full object-cover"
+                                            loading="lazy"
+                                            decoding="async"
+                                        />
+                                    </div>
+                                    <span
+                                        className="mt-2 text-[13px] font-medium text-gray-700 text-center leading-tight max-w-[100px] group-hover:text-rose-500 transition-colors"
+                                        itemProp="name"
+                                    >
+                                        {cat.name}
+                                    </span>
+                                </a>
+                            ))}
+                        </div>
+                        {/* Bottom Row - Last 9 */}
+                        <div className="flex gap-6">
+                            {bottomRow.map(cat => (
+                                <a
+                                    key={cat.id}
+                                    href={cat.link}
+                                    className="flex-shrink-0 flex flex-col items-center group"
+                                    itemProp="itemListElement"
+                                    itemScope
+                                    itemType="https://schema.org/ListItem"
+                                >
+                                    <meta itemProp="position" content={String(cat.id)} />
+                                    <div className="w-[100px] h-[100px] rounded-2xl overflow-hidden group-hover:scale-105 transition-all duration-300">
+                                        <img
+                                            src={cat.image}
+                                            alt={`${cat.name} Gifts - Shop Now`}
+                                            itemProp="image"
+                                            className="w-full h-full object-cover"
+                                            loading="lazy"
+                                            decoding="async"
+                                        />
+                                    </div>
+                                    <span
+                                        className="mt-2 text-[13px] font-medium text-gray-700 text-center leading-tight max-w-[100px] group-hover:text-rose-500 transition-colors"
+                                        itemProp="name"
+                                    >
+                                        {cat.name}
+                                    </span>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Desktop: Single row of 9 (first 9 only, or all in scroll) */}
+            <div className="hidden lg:block px-4 xl:px-8 mt-6">
+                <div className="grid grid-cols-9 gap-y-8 gap-x-2 xl:gap-x-6 justify-items-center max-w-[1600px] mx-auto">
+                    {categories.map(cat => (
+                        <a
+                            key={cat.id}
+                            href={cat.link}
+                            className="flex flex-col items-center group w-full"
+                            itemProp="itemListElement"
+                            itemScope
+                            itemType="https://schema.org/ListItem"
+                        >
+                            <meta itemProp="position" content={String(cat.id)} />
+                            <div className="w-24 h-24 xl:w-32 xl:h-32 rounded-2xl overflow-hidden group-hover:scale-105 transition-all duration-300">
+                                <img
+                                    src={cat.image}
+                                    alt={`${cat.name} Gifts - Shop Now`}
+                                    itemProp="image"
+                                    className="w-full h-full object-cover"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </div>
+                            <span
+                                className="mt-3 text-sm xl:text-base font-medium text-gray-700 text-center leading-tight w-full px-1 group-hover:text-rose-500 transition-colors"
+                                itemProp="name"
+                            >
+                                {cat.name}
+                            </span>
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+// =============================================================================
+// PROMO BANNER CAROUSEL - Beautiful Auto-Sliding Banners (Mobile Only)
+// =============================================================================
+export const PromoCarousel: React.FC = () => {
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+    const [touchStart, setTouchStart] = useState(0);
+    const [touchEnd, setTouchEnd] = useState(0);
+    const [isTransitioning, setIsTransitioning] = useState(true);
+    const carouselRef = useRef<HTMLDivElement>(null);
+
+    // 8 Real Banners
+    const banners = [
+        { id: 1, src: '/banners/valentine-banner.png', alt: 'Valentine Specials', link: '/valentine' },
+        { id: 2, src: '/banners/birthday-banner.png', alt: 'Birthday Gifts', link: '#' },
+        { id: 3, src: '/banners/corporate-banner.png', alt: 'Corporate Gifting', link: '#' },
+        { id: 4, src: '/banners/customised-banner.png', alt: 'Customised Gifts', link: '#' },
+        { id: 5, src: '/banners/frames-banner.png', alt: 'Photo Frames', link: '#' },
+        { id: 6, src: '/banners/letters-banner.png', alt: 'Love Letters', link: '#' },
+        { id: 7, src: '/banners/personalised-banner.png', alt: 'Personalised Gifts', link: '#' },
+        { id: 8, src: '/banners/wedding-banner.png', alt: 'Wedding Gifts', link: '#' },
+    ];
+
+    // Auto-slide with smooth loop handling
+    useEffect(() => {
+        if (!isAutoPlaying) return;
+
+        const interval = setInterval(() => {
+            setCurrentSlide(prev => {
+                const nextSlide = prev + 1;
+                // If going from last to first, disable transition temporarily
+                if (nextSlide >= banners.length) {
+                    setIsTransitioning(false);
+                    setTimeout(() => setIsTransitioning(true), 50);
+                    return 0;
+                }
+                return nextSlide;
+            });
+        }, 3500);
+
+        return () => clearInterval(interval);
+    }, [isAutoPlaying, banners.length]);
+
+    // Touch handlers for swipe
+    const handleTouchStart = (e: React.TouchEvent) => {
+        setIsAutoPlaying(false);
+        setTouchStart(e.touches[0].clientX);
+    };
+
+    const handleTouchMove = (e: React.TouchEvent) => {
+        setTouchEnd(e.touches[0].clientX);
+    };
+
+    const handleTouchEnd = () => {
+        if (!touchStart || !touchEnd) return;
+
+        const swipeDistance = touchStart - touchEnd;
+        const minSwipe = 50;
+
+        if (swipeDistance > minSwipe) {
+            // Swipe left - next
+            const nextSlide = currentSlide + 1;
+            if (nextSlide >= banners.length) {
+                setIsTransitioning(false);
+                setCurrentSlide(0);
+                setTimeout(() => setIsTransitioning(true), 50);
+            } else {
+                setCurrentSlide(nextSlide);
+            }
+        } else if (swipeDistance < -minSwipe) {
+            // Swipe right - previous
+            const prevSlide = currentSlide - 1;
+            if (prevSlide < 0) {
+                setIsTransitioning(false);
+                setCurrentSlide(banners.length - 1);
+                setTimeout(() => setIsTransitioning(true), 50);
+            } else {
+                setCurrentSlide(prevSlide);
+            }
+        }
+
+        setTimeout(() => setIsAutoPlaying(true), 5000);
+        setTouchStart(0);
+        setTouchEnd(0);
+    };
+
+    const goToSlide = (index: number) => {
+        if (Math.abs(index - currentSlide) > banners.length / 2) {
+            setIsTransitioning(false);
+            setCurrentSlide(index);
+            setTimeout(() => setIsTransitioning(true), 50);
+        } else {
+            setCurrentSlide(index);
+        }
+        setIsAutoPlaying(false);
+        setTimeout(() => setIsAutoPlaying(true), 5000);
+    };
+
+    // Get dot size based on distance from current slide
+    const getDotSize = (index: number): string => {
+        const distance = Math.abs(index - currentSlide);
+        if (distance === 0) return 'w-3 h-3'; // Current - biggest
+        if (distance === 1) return 'w-2.5 h-2.5'; // Adjacent
+        if (distance === 2) return 'w-2 h-2'; // 2 away
+        return 'w-1.5 h-1.5'; // Far away - smallest
+    };
+
+    return (
+        <section
+            className="lg:hidden w-full py-4 px-4"
+            aria-label="Promotional Banners Carousel"
+            itemScope
+            itemType="https://schema.org/ItemList"
+        >
+            <meta itemProp="numberOfItems" content={String(banners.length)} />
+
+            {/* Carousel Container */}
+            <div
+                ref={carouselRef}
+                className="relative overflow-hidden rounded-2xl shadow-lg"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+            >
+                {/* Slides - Approx 1.45 aspect ratio (586x404) */}
+                <div
+                    className={`flex ${isTransitioning ? 'transition-transform duration-500 ease-out' : ''}`}
+                    style={{
+                        transform: `translateX(-${currentSlide * 100}%)`,
+                    }}
+                >
+                    {banners.map((banner, index) => (
+                        <a
+                            key={banner.id}
+                            href={banner.link}
+                            className="flex-shrink-0 w-full aspect-[586/404] relative group bg-gray-50"
+                            itemProp="itemListElement"
+                            itemScope
+                            itemType="https://schema.org/ListItem"
+                            aria-label={banner.alt}
+                        >
+                            <meta itemProp="position" content={String(index + 1)} />
+                            <img
+                                src={banner.src}
+                                alt={banner.alt}
+                                itemProp="image"
+                                className="w-full h-full object-contain"
+                                loading={index === 0 ? 'eager' : 'lazy'}
+                                decoding="async"
+                            />
+                        </a>
+                    ))}
+                </div>
+            </div>
+
+            {/* Dots Indicator - Like reference design with counter */}
+            <div className="flex items-center justify-center gap-2 mt-3">
+                {/* Page Counter */}
+                <div className="bg-gray-100 px-2.5 py-1 rounded-full flex items-center">
+                    <span className="text-xs font-bold text-gray-800">{currentSlide + 1}</span>
+                    <span className="text-xs text-gray-400 mx-0.5">/</span>
+                    <span className="text-xs text-gray-400">{banners.length}</span>
+                </div>
+
+                {/* Dots - Big to small based on distance */}
+                <div className="flex items-center gap-1.5">
+                    {banners.map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => goToSlide(index)}
+                            className={`rounded-full transition-all duration-300 ${getDotSize(index)} ${index === currentSlide
+                                ? 'bg-gray-800'
+                                : index === currentSlide - 1 || index === currentSlide + 1
+                                    ? 'bg-gray-400'
+                                    : 'bg-gray-300'
+                                }`}
+                            aria-label={`Go to slide ${index + 1}`}
+                        />
+                    ))}
+                </div>
+            </div>
+        </section>
     );
 };
 
