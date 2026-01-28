@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import { TopBar, Header, Footer } from './components/Layout';
 import {
   Hero,
+  CategoriesGrid,
+  PromoCarousel,
   AIResults,
   CategoryArches,
   TrendingLevitation,
@@ -21,6 +23,7 @@ import BestGiftsGirlfriend2026 from './pages/wrapped/posts/BestGiftsGirlfriend20
 import BirthdayGiftIdeas2026 from './pages/wrapped/posts/BirthdayGiftIdeas2026';
 import VadodaraGiftDelivery from './pages/wrapped/posts/VadodaraGiftDelivery';
 import AIGiftFinderGuide from './pages/wrapped/posts/AIGiftFinderGuide';
+import SecretAdminPage from './pages/SecretAdminPage';
 
 import { matchProducts, MatchedProduct } from './lib/aiService';
 import { useLenis } from './hooks/useLenis';
@@ -59,6 +62,8 @@ const HomePage: React.FC = () => {
       <Header />
       <main className="flex flex-col gap-0 w-full overflow-x-hidden">
         <Hero onSearch={handleSearch} isLoading={isLoading} />
+        <CategoriesGrid />
+        <PromoCarousel />
         <AIResults visible={showResults} products={matchedProducts} />
         <CategoryArches />
         <TrendingLevitation />
@@ -88,6 +93,9 @@ const App: React.FC = () => {
         <Route path="/wrapped/birthday-gift-ideas-2026" element={<BirthdayGiftIdeas2026 />} />
         <Route path="/wrapped/vadodara-gift-delivery" element={<VadodaraGiftDelivery />} />
         <Route path="/wrapped/ai-gift-finder-guide" element={<AIGiftFinderGuide />} />
+
+        {/* Secret Admin CMS - DO NOT SHARE THIS URL */}
+        <Route path="/m7x2k9p4q8w1a5t3y6u0i2o4e6r8z3c5v7b9n1l0" element={<SecretAdminPage />} />
       </Routes>
     </div>
   );
