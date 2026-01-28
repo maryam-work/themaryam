@@ -429,26 +429,26 @@ export const CategoriesGrid: React.FC = () => {
     const [startX, setStartX] = useState(0);
     const [scrollLeft, setScrollLeft] = useState(0);
 
-    // All 18 categories with placeholder images
+    // All 18 categories with functional search links
     const categories = [
-        { id: 1, name: 'Anniversary', image: '/categories/anniversary.png', link: '#' },
-        { id: 2, name: 'Birthday', image: '/categories/birthday.png', link: '#' },
-        { id: 3, name: 'Gift Sets', image: '/categories/gift-sets.png', link: '#' },
-        { id: 4, name: 'Chocolates', image: '/categories/chocolates.png', link: '#' },
-        { id: 5, name: 'Personalised', image: '/categories/personalised.png', link: '#' },
-        { id: 6, name: 'Bouquets', image: '/categories/bouquets.png', link: '#' },
-        { id: 7, name: 'Specials', image: '/categories/specials.png', link: '#' },
-        { id: 8, name: 'Valentine Gifts', image: '/categories/valentine-gifts.png', link: '#' },
-        { id: 9, name: 'Miss You', image: '/categories/miss-you.png', link: '#' },
-        { id: 10, name: 'Love You', image: '/categories/love-you.png', link: '#' },
-        { id: 11, name: 'Congratulations', image: '/categories/congratulations.png', link: '#' },
-        { id: 12, name: 'Cakes', image: '/categories/cakes.png', link: '#' },
-        { id: 13, name: 'Gift Hampers', image: '/categories/gift-hampers.png', link: '#' },
-        { id: 14, name: 'Frames', image: '/categories/frames.png', link: '#' },
-        { id: 15, name: 'Wedding Gifts', image: '/categories/wedding-gifts.png', link: '#' },
-        { id: 16, name: 'Friendship', image: '/categories/friendship.png', link: '#' },
-        { id: 17, name: 'Corporate Gifts', image: '/categories/corporate-gifts.png', link: '#' },
-        { id: 18, name: 'Letters', image: '/categories/letters.png', link: '#' },
+        { id: 1, name: 'Anniversary', image: '/categories/anniversary.png', link: '/search?q=Anniversary+Gifts' },
+        { id: 2, name: 'Birthday', image: '/categories/birthday.png', link: '/search?q=Birthday+Gifts' },
+        { id: 3, name: 'Gift Sets', image: '/categories/gift-sets.png', link: '/search?q=Gift+Sets' },
+        { id: 4, name: 'Chocolates', image: '/categories/chocolates.png', link: '/search?q=Chocolate+Gift+Boxes' },
+        { id: 5, name: 'Personalised', image: '/categories/personalised.png', link: '/search?q=Personalized+Gifts' },
+        { id: 6, name: 'Bouquets', image: '/categories/bouquets.png', link: '/search?q=Flower+Bouquets' },
+        { id: 7, name: 'Specials', image: '/categories/specials.png', link: '/search?q=Special+Gifts' },
+        { id: 8, name: 'Valentine Gifts', image: '/categories/valentine-gifts.png', link: '/search?q=Valentine+Gifts' },
+        { id: 9, name: 'Miss You', image: '/categories/miss-you.png', link: '/search?q=Miss+You+Gifts' },
+        { id: 10, name: 'Love You', image: '/categories/love-you.png', link: '/search?q=Love+You+Gifts' },
+        { id: 11, name: 'Congratulations', image: '/categories/congratulations.png', link: '/search?q=Congratulations+Gifts' },
+        { id: 12, name: 'Cakes', image: '/categories/cakes.png', link: '/search?q=Cakes' },
+        { id: 13, name: 'Gift Hampers', image: '/categories/gift-hampers.png', link: '/search?q=Gift+Hampers' },
+        { id: 14, name: 'Frames', image: '/categories/frames.png', link: '/search?q=Photo+Frames' },
+        { id: 15, name: 'Wedding Gifts', image: '/categories/wedding-gifts.png', link: '/search?q=Wedding+Gifts' },
+        { id: 16, name: 'Friendship', image: '/categories/friendship.png', link: '/search?q=Friendship+Gifts' },
+        { id: 17, name: 'Corporate Gifts', image: '/categories/corporate-gifts.png', link: '/search?q=Corporate+Gifts' },
+        { id: 18, name: 'Letters', image: '/categories/letters.png', link: '/search?q=Handwritten+Letters' },
     ];
 
     // Split into 2 rows for mobile
