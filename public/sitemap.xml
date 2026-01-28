@@ -165,6 +165,26 @@
     <priority>1.0</priority>
   </url>
   
+  <!-- ========== FEATURED SEARCH CATEGORIES (For Sitelinks) ========== -->
+  <url><loc>https://themaryam.in/search?q=Anniversary+Gifts</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://themaryam.in/search?q=Birthday+Gifts</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://themaryam.in/search?q=Gift+Sets</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://themaryam.in/search?q=Chocolate+Gift+Boxes</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://themaryam.in/search?q=Personalized+Gifts</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://themaryam.in/search?q=Flower+Bouquets</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://themaryam.in/search?q=Special+Gifts</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://themaryam.in/search?q=Valentine+Gifts</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://themaryam.in/search?q=Miss+You+Gifts</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://themaryam.in/search?q=Love+You+Gifts</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://themaryam.in/search?q=Congratulations+Gifts</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://themaryam.in/search?q=Cakes</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://themaryam.in/search?q=Gift+Hampers</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://themaryam.in/search?q=Photo+Frames</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://themaryam.in/search?q=Wedding+Gifts</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://themaryam.in/search?q=Friendship+Gifts</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://themaryam.in/search?q=Corporate+Gifts</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://themaryam.in/search?q=Handwritten+Letters</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  
   <!-- ========== CATEGORY PAGES ========== -->
   <url>
     <loc>https://themaryam.in/letters</loc>
