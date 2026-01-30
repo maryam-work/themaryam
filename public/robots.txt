@@ -1,7 +1,7 @@
 # =============================================================================
 # ROBOTS.TXT - The Maryam | Personalized Gift Store
-# Domain: themaryam.in | wrapy.in
-# Last Updated: 2026-01-25
+# Domain: themaryam.in
+# Last Updated: 2026-01-30
 # =============================================================================
 
 # ========== GENERAL CRAWLERS ==========
@@ -158,10 +158,6 @@ Disallow: /
 
 # ========== SITEMAPS ==========
 Sitemap: https://themaryam.in/sitemap.xml
-Sitemap: https://shop.themaryam.in/sitemap.xml
 
 # ========== HOST DIRECTIVE ==========
 Host: https://themaryam.in
-
-# ========== INDEXNOW KEY (for instant indexing) ==========
-# Place your IndexNow key file at: https://themaryam.in/{key}.txt
