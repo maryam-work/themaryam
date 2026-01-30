@@ -1,7 +1,99 @@
 {
+    "redirects": [
+        {
+            "source": "/collections/:path*",
+            "destination": "https://shop.themaryam.in/collections/:path*",
+            "permanent": true
+        },
+        {
+            "source": "/policies/:path*",
+            "destination": "https://shop.themaryam.in/policies/:path*",
+            "permanent": true
+        },
+        {
+            "source": "/bestsellers",
+            "destination": "https://shop.themaryam.in/collections/bestsellers",
+            "permanent": true
+        },
+        {
+            "source": "/flowers",
+            "destination": "https://shop.themaryam.in/collections/flowers",
+            "permanent": true
+        },
+        {
+            "source": "/cakes",
+            "destination": "https://shop.themaryam.in/collections/cakes",
+            "permanent": true
+        },
+        {
+            "source": "/letters",
+            "destination": "https://shop.themaryam.in/collections/letters",
+            "permanent": true
+        },
+        {
+            "source": "/bouquets",
+            "destination": "https://shop.themaryam.in/collections/bouquets",
+            "permanent": true
+        },
+        {
+            "source": "/hampers",
+            "destination": "https://shop.themaryam.in/collections/hampers",
+            "permanent": true
+        },
+        {
+            "source": "/cards",
+            "destination": "https://shop.themaryam.in/collections/cards",
+            "permanent": true
+        },
+        {
+            "source": "/wearables",
+            "destination": "https://shop.themaryam.in/collections/wearables",
+            "permanent": true
+        },
+        {
+            "source": "/frames",
+            "destination": "https://shop.themaryam.in/collections/frames",
+            "permanent": true
+        },
+        {
+            "source": "/personalised",
+            "destination": "https://shop.themaryam.in/collections/personalised",
+            "permanent": true
+        },
+        {
+            "source": "/contact",
+            "destination": "https://shop.themaryam.in/pages/contact",
+            "permanent": true
+        },
+        {
+            "source": "/valentine",
+            "destination": "https://shop.themaryam.in/collections/valentine",
+            "permanent": true
+        },
+        {
+            "source": "/birthday-gifts",
+            "destination": "https://shop.themaryam.in/collections/birthday",
+            "permanent": true
+        },
+        {
+            "source": "/anniversary-gifts",
+            "destination": "https://shop.themaryam.in/collections/anniversary",
+            "permanent": true
+        },
+        {
+            "source": "/wedding-gifts",
+            "destination": "https://shop.themaryam.in/collections/wedding",
+            "permanent": true
+        },
+        {
+            "source": "/same-day-delivery",
+            "destination": "https://shop.themaryam.in/collections/same-day-delivery",
+            "permanent": true
+        }
+    ],
     "rewrites": [
         {
-            "source": "/((?!api|_next/static|_next/image|favicon.ico|.*\\.png|.*\\.jpg|.*\\.jpeg|.*\\.gif|.*\\.svg|.*\\.ico|.*\\.xml|.*\\.txt|.*\\.webmanifest|policies/.*\\.html).*)",
+            "source": "/((?!api|_next/static|_next/image|favicon.ico|.*\\.png|.*\\.jpg|.*\\.jpeg|.*\\.gif|.*\\.svg|.*\\.ico|.*\\.xml|.*\\.txt|.*\\.webmanifest).*)",
             "destination": "/index.html"
         }
     ],
@@ -29,6 +121,10 @@
                 {
                     "key": "Content-Type",
                     "value": "application/xml"
+                },
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=3600"
                 }
             ]
         },
