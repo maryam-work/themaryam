@@ -1016,11 +1016,15 @@ export const AIResults = ({ visible, products }: { visible: boolean; products: M
 
 // All occasions with optional dates (MM-DD format for recurring events)
 const allOccasions = [
-    // === ALWAYS TOP (no date, priority items) ===
-    { title: "For Him", subtitle: "Gifts that speak his style", color: "bg-[#f0adfa]", icon: "👔", priority: true },
-    { title: "For Her", subtitle: "Curated picks she'll adore", color: "bg-[#d7f271]", icon: "💎", priority: true },
-    { title: "Couples", subtitle: "Celebrate your bond", color: "bg-[#ffd6e0]", icon: "💕", priority: true },
-    { title: "Birthday", subtitle: "Celebrate their day", color: "bg-[#e0ccff]", icon: "🎂", priority: true },
+    // === SPECIAL REQUESTED ITEMS (WITH IMAGES) ===
+    { title: "For Him", subtitle: "Gifts that speak his style", image: "/occasions/forhim.png", priority: true },
+    { title: "For Her", subtitle: "Curated picks she'll adore", image: "/occasions/forher.png", priority: true },
+    { title: "Couples", subtitle: "Celebrate your bond", image: "/occasions/couples.png", priority: true },
+    { title: "Birthday", subtitle: "Celebrate their day", image: "/occasions/birthday.png", priority: true },
+    { title: "Valentine's Day", subtitle: "Day of love", image: "/occasions/valentine_day.png", priority: true },
+    { title: "Wedding", subtitle: "Make their day special", image: "/occasions/wedding.png", priority: true },
+    { title: "Anniversary", subtitle: "Cherish the moments", image: "/occasions/Anniversary.png", priority: true },
+    { title: "Engagement", subtitle: "New beginnings", image: "/occasions/Engagement.png", priority: true },
 
     // === INDIAN FESTIVALS ===
     { title: "Diwali", subtitle: "Festival of lights", color: "bg-[#fff3b0]", icon: "🪔", date: "11-01" },
@@ -1041,7 +1045,7 @@ const allOccasions = [
 
     // === GLOBAL CELEBRATIONS ===
     { title: "New Year", subtitle: "Fresh beginnings", color: "bg-[#b2ebf2]", icon: "🎊", date: "01-01" },
-    { title: "Valentine's Day", subtitle: "Day of love", color: "bg-[#f8bbd9]", icon: "❤️", date: "02-14" },
+    // Valentine was here, now moved up
     { title: "Mother's Day", subtitle: "Celebrate mom", color: "bg-[#f48fb1]", icon: "👩", date: "05-11" },
     { title: "Father's Day", subtitle: "Honor dad", color: "bg-[#90caf9]", icon: "👨", date: "06-15" },
     { title: "Friendship Day", subtitle: "For your besties", color: "bg-[#c5f9d7]", icon: "🤝", date: "08-03" },
@@ -1050,9 +1054,7 @@ const allOccasions = [
     { title: "Children's Day", subtitle: "For little ones", color: "bg-[#fff176]", icon: "🧸", date: "11-14" },
 
     // === LIFE EVENTS ===
-    { title: "Wedding", subtitle: "Make their day special", color: "bg-[#ffe4cc]", icon: "💒" },
-    { title: "Anniversary", subtitle: "Cherish the moments", color: "bg-[#cce0ff]", icon: "💍" },
-    { title: "Engagement", subtitle: "New beginnings", color: "bg-[#f3e5f5]", icon: "💎" },
+    // Wedding, Anniversary, Engagement moved up
     { title: "Baby Shower", subtitle: "Welcome the little one", color: "bg-[#fff9c4]", icon: "👶" },
     { title: "Graduation", subtitle: "Achievement unlocked", color: "bg-[#dcedc8]", icon: "🎓" },
     { title: "New Job", subtitle: "Career celebrations", color: "bg-[#b3e5fc]", icon: "💼" },
@@ -1160,20 +1162,25 @@ export const CategoryArches = () => {
 
     return (
         <Section className="py-16 md:py-24">
-            {/* Section Header - Minimal Style */}
-            <div className="flex items-center justify-between mb-8 md:mb-12">
-                <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 bg-gray-900 rounded-full flex items-center justify-center">
-                        <span className="text-base">📅</span>
+            {/* Section Header - All Pink Cute Aesthetic */}
+            <div className="flex items-center justify-between mb-10 md:mb-14 px-2">
+                <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 bg-gradient-to-br from-pink-400 to-rose-400 rounded-2xl -rotate-2 flex items-center justify-center shadow-xl shadow-pink-200/50 border-4 border-white/50 ring-1 ring-pink-100">
+                        <Gift className="text-white fill-white/20" size={28} strokeWidth={2} />
                     </div>
                     <div>
-                        <h3 className="text-lg md:text-xl font-bold text-gray-900">Shop by Occasion</h3>
-                        <p className="text-[11px] md:text-xs text-gray-400">Find the perfect gift for every celebration</p>
+                        <h3 className="text-3xl md:text-4xl font-heading font-black text-pink-500 leading-none tracking-tight drop-shadow-sm">
+                            Shop by Occasion
+                        </h3>
+                        <p className="text-xs md:text-sm text-pink-400/80 font-bold mt-1 tracking-wide uppercase">
+                            Sparkle in every celebration ✨
+                        </p>
                     </div>
                 </div>
-                <div className="hidden md:flex items-center gap-2 text-xs text-gray-400">
-                    <span>Drag to explore</span>
-                    <ArrowRight size={14} />
+
+                <div className="hidden md:flex items-center gap-2 text-xs font-bold text-white bg-gradient-to-r from-pink-400 to-rose-400 px-5 py-2.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all cursor-pointer">
+                    <span>Swipe to explore</span>
+                    <ArrowRight size={16} />
                 </div>
             </div>
 
@@ -1196,7 +1203,24 @@ export const CategoryArches = () => {
                     const { upcoming, daysLeft } = isUpcoming((c as any).date);
                     const isHighlighted = upcoming && !(c as any).priority;
 
-                    return (
+                    return (c as any).image ? (
+                        // === IMAGE BASED CARD (NO CONTAINER) ===
+                        <a
+                            key={i}
+                            href={`/collections/${c.title.toLowerCase().replace(/ /g, '-')}`}
+                            className="flex-shrink-0 w-52 md:w-64 h-72 md:h-80 relative group transition-transform duration-300 transform hover:scale-[1.05]"
+                            onClick={(e) => { if (isDragging) e.preventDefault(); }}
+                            draggable="false"
+                        >
+                            <img
+                                src={(c as any).image}
+                                alt={c.title}
+                                className="w-full h-full object-contain drop-shadow-lg"
+                                draggable="false"
+                            />
+                        </a>
+                    ) : (
+                        // === STANDARD CARD (WITH CONTAINER) ===
                         <a
                             key={i}
                             href={`/collections/${c.title.toLowerCase().replace(/ /g, '-')}`}
