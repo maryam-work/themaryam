@@ -2,93 +2,131 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   
-  <!-- ========== HOMEPAGE ========== -->
+  <!-- ========== HOMEPAGE (HIGHEST PRIORITY) ========== -->
   <url>
     <loc>https://themaryam.in/</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en-IN" href="https://themaryam.in/"/>
-    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://themaryam.in/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://themaryam.in/"/>
-    
-    <!-- Hero Banners Images -->
-    <image:image>
-      <image:loc>https://themaryam.in/banners/valentine-banner.png</image:loc>
-      <image:title>Valentine's Day Special Gifts</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://themaryam.in/banners/birthday-banner.png</image:loc>
-      <image:title>Birthday Gifts Collection</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://themaryam.in/banners/corporate-banner.png</image:loc>
-      <image:title>Corporate Gifting Solutions</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://themaryam.in/banners/wedding-banner.png</image:loc>
-      <image:title>Wedding Gift Ideas</image:title>
-    </image:image>
-    
-    <!-- Category Images -->
-    <image:image>
-      <image:loc>https://themaryam.in/categories/anniversary.png</image:loc>
-      <image:title>Anniversary Gifts</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://themaryam.in/categories/birthday.png</image:loc>
-      <image:title>Birthday Presents</image:title>
-    </image:image>
   </url>
   
-  <!-- ========== AI SEARCH PAGE ========== -->
+  <!-- ========== CORE PAGES (FOR SITELINKS) ========== -->
   <url>
     <loc>https://themaryam.in/search</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-31</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.95</priority>
   </url>
   
-  <!-- ========== WRAPPED BLOG SECTION ========== -->
   <url>
     <loc>https://themaryam.in/wrapped</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   
-  <!-- Individual Blog Posts -->
+  <!-- ========== HIGH-PRIORITY SEO BLOG POSTS ========== -->
+  
+  <!-- Valentine Gifts - Seasonal High Priority -->
   <url>
     <loc>https://themaryam.in/wrapped/valentine-gifts-2026</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  
+  <!-- Brand Page - Highest Keyword Priority -->
+  <url>
+    <loc>https://themaryam.in/wrapped/online-gift-shop</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  
+  <!-- Gifts for Boyfriend - Evergreen Keyword -->
+  <url>
+    <loc>https://themaryam.in/wrapped/gifts-for-boyfriend</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Gifts for Girlfriend - Evergreen Keyword -->
+  <url>
+    <loc>https://themaryam.in/wrapped/gifts-for-girlfriend</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Cute Hampers - Product Keyword -->
+  <url>
+    <loc>https://themaryam.in/wrapped/cute-hampers</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Flowers - Product Keyword -->
+  <url>
+    <loc>https://themaryam.in/wrapped/flowers</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Chocolates & Cakes - Product Keyword -->
+  <url>
+    <loc>https://themaryam.in/wrapped/chocolates-cakes</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Personalized Gifts - Product Keyword -->
+  <url>
+    <loc>https://themaryam.in/wrapped/personalized-gifts</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Anniversary Gifts - Occasion Keyword -->
+  <url>
+    <loc>https://themaryam.in/wrapped/anniversary-gifts</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- ========== STANDARD BLOG POSTS ========== -->
   <url>
     <loc>https://themaryam.in/wrapped/best-gifts-girlfriend-2026</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-31</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.85</priority>
   </url>
+  
   <url>
     <loc>https://themaryam.in/wrapped/birthday-gift-ideas-2026</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-31</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.85</priority>
   </url>
+  
   <url>
     <loc>https://themaryam.in/wrapped/vadodara-gift-delivery</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-31</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
+  
   <url>
     <loc>https://themaryam.in/wrapped/ai-gift-finder-guide</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
