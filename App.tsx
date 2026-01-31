@@ -15,6 +15,7 @@ import {
   UnboxingStream
 } from './components/Sections';
 import SEO from './components/SEO';
+import { CelebrateLove } from './components/CelebrateLove';
 import SearchPage from './pages/SearchPage';
 import WrappedListPage from './pages/wrapped/WrappedListPage';
 
@@ -25,6 +26,16 @@ import BirthdayGiftIdeas2026 from './pages/wrapped/posts/BirthdayGiftIdeas2026';
 import VadodaraGiftDelivery from './pages/wrapped/posts/VadodaraGiftDelivery';
 import AIGiftFinderGuide from './pages/wrapped/posts/AIGiftFinderGuide';
 import SecretAdminPage from './pages/SecretAdminPage';
+
+// SEO Blog Posts (for keyword ranking)
+import GiftsForBoyfriend from './pages/wrapped/posts/GiftsForBoyfriend';
+import GiftsForGirlfriend from './pages/wrapped/posts/GiftsForGirlfriend';
+import CuteGiftHampers from './pages/wrapped/posts/CuteGiftHampers';
+import OnlineGiftShopGuide from './pages/wrapped/posts/OnlineGiftShopGuide';
+import FlowersAndBouquets from './pages/wrapped/posts/FlowersAndBouquets';
+import ChocolatesAndCakes from './pages/wrapped/posts/ChocolatesAndCakes';
+import PersonalizedGifts from './pages/wrapped/posts/PersonalizedGifts';
+import AnniversaryGifts from './pages/wrapped/posts/AnniversaryGifts';
 
 import { matchProducts, MatchedProduct } from './lib/aiService';
 import { useLenis } from './hooks/useLenis';
@@ -118,6 +129,7 @@ const HomePage: React.FC = () => {
       <main className="flex flex-col gap-0 w-full overflow-x-hidden">
         <Hero onSearch={handleSearch} isLoading={isLoading} />
         <CategoriesGrid />
+        <CelebrateLove />
         <PromoCarousel />
         <AIResults visible={showResults} products={matchedProducts} />
         <CategoryArches />
@@ -148,6 +160,16 @@ const App: React.FC = () => {
         <Route path="/wrapped/birthday-gift-ideas-2026" element={<BirthdayGiftIdeas2026 />} />
         <Route path="/wrapped/vadodara-gift-delivery" element={<VadodaraGiftDelivery />} />
         <Route path="/wrapped/ai-gift-finder-guide" element={<AIGiftFinderGuide />} />
+
+        {/* SEO Blog Posts - For keyword ranking */}
+        <Route path="/wrapped/gifts-for-boyfriend" element={<GiftsForBoyfriend />} />
+        <Route path="/wrapped/gifts-for-girlfriend" element={<GiftsForGirlfriend />} />
+        <Route path="/wrapped/cute-hampers" element={<CuteGiftHampers />} />
+        <Route path="/wrapped/online-gift-shop" element={<OnlineGiftShopGuide />} />
+        <Route path="/wrapped/flowers" element={<FlowersAndBouquets />} />
+        <Route path="/wrapped/chocolates-cakes" element={<ChocolatesAndCakes />} />
+        <Route path="/wrapped/personalized-gifts" element={<PersonalizedGifts />} />
+        <Route path="/wrapped/anniversary-gifts" element={<AnniversaryGifts />} />
 
         {/* Secret Admin CMS - DO NOT SHARE THIS URL */}
         <Route path="/m7x2k9p4q8w1a5t3y6u0i2o4e6r8z3c5v7b9n1l0" element={<SecretAdminPage />} />
