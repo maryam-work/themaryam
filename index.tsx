@@ -1,22 +1,1105 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import App from './App';
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
 
-const rootElement = document.getElementById('root');
-if (!rootElement) {
-  throw new Error("Could not find root element to mount to");
+<head>
+  <!-- ========== PRIMARY META TAGS ========== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- ========== TITLE & SEO ========== -->
+  <title>The Maryam: Online Gift Shop India | AI Gift Finder | Personalized Gifts</title>
+  <meta name="description"
+    content="India's #1 AI-powered gift store. Find perfect gifts for boyfriend, girlfriend, husband, wife, parents, friends. Birthday gifts, anniversary gifts, wedding gifts, Diwali gifts, Rakhi gifts, Valentine gifts. Personalized & customized gifts with free delivery across India." />
+  <meta name="keywords"
+    content="online gift shop, gift delivery India, send gifts online, AI gift finder, personalized gifts, customized gifts, birthday gifts, anniversary gifts, wedding gifts, Diwali gifts, Rakhi gifts, Valentine gifts, Christmas gifts, Holi gifts, gifts for boyfriend, gifts for girlfriend, gifts for husband, gifts for wife, gifts for parents, gifts for mom, gifts for dad, gifts for brother, gifts for sister, gifts for best friend, couple gifts, romantic gifts, corporate gifts, photo gifts, name engraved gifts, unique gift ideas, gifts under 500, gifts under 1000, premium gifts, luxury gifts, handmade gifts, custom photo frames, personalized mugs, engraved jewelry, gift hampers, gift boxes, gift baskets, surprise gifts, same day delivery gifts, midnight delivery gifts, online gift shop India, best gift shop, The Maryam, Wrapy, gift shop Vadodara, gift shop Gujarat, gift delivery Mumbai, gift delivery Delhi, gift delivery Bangalore, gift delivery Ahmedabad, gift delivery Pune, gift delivery Hyderabad, gift delivery Chennai, marriage gifts, engagement gifts, baby shower gifts, new born baby gifts, housewarming gifts, farewell gifts, thank you gifts, sorry gifts, get well soon gifts, congratulations gifts, promotion gifts, retirement gifts, teacher gifts, Mother's Day gifts, Father's Day gifts, Friendship Day gifts, Women's Day gifts, Karwa Chauth gifts, Bhai Dooj gifts, New Year gifts, Valentine 2026 Gifts, Personalised Gift Banners, Premium Gift Categories, The Maryam Official, Neon Light Gifts, Home Decor Gifts, Photo Frames Online, Handcrafted Folds, Dried Flowers, Luxury Gift Hampers, Forever Flowers India, Custom Neon Signs" />
+  <meta name="author" content="The Maryam" />
+  <meta name="copyright" content="2026 The Maryam. All rights reserved." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow" />
+  <link rel="canonical" href="https://themaryam.in/" />
+  <meta name="revisit-after" content="1 days" />
+  <meta name="distribution" content="global" />
+  <meta name="rating" content="general" />
+  <meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <!-- ========== GEO TARGETING ========== -->
+  <meta name="geo.region" content="IN" />
+  <meta name="geo.placename" content="Vadodara, Gujarat, India" />
+  <meta name="geo.position" content="22.3072;73.1812" />
+  <meta name="ICBM" content="22.3072, 73.1812" />
+  <meta name="language" content="English" />
+  <meta http-equiv="content-language" content="en-IN" />
+
+  <!-- ========== FAVICON & ICONS (Absolute Paths for SEO) ========== -->
+  <link rel="icon" type="image/x-icon" href="https://themaryam.in/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://themaryam.in/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://themaryam.in/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="https://themaryam.in/android-chrome-192x192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="https://themaryam.in/android-chrome-512x512.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://themaryam.in/apple-touch-icon.png" />
+  <link rel="manifest" href="https://themaryam.in/site.webmanifest" />
+  <link rel="mask-icon" href="https://themaryam.in/favicon.ico" color="#f43f5e" />
+
+  <!-- ========== THEME & PWA ========== -->
+  <meta name="theme-color" content="#f43f5e" />
+  <meta name="msapplication-TileColor" content="#f43f5e" />
+  <meta name="msapplication-TileImage" content="https://themaryam.in/android-chrome-192x192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="The Maryam" />
+  <meta name="application-name" content="The Maryam" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="format-detection" content="telephone=yes" />
+  <meta name="HandheldFriendly" content="true" />
+
+  <!-- ========== OPEN GRAPH / FACEBOOK ========== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://themaryam.in/" />
+  <meta property="og:title" content="The Maryam: Online Gift Shop India | AI Gift Finder" />
+  <meta property="og:description"
+    content="India's #1 AI-powered gift store. Find perfect gifts for boyfriend, girlfriend, husband, wife, parents. Birthday, anniversary, wedding, Diwali gifts. Free delivery across India." />
+  <meta property="og:image" content="https://themaryam.in/android-chrome-512x512.png" />
+  <meta property="og:image:secure_url" content="https://themaryam.in/android-chrome-512x512.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:image:alt" content="The Maryam - AI Gift Finder & Online Gift Shop India" />
+  <meta property="og:site_name" content="The Maryam - World's #1 AI Gift Store" />
+  <meta property="og:locale" content="en_IN" />
+  <meta property="og:locale:alternate" content="hi_IN" />
+  <meta property="fb:app_id" content="" />
+
+  <!-- ========== TWITTER CARD ========== -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@wrapyindia" />
+  <meta name="twitter:creator" content="@wrapyindia" />
+  <meta name="twitter:url" content="https://themaryam.in/" />
+  <meta name="twitter:title" content="The Maryam: Online Gift Shop India | AI Gift Finder" />
+  <meta name="twitter:description"
+    content="India's #1 AI gift store. Find perfect gifts for every occasion - birthdays, anniversaries, weddings, festivals. Personalized gifts with free delivery." />
+  <meta name="twitter:image" content="https://themaryam.in/android-chrome-512x512.png" />
+  <meta name="twitter:image:alt" content="The Maryam - AI Gift Finder" />
+
+  <!-- ========== ALTERNATE DOMAINS ========== -->
+  <link rel="alternate" href="https://wrapy.in/" />
+
+  <!-- ========== HREFLANG (International SEO) ========== -->
+  <link rel="alternate" hreflang="en-IN" href="https://themaryam.in/" />
+  <link rel="alternate" hreflang="hi-IN" href="https://themaryam.in/" />
+  <link rel="alternate" hreflang="en" href="https://themaryam.in/" />
+  <link rel="alternate" hreflang="x-default" href="https://themaryam.in/" />
+
+  <!-- ========== PRECONNECT & DNS PREFETCH ========== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.pexels.com" />
+  <link rel="preconnect" href="https://cdn.shopify.com" />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+  <!-- ========== FONTS ========== -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&family=Roboto+Serif:opsz,wght@8..144,400;8..144,500;8..144,600;8..144,700&family=Roboto:wght@300;400;500;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- ========== TAILWIND CSS ========== -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ========== JSON-LD STRUCTURED DATA: ORGANIZATION ========== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://themaryam.in/#organization",
+    "name": "The Maryam",
+    "alternateName": ["Maryam Gifts", "The Maryam Gift Shop", "Maryam Online Store", "Wrapy", "Wrapy India"],
+    "url": "https://themaryam.in",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://themaryam.in/android-chrome-512x512.png",
+      "width": 512,
+      "height": 512
+    },
+    "image": "https://themaryam.in/android-chrome-512x512.png",
+    "description": "Personalized & Customized Gift Store. Discover perfect gifts for birthdays, anniversaries, weddings, festivals & all occasions with AI-powered recommendations.",
+    "foundingDate": "2024",
+    "founders": [
+      {
+        "@type": "Person",
+        "name": "The Maryam Team"
+      }
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Gorwa",
+      "addressLocality": "Vadodara",
+      "addressRegion": "Gujarat",
+      "postalCode": "390016",
+      "addressCountry": "IN"
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+91-7359033087",
+        "contactType": "customer service",
+        "email": "support@themaryam.in",
+        "availableLanguage": ["English", "Hindi", "Gujarati"],
+        "areaServed": ["IN", "US", "GB", "AE", "CA", "AU"],
+        "contactOption": ["TollFree", "HearingImpairedSupported"]
+      }
+    ],
+    "sameAs": [
+      "https://shop.themaryam.in",
+      "https://www.instagram.com/themaryam",
+      "https://www.facebook.com/wrapy",
+      "https://twitter.com/wrapyindia",
+      "https://www.youtube.com/@wrapyindia",
+      "https://wa.me/917359033087",
+      "https://wrapy.in"
+    ],
+    "areaServed": [
+      {
+        "@type": "Country",
+        "name": "India"
+      },
+      {
+        "@type": "City",
+        "name": "Vadodara"
+      }
+    ],
+    "priceRange": "₹₹",
+    "currenciesAccepted": "INR",
+    "paymentAccepted": "Credit Card, Debit Card, UPI, Net Banking, Cash on Delivery"
+  }
+  </script>
+
+  <!-- ========== JSON-LD STRUCTURED DATA: WEBSITE ========== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://themaryam.in/#website",
+    "url": "https://themaryam.in",
+    "name": "The Maryam",
+    "alternateName": ["Maryam Gifts", "Maryam Gift Shop"],
+    "description": "Personalized & Customized Gift Store - Find unique gifts for every occasion",
+    "publisher": {
+      "@id": "https://themaryam.in/#organization"
+    },
+    "inLanguage": ["en-IN", "hi-IN"],
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://themaryam.in/search?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- ========== JSON-LD STRUCTURED DATA: LOCAL BUSINESS ========== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "@id": "https://themaryam.in/#store",
+    "name": "The Maryam - Personalized Gift Store",
+    "image": "https://themaryam.in/android-chrome-512x512.png",
+    "url": "https://themaryam.in",
+    "telephone": "+91-7359033087",
+    "email": "support@themaryam.in",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Gorwa",
+      "addressLocality": "Vadodara",
+      "addressRegion": "Gujarat",
+      "postalCode": "390016",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 22.3072,
+      "longitude": 73.1812
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "priceRange": "₹₹",
+    "currenciesAccepted": "INR",
+    "paymentAccepted": "Credit Card, Debit Card, UPI, Net Banking, COD",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Personalized Gifts",
+      "itemListElement": [
+        {
+          "@type": "OfferCatalog",
+          "name": "Birthday Gifts"
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Anniversary Gifts"
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Wedding Gifts"
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Festival Gifts"
+        }
+      ]
+    }
+  }
+  </script>
+
+  <!-- ========== JSON-LD: BREADCRUMB ========== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://themaryam.in/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- ========== JSON-LD: SITE NAVIGATION (For Google Sitelinks) ========== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Site Navigation",
+    "description": "Main navigation links for The Maryam gift store",
+    "itemListElement": [
+      {
+        "@type": "SiteNavigationElement",
+        "position": 1,
+        "name": "AI Gift Finder",
+        "description": "Find perfect gifts using AI recommendations",
+        "url": "https://themaryam.in/search"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 2,
+        "name": "Gift Blog",
+        "description": "Gift guides, ideas, and inspiration",
+        "url": "https://themaryam.in/wrapped"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 3,
+        "name": "Gifts for Boyfriend",
+        "description": "Best gift ideas for your boyfriend",
+        "url": "https://themaryam.in/wrapped/gifts-for-boyfriend"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 4,
+        "name": "Gifts for Girlfriend",
+        "description": "Romantic gift ideas for your girlfriend",
+        "url": "https://themaryam.in/wrapped/gifts-for-girlfriend"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 5,
+        "name": "Gift Hampers",
+        "description": "Curated gift hampers and baskets",
+        "url": "https://themaryam.in/wrapped/cute-hampers"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 6,
+        "name": "Personalized Gifts",
+        "description": "Custom and personalized gift ideas",
+        "url": "https://themaryam.in/wrapped/personalized-gifts"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 7,
+        "name": "Flowers",
+        "description": "Fresh flower bouquets and arrangements",
+        "url": "https://themaryam.in/wrapped/flowers"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 8,
+        "name": "Neon Light Gifts",
+        "description": "Custom neon signs and light gifts",
+        "url": "https://themaryam.in/search?q=Neon+Lights"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 9,
+        "name": "Home Decor",
+        "description": "Elegant home decor and showpieces",
+        "url": "https://themaryam.in/search?q=Home+Decor"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 10,
+        "name": "Forever Flowers",
+        "description": "Dried flowers that last forever",
+        "url": "https://themaryam.in/search?q=Dried+Flowers"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 11,
+        "name": "Photo Frames",
+        "description": "Premium photo frames for memories",
+        "url": "https://themaryam.in/search?q=Photo+Frames"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 12,
+        "name": "Shop All Gifts",
+        "description": "Browse our complete gift collection",
+        "url": "https://shop.themaryam.in"
+      }
+    ]
+  }
+  </script>
+
+  <!-- ========== JSON-LD: PRODUCT ITEM LIST (For Google Shopping) ========== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Featured Personalized Gifts",
+    "description": "Best-selling personalized and customized gifts from The Maryam",
+    "url": "https://themaryam.in/",
+    "numberOfItems": 3,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Product",
+          "name": "Personalized Photo Frame",
+          "description": "Custom photo frame with name engraving, perfect for birthdays and anniversaries",
+          "url": "https://themaryam.in/search?q=Photo+Frames",
+          "image": "https://themaryam.in/categories/frames.png",
+          "brand": {
+            "@type": "Brand",
+            "name": "The Maryam"
+          },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "INR",
+            "price": "599",
+            "priceValidUntil": "2026-12-31",
+            "availability": "https://schema.org/InStock",
+            "url": "https://themaryam.in/search?q=Photo+Frames",
+            "itemCondition": "https://schema.org/NewCondition",
+            "hasMerchantReturnPolicy": {
+              "@type": "MerchantReturnPolicy",
+              "applicableCountry": "IN",
+              "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+              "merchantReturnDays": 7,
+              "returnMethod": "https://schema.org/ReturnByMail",
+              "returnFees": "https://schema.org/FreeReturn"
+            },
+            "seller": {
+              "@type": "Organization",
+              "name": "The Maryam"
+            },
+            "shippingDetails": {
+              "@type": "OfferShippingDetails",
+              "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0",
+                "currency": "INR"
+              },
+              "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": "IN"
+              },
+              "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 1,
+                  "maxValue": 3,
+                  "unitCode": "DAY"
+                },
+                "transitTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 3,
+                  "maxValue": 7,
+                  "unitCode": "DAY"
+                }
+              }
+            }
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "156"
+          },
+          "review": {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "Priya S."
+            },
+            "datePublished": "2026-01-20",
+            "reviewBody": "Beautiful quality frame! The engraving was perfect and delivery was super fast."
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Product",
+          "name": "Customized Couple Mugs",
+          "description": "Set of 2 personalized mugs with custom names and photos for couples",
+          "url": "https://themaryam.in/search?q=Anniversary+Gifts",
+          "image": "https://themaryam.in/categories/anniversary.png",
+          "brand": {
+            "@type": "Brand",
+            "name": "The Maryam"
+          },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "INR",
+            "price": "499",
+            "priceValidUntil": "2026-12-31",
+            "availability": "https://schema.org/InStock",
+            "url": "https://themaryam.in/search?q=Anniversary+Gifts",
+            "itemCondition": "https://schema.org/NewCondition",
+            "hasMerchantReturnPolicy": {
+              "@type": "MerchantReturnPolicy",
+              "applicableCountry": "IN",
+              "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+              "merchantReturnDays": 7,
+              "returnMethod": "https://schema.org/ReturnByMail",
+              "returnFees": "https://schema.org/FreeReturn"
+            },
+            "seller": {
+              "@type": "Organization",
+              "name": "The Maryam"
+            },
+            "shippingDetails": {
+              "@type": "OfferShippingDetails",
+              "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0",
+                "currency": "INR"
+              },
+              "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": "IN"
+              },
+              "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 1,
+                  "maxValue": 3,
+                  "unitCode": "DAY"
+                },
+                "transitTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 3,
+                  "maxValue": 7,
+                  "unitCode": "DAY"
+                }
+              }
+            }
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.7",
+            "reviewCount": "89"
+          },
+          "review": {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "Rahul M."
+            },
+            "datePublished": "2026-01-22",
+            "reviewBody": "Got this for my anniversary. My wife loved it! The print quality is amazing."
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Product",
+          "name": "Name Engraved Jewelry",
+          "description": "Premium quality jewelry with custom name engraving",
+          "url": "https://themaryam.in/search?q=Personalized+Gifts",
+          "image": "https://themaryam.in/categories/personalised.png",
+          "brand": {
+            "@type": "Brand",
+            "name": "The Maryam"
+          },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "INR",
+            "price": "899",
+            "priceValidUntil": "2026-12-31",
+            "availability": "https://schema.org/InStock",
+            "url": "https://themaryam.in/search?q=Personalized+Gifts",
+            "itemCondition": "https://schema.org/NewCondition",
+            "hasMerchantReturnPolicy": {
+              "@type": "MerchantReturnPolicy",
+              "applicableCountry": "IN",
+              "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+              "merchantReturnDays": 7,
+              "returnMethod": "https://schema.org/ReturnByMail",
+              "returnFees": "https://schema.org/FreeReturn"
+            },
+            "seller": {
+              "@type": "Organization",
+              "name": "The Maryam"
+            },
+            "shippingDetails": {
+              "@type": "OfferShippingDetails",
+              "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0",
+                "currency": "INR"
+              },
+              "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": "IN"
+              },
+              "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 1,
+                  "maxValue": 3,
+                  "unitCode": "DAY"
+                },
+                "transitTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 3,
+                  "maxValue": 7,
+                  "unitCode": "DAY"
+                }
+              }
+            }
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "124"
+          },
+          "review": {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "Sneha K."
+            },
+            "datePublished": "2026-01-25",
+            "reviewBody": "The finishing of the jewelry is top notch. Looks very expensive but is affordable."
+          }
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ========== JSON-LD: FAQ SCHEMA (E-E-A-T: Expertise) ========== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is The Maryam?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Maryam is a personalized and customized gift store that helps you find the perfect gift for every occasion. We offer AI-powered gift recommendations, custom engraving, photo printing, and a wide range of unique gift items for birthdays, anniversaries, weddings, festivals, and more."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does your AI gift finder work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our AI gift finder analyzes your requirements like the occasion, recipient's preferences, budget, and relationship to suggest the most suitable gifts. Simply describe who the gift is for and what the occasion is, and our AI will recommend personalized gift options from our curated collection."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you deliver across India?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we deliver personalized gifts across all major cities in India including Mumbai, Delhi, Bangalore, Hyderabad, Chennai, Kolkata, Pune, Ahmedabad, Vadodara, and more. We also offer international shipping to select countries."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does delivery take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Standard delivery takes 5-7 business days across India. Express delivery is available for select pin codes with 2-3 day delivery. Personalized and customized items may require 1-3 additional days for preparation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What payment methods do you accept?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We accept all major payment methods including Credit Cards, Debit Cards, UPI (Google Pay, PhonePe, Paytm), Net Banking, and Cash on Delivery (COD) for select locations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I customize any product?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most of our products can be customized with names, photos, messages, or dates. Look for the 'Customize' button on product pages. Our team ensures high-quality printing and engraving on all personalized items."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the best gifts for boyfriend?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Best gifts for boyfriend include personalized photo frames, custom wallets, engraved watches, unique keychains, grooming kits, tech accessories, and romantic gift hampers. Our AI gift finder can recommend the perfect gift based on his interests."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the best gifts for girlfriend?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Best gifts for girlfriend include personalized jewelry, custom photo books, flower bouquets, beauty gift sets, romantic keepsakes, designer handbags, and customized perfume sets. Find her perfect gift with our AI recommendations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are good birthday gift ideas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Good birthday gift ideas include personalized birthday cards, custom cakes, photo frames with memories, birthday hampers, experience gifts, gadgets, jewelry, and unique handmade items. Browse our birthday gifts collection starting from ₹299."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are popular anniversary gifts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Popular anniversary gifts include personalized couple photo frames, engraved jewelry, romantic dinner experiences, customized anniversary cakes, couples gift sets, and memory books. Shop our anniversary collection with same-day delivery."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the best Diwali gifts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Best Diwali gifts include premium dry fruit boxes, silver idols, home decor items, personalized diyas, sweet hampers, corporate gift sets, and festive clothing. Order Diwali gifts online for delivery across India."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What Rakhi gifts can I send to my brother?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Send Rakhi gifts to brother including personalized rakhis, chocolate hampers, grooming sets, watches, wallets, gadgets, and gift combos. We deliver Rakhi gifts across India and internationally."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are romantic Valentine's Day gifts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Romantic Valentine's Day gifts include red rose bouquets, heart-shaped chocolates, personalized love gifts, couple jewelry, teddy bears, romantic dinner experiences, and customized valentine cards. Order now for February 14 delivery."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What gifts should I give for a wedding?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wedding gifts include personalized couple name plates, silver items, home appliances, bedding sets, dinner sets, cash envelopes, and blessing cards. Browse our wedding gift collection for the perfect shaadi gift."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are good gifts for parents?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Good gifts for parents include personalized family photo frames, health gadgets, spiritual items, home decor, massage devices, gardening sets, and experience gifts. Show your love with our curated parent gifts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are gifts under ₹500?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Gifts under ₹500 include personalized mugs, keychains, photo magnets, plants, chocolates, scented candles, and small decor items. Budget-friendly gifts with premium quality from The Maryam."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer same-day delivery?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we offer same-day delivery in major cities including Mumbai, Delhi, Bangalore, Hyderabad, Ahmedabad, and Vadodara. Order before 2 PM for same-day delivery. Midnight delivery is also available for special occasions."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ========== JSON-LD: HOW-TO SCHEMA (E-E-A-T: Experience/Expertise) ========== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Order Personalized Gifts from The Maryam",
+    "description": "Step-by-step guide to ordering customized gifts from The Maryam store",
+    "totalTime": "PT5M",
+    "estimatedCost": {
+      "@type": "MonetaryAmount",
+      "currency": "INR",
+      "value": "499"
+    },
+    "supply": [
+      {
+        "@type": "HowToSupply",
+        "name": "Gift recipient details"
+      },
+      {
+        "@type": "HowToSupply",
+        "name": "Custom text or photos for personalization"
+      }
+    ],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Browse or Use AI Gift Finder",
+        "text": "Visit themaryam.in and browse our collections or use the AI gift finder by describing who the gift is for and the occasion",
+        "url": "https://themaryam.in/"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Select Your Gift",
+        "text": "Choose the perfect gift from our curated recommendations or browse by category",
+        "url": "https://shop.themaryam.in/"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Personalize Your Gift",
+        "text": "Add custom names, photos, messages, or dates to make the gift unique",
+        "url": "https://shop.themaryam.in/"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Complete Your Order",
+        "text": "Add to cart, enter shipping details, and complete payment using your preferred method",
+        "url": "https://shop.themaryam.in/checkout"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Track and Receive",
+        "text": "Track your order and receive your personalized gift at your doorstep",
+        "url": "https://shop.themaryam.in/account"
+      }
+    ]
+  }
+  </script>
+
+  <!-- ========== JSON-LD: SPEAKABLE (Voice Search Optimization) ========== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", ".hero-description", ".faq-answer"]
+    },
+    "name": "The Maryam - Personalized Gift Store"
+  }
+  </script>
+
+  <!-- ========== JSON-LD: MERCHANT RETURN POLICY ========== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MerchantReturnPolicy",
+    "@id": "https://themaryam.in/#returnpolicy",
+    "applicableCountry": "IN",
+    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+    "merchantReturnDays": "7",
+    "returnMethod": "https://schema.org/ReturnByMail",
+    "returnFees": "https://schema.org/FreeReturn",
+    "returnPolicyCountry": {
+      "@type": "Country",
+      "name": "India"
+    }
+  }
+  </script>
+
+  <!-- ========== TAILWIND CONFIG ========== -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Outfit', 'sans-serif'],
+            serif: ['Roboto Serif', 'Georgia', 'serif'],
+          },
+          colors: {
+            primary: '#000000',
+            secondary: '#A1A1A1',
+            accent: '#F5F5F5',
+            brand: '#6366f1', // Indigo for AI feel
+            'brand-dark': '#4338ca',
+          },
+          animation: {
+            'blob': 'blob 7s infinite',
+            'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'gradient-x': 'gradient-x 15s ease infinite',
+            'marquee': 'marquee 25s linear infinite',
+            'marquee-reverse': 'marquee-reverse 25s linear infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'float-delayed': 'float 6s ease-in-out 3s infinite',
+            'glow': 'glow 2s ease-in-out infinite alternate',
+            'scan': 'scan 2.5s linear infinite',
+            'shimmer': 'shimmer 3s linear infinite',
+            'slide-right': 'slide-right 0.3s ease-out forwards',
+          },
+          keyframes: {
+            blob: {
+              '0%': { transform: 'translate(0px, 0px) scale(1)' },
+              '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+              '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+              '100%': { transform: 'translate(0px, 0px) scale(1)' },
+            },
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            'gradient-x': {
+              '0%, 100%': {
+                'background-size': '200% 200%',
+                'background-position': 'left center'
+              },
+              '50%': {
+                'background-size': '200% 200%',
+                'background-position': 'right center'
+              },
+            },
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-100%)' },
+            },
+            'marquee-reverse': {
+              '0%': { transform: 'translateX(-100%)' },
+              '100%': { transform: 'translateX(0%)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            glow: {
+              '0%': { boxShadow: '0 0 5px rgba(99, 102, 241, 0.2)' },
+              '100%': { boxShadow: '0 0 20px rgba(99, 102, 241, 0.6)' },
+            },
+            scan: {
+              '0%': { top: '-5%', opacity: '0' },
+              '10%': { opacity: '1' },
+              '90%': { opacity: '1' },
+              '100%': { top: '105%', opacity: '0' },
+            },
+            shimmer: {
+              '0%': { backgroundPosition: '-100% 0' },
+              '100%': { backgroundPosition: '200% 0' },
+            },
+            'slide-right': {
+              '0%': { transform: 'translateX(-10px)', opacity: '0' },
+              '100%': { transform: 'translateX(0)', opacity: '1' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Lenis Smooth Scrolling */
+    html.lenis,
+    html.lenis body {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    .lenis.lenis-scrolling iframe {
+      pointer-events: none;
+    }
+
+    /* Glow animation for upcoming occasions */
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 10px rgba(250, 204, 21, 0.4), 0 0 20px rgba(250, 204, 21, 0.2);
+      }
+
+      to {
+        box-shadow: 0 0 20px rgba(250, 204, 21, 0.6), 0 0 40px rgba(250, 204, 21, 0.4);
+      }
+    }
+
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .ai-gradient-text {
+      background: linear-gradient(to right, #4f46e5, #ec4899, #8b5cf6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: gradient-x 3s linear infinite;
+    }
+
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+
+    /* GSAP-style Button Hover Effect */
+    .btn-magnet {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-magnet::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--hover-color, #000);
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+      z-index: 0;
+    }
+
+    .btn-magnet:hover::before {
+      transform: translateY(0);
+    }
+
+    .btn-magnet span {
+      position: relative;
+      z-index: 1;
+      transition: color 0.3s ease;
+    }
+
+    .btn-magnet:hover span {
+      color: var(--hover-text, #fff);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
 }
+</script>
+  <link rel="stylesheet" href="/index.css">
+</head>
 
-const root = ReactDOM.createRoot(rootElement);
-root.render(
-  <React.StrictMode>
-    <HelmetProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </HelmetProvider>
-  </React.StrictMode>
-);
+<body>
+  <!-- Hidden Semantic Content for SEO Crawlers (sr-only = screen reader only, legitimate semantic enrichment) -->
+  <div class="sr-only" aria-hidden="true">
+    <h1>Online Gift Shop India - AI Gift Finder - The Maryam</h1>
+    <p>
+      Welcome to The Maryam, India's #1 AI-powered online gift shop. Find the perfect gifts for every occasion including
+      birthday gifts, anniversary gifts, wedding gifts, engagement gifts, Diwali gifts, Rakhi gifts, Valentine's Day
+      gifts, Christmas gifts, Holi gifts, New Year gifts, Mother's Day gifts, Father's Day gifts, Friendship Day gifts,
+      Women's Day gifts, Karwa Chauth gifts, and Bhai Dooj gifts.
+
+      Discover personalized gifts for boyfriend, gifts for girlfriend, gifts for husband, gifts for wife, gifts for
+      parents, gifts for mom, gifts for dad, gifts for brother, gifts for sister, gifts for best friend, couple gifts,
+      romantic gifts, and corporate gifts.
+
+      Browse our collection of personalized photo frames, custom mugs, engraved jewelry, gift hampers, gift boxes,
+      flower bouquets, chocolate boxes, teddy bears, and unique handmade gifts.
+
+      We deliver gifts across India including Mumbai, Delhi, Bangalore, Hyderabad, Ahmedabad, Vadodara, Pune, Chennai,
+      Kolkata, Jaipur, Lucknow, and all major cities. Same-day delivery and midnight delivery available.
+
+      Budget-friendly gifts under ₹500, gifts under ₹1000, premium luxury gifts, and customized gifts for all occasions.
+      World's #1 AI Gift Store with smart gift recommendations.
+    </p>
+  </div>
+
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>
