@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { TopBar, Header, Footer } from './components/Layout';
+import { TopBar, Header, Footer, BirthdayReminderPopup } from './components/Layout';
 import {
   Hero,
   CategoriesGrid,
@@ -8,6 +8,7 @@ import {
   AIResults,
   CategoryArches,
   TrendingLevitation,
+  ExploreGifts,
   TechLove,
   CollectionsBento,
   ProcessFlow,
@@ -74,7 +75,7 @@ const HomePage: React.FC = () => {
         title="The Maryam: Online Gift Shop India | AI Gift Finder"
         description="India's #1 AI-powered gift store. Find perfect personalized gifts for birthdays, anniversaries, weddings, and festivals. Free delivery across 500+ cities."
         canonical="/"
-        keywords={['online gift shop', 'personalized gifts', 'AI gift finder', 'birthday gifts', 'anniversary gifts', 'wedding gifts', 'same day delivery']}
+        keywords={['online gift shop', 'personalized gifts', 'AI gift finder', 'birthday gifts', 'anniversary gifts', 'wedding gifts', 'same day delivery', 'neon light gifts', 'home decor', 'photo frames', 'forever flowers', 'handwritten letters', 'paper folds', 'hampers for her']}
         schema={{
           "@context": "https://schema.org",
           "@graph": [
@@ -98,7 +99,8 @@ const HomePage: React.FC = () => {
                 "Special Gifts", "Valentine Gifts", "Miss You Gifts",
                 "Love You Gifts", "Congratulations Gifts", "Cakes",
                 "Gift Hampers", "Photo Frames", "Wedding Gifts",
-                "Friendship Gifts", "Corporate Gifts", "Handwritten Letters"
+                "Friendship Gifts", "Corporate Gifts", "Handwritten Letters",
+                "Neon Light Gifts", "Home Decor", "Forever Flowers", "Paper Folds"
               ],
               "url": [
                 "https://themaryam.in/search?q=Anniversary+Gifts",
@@ -118,14 +120,18 @@ const HomePage: React.FC = () => {
                 "https://themaryam.in/search?q=Wedding+Gifts",
                 "https://themaryam.in/search?q=Friendship+Gifts",
                 "https://themaryam.in/search?q=Corporate+Gifts",
-                "https://themaryam.in/search?q=Handwritten+Letters"
+                "https://themaryam.in/search?q=Handwritten+Letters",
+                "https://themaryam.in/search?q=Neon+Light+Gifts",
+                "https://themaryam.in/search?q=Home+Decor",
+                "https://themaryam.in/search?q=Forever+Flowers",
+                "https://themaryam.in/search?q=Paper+Folds"
               ]
             }
           ]
         }}
       />
-      <TopBar />
       <Header />
+      <TopBar />
       <main className="flex flex-col gap-0 w-full overflow-x-hidden">
         <Hero onSearch={handleSearch} isLoading={isLoading} />
         <CategoriesGrid />
@@ -134,13 +140,11 @@ const HomePage: React.FC = () => {
         <AIResults visible={showResults} products={matchedProducts} />
         <CategoryArches />
         <TrendingLevitation />
-        <TechLove />
+        <ExploreGifts />
         <CollectionsBento />
-        <ProcessFlow />
-        <LoveWall />
-        <UnboxingStream />
       </main>
       <Footer />
+      <BirthdayReminderPopup />
     </>
   );
 };
