@@ -75,7 +75,7 @@ const HomePage: React.FC = () => {
         title="The Maryam: Online Gift Shop India | AI Gift Finder"
         description="India's #1 AI-powered gift store. Find perfect personalized gifts for birthdays, anniversaries, weddings, and festivals. Free delivery across 500+ cities."
         canonical="/"
-        keywords={['online gift shop', 'personalized gifts', 'AI gift finder', 'birthday gifts', 'anniversary gifts', 'wedding gifts', 'same day delivery', 'neon light gifts', 'home decor', 'photo frames', 'forever flowers', 'handwritten letters', 'paper folds', 'hampers for her']}
+        keywords={['online gift shop', 'personalized gifts', 'AI gift finder', 'birthday gifts', 'anniversary gifts', 'wedding gifts', 'same day delivery', 'neon light gifts', 'home decor gifts', 'photo frames online', 'forever flowers', 'gift hampers', 'handcrafted gifts']}
         schema={{
           "@context": "https://schema.org",
           "@graph": [
@@ -100,7 +100,8 @@ const HomePage: React.FC = () => {
                 "Love You Gifts", "Congratulations Gifts", "Cakes",
                 "Gift Hampers", "Photo Frames", "Wedding Gifts",
                 "Friendship Gifts", "Corporate Gifts", "Handwritten Letters",
-                "Neon Light Gifts", "Home Decor", "Forever Flowers", "Paper Folds"
+                "Neon Light Gifts", "Home Decor", "Forever Flowers",
+                "Handcrafted Folds", "Her Hamper", "Letters"
               ],
               "url": [
                 "https://themaryam.in/search?q=Anniversary+Gifts",
@@ -121,10 +122,12 @@ const HomePage: React.FC = () => {
                 "https://themaryam.in/search?q=Friendship+Gifts",
                 "https://themaryam.in/search?q=Corporate+Gifts",
                 "https://themaryam.in/search?q=Handwritten+Letters",
-                "https://themaryam.in/search?q=Neon+Light+Gifts",
+                "https://themaryam.in/search?q=Neon+Lights",
                 "https://themaryam.in/search?q=Home+Decor",
-                "https://themaryam.in/search?q=Forever+Flowers",
-                "https://themaryam.in/search?q=Paper+Folds"
+                "https://themaryam.in/search?q=Dried+Flowers",
+                "https://themaryam.in/search?q=Folds",
+                "https://themaryam.in/search?q=Her+Hamper",
+                "https://themaryam.in/search?q=Letters"
               ]
             }
           ]
