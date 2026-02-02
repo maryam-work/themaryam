@@ -354,6 +354,22 @@ export const Hero = ({ onSearch, isLoading }: { onSearch: (query: string) => voi
                 </div>
             </div>
 
+            {/* Ratings Banner - Mobile Only */}
+            <div className="px-4 pb-4 lg:hidden flex justify-center">
+                <a
+                    href="https://maps.app.goo.gl/VMqijduYYiZZjSEB9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-[85%] block transition-opacity duration-200 active:opacity-75"
+                >
+                    <img
+                        src="/ratings_banner.png"
+                        alt="Customer Ratings"
+                        className="w-full h-auto rounded-xl"
+                    />
+                </a>
+            </div>
+
             {/* Category Grid - Desktop Version (8 cols in one row) */}
             <div className="hidden lg:block relative z-20 px-8 py-6">
                 <div className="border border-rose-400 rounded-2xl bg-white overflow-hidden p-4">
@@ -1011,75 +1027,46 @@ export const AIResults = ({ visible, products }: { visible: boolean; products: M
 }
 
 // =============================================================================
-// 1. SHOP BY OCCASION - SMART AUTO-HIGHLIGHT CAROUSEL
+// 1. SHOP BY OCCASION - GRID LAYOUT (30 ITEMS)
 // =============================================================================
 
-// All occasions with optional dates (MM-DD format for recurring events)
+// Exactly 30 occasions as specified by user
 const allOccasions = [
-    // === SPECIAL REQUESTED ITEMS (WITH IMAGES) ===
-    { title: "For Him", subtitle: "Gifts that speak his style", image: "/occasions/forhim.png", priority: true },
-    { title: "For Her", subtitle: "Curated picks she'll adore", image: "/occasions/forher.png", priority: true },
-    { title: "Couples", subtitle: "Celebrate your bond", image: "/occasions/couples.png", priority: true },
-    { title: "Birthday", subtitle: "Celebrate their day", image: "/occasions/birthday.png", priority: true },
-    { title: "Valentine's Day", subtitle: "Day of love", image: "/occasions/valentine_day.png", priority: true },
-    { title: "Wedding", subtitle: "Make their day special", image: "/occasions/wedding.png", priority: true },
-    { title: "Anniversary", subtitle: "Cherish the moments", image: "/occasions/Anniversary.png", priority: true },
-    { title: "Engagement", subtitle: "New beginnings", image: "/occasions/Engagement.png", priority: true },
+    // Row 1: Recipients & Relationships (1-10) - ALL HAVE IMAGES
+    { id: 1, title: "For Him", subtitle: "Gifts that speak his style", image: "/occasions/forhim.png" },
+    { id: 2, title: "For Her", subtitle: "Curated picks she'll adore", image: "/occasions/forher.png" },
+    { id: 3, title: "Couples", subtitle: "Celebrate your bond", image: "/occasions/couples.png" },
+    { id: 4, title: "Birthday", subtitle: "Celebrate their day", image: "/occasions/birthday.png" },
+    { id: 5, title: "Valentine Day", subtitle: "Day of love", image: "/occasions/valentine_day.png", date: "02-14" },
+    { id: 6, title: "Wedding", subtitle: "Make their day special", image: "/occasions/wedding.png" },
+    { id: 7, title: "Anniversary", subtitle: "Cherish the moments", image: "/occasions/Anniversary.png" },
+    { id: 8, title: "Engagement", subtitle: "New beginnings", image: "/occasions/Engagement.png" },
+    { id: 9, title: "Baby Shower", subtitle: "Welcome the little one", image: "/occasions/baby_shower.png" },
+    { id: 10, title: "Graduation", subtitle: "Achievement unlocked", image: "/occasions/Graduation.png" },
 
-    // === INDIAN FESTIVALS ===
-    { title: "Diwali", subtitle: "Festival of lights", color: "bg-[#fff3b0]", icon: "🪔", date: "11-01" },
-    { title: "Holi", subtitle: "Colors of joy", color: "bg-[#ff9a9e]", icon: "🎨", date: "03-14" },
-    { title: "Raksha Bandhan", subtitle: "Bond of protection", color: "bg-[#ffd6e0]", icon: "🧵", date: "08-19" },
-    { title: "Ganesh Chaturthi", subtitle: "Welcome Lord Ganesha", color: "bg-[#ffcc80]", icon: "🐘", date: "09-07" },
-    { title: "Navratri", subtitle: "Nine nights of devotion", color: "bg-[#ff8a80]", icon: "🔱", date: "10-03" },
-    { title: "Durga Puja", subtitle: "Goddess Durga's blessings", color: "bg-[#ea80fc]", icon: "🙏", date: "10-10" },
-    { title: "Dussehra", subtitle: "Victory of good", color: "bg-[#ffab40]", icon: "🏹", date: "10-12" },
-    { title: "Karwa Chauth", subtitle: "Love & devotion", color: "bg-[#ff80ab]", icon: "🌙", date: "10-20" },
-    { title: "Bhai Dooj", subtitle: "Sibling love", color: "bg-[#80d8ff]", icon: "🤗", date: "11-03" },
-    { title: "Makar Sankranti", subtitle: "Harvest festival", color: "bg-[#b9f6ca]", icon: "🪁", date: "01-14" },
-    { title: "Pongal", subtitle: "Thai Pongal celebrations", color: "bg-[#fff59d]", icon: "🍚", date: "01-15" },
-    { title: "Lohri", subtitle: "Bonfire festival", color: "bg-[#ffcc80]", icon: "🔥", date: "01-13" },
-    { title: "Onam", subtitle: "Kerala's grand festival", color: "bg-[#c5e1a5]", icon: "🌸", date: "09-05" },
-    { title: "Eid", subtitle: "Festival of joy", color: "bg-[#b2dfdb]", icon: "🌙", date: "04-10" },
-    { title: "Christmas", subtitle: "Season of giving", color: "bg-[#ef9a9a]", icon: "🎄", date: "12-25" },
+    // Row 2: Life Events & Occasions (11-20) - ALL HAVE IMAGES
+    { id: 11, title: "New Job", subtitle: "Career celebrations", image: "/occasions/New_job.png" },
+    { id: 12, title: "Promotion", subtitle: "Moving up!", image: "/occasions/Promotion.png" },
+    { id: 13, title: "Retirement", subtitle: "New chapter begins", image: "/occasions/Retirement.png" },
+    { id: 14, title: "New Home Vibes", subtitle: "Housewarming gifts", image: "/occasions/New_home.png" },
+    { id: 15, title: "Date Night", subtitle: "Romantic gestures", image: "/occasions/date_night.png" },
+    { id: 16, title: "Farewell", subtitle: "Memories to cherish", image: "/occasions/Farewell.png" },
+    { id: 17, title: "Get Well Soon", subtitle: "Sending love", image: "/occasions/get_well_soon.png" },
+    { id: 18, title: "Thank You", subtitle: "Express gratitude", image: "/occasions/thank_you.png" },
+    { id: 19, title: "Apology", subtitle: "Make it right", image: "/occasions/iam_sorry.png" },
+    { id: 20, title: "Congratulations", subtitle: "Celebrate success", image: "/occasions/Congratulations.png" },
 
-    // === GLOBAL CELEBRATIONS ===
-    { title: "New Year", subtitle: "Fresh beginnings", color: "bg-[#b2ebf2]", icon: "🎊", date: "01-01" },
-    // Valentine was here, now moved up
-    { title: "Mother's Day", subtitle: "Celebrate mom", color: "bg-[#f48fb1]", icon: "👩", date: "05-11" },
-    { title: "Father's Day", subtitle: "Honor dad", color: "bg-[#90caf9]", icon: "👨", date: "06-15" },
-    { title: "Friendship Day", subtitle: "For your besties", color: "bg-[#c5f9d7]", icon: "🤝", date: "08-03" },
-    { title: "Women's Day", subtitle: "Celebrate her", color: "bg-[#ce93d8]", icon: "👑", date: "03-08" },
-    { title: "Teacher's Day", subtitle: "Thank your guru", color: "bg-[#81d4fa]", icon: "📚", date: "09-05" },
-    { title: "Children's Day", subtitle: "For little ones", color: "bg-[#fff176]", icon: "🧸", date: "11-14" },
-
-    // === LIFE EVENTS ===
-    // Wedding, Anniversary, Engagement moved up
-    { title: "Baby Shower", subtitle: "Welcome the little one", color: "bg-[#fff9c4]", icon: "👶" },
-    { title: "Graduation", subtitle: "Achievement unlocked", color: "bg-[#dcedc8]", icon: "🎓" },
-    { title: "New Job", subtitle: "Career celebrations", color: "bg-[#b3e5fc]", icon: "💼" },
-    { title: "Promotion", subtitle: "Moving up!", color: "bg-[#c8e6c9]", icon: "📈" },
-    { title: "Retirement", subtitle: "New chapter begins", color: "bg-[#ffe0b2]", icon: "🏖️" },
-    { title: "Housewarming", subtitle: "New home vibes", color: "bg-[#d4f0d4]", icon: "🏡" },
-
-    // === OCCASIONS ===
-    { title: "Date Night", subtitle: "Romantic gestures", color: "bg-[#ffcce0]", icon: "🌹" },
-    { title: "Farewell", subtitle: "Memories to cherish", color: "bg-[#f0e0d0]", icon: "✈️" },
-    { title: "Get Well Soon", subtitle: "Sending love", color: "bg-[#e1f5fe]", icon: "💐" },
-    { title: "Thank You", subtitle: "Express gratitude", color: "bg-[#fff8e1]", icon: "🙏" },
-    { title: "Apology", subtitle: "Make it right", color: "bg-[#fce4ec]", icon: "💝" },
-    { title: "Congratulations", subtitle: "Celebrate success", color: "bg-[#e8f5e9]", icon: "🎉" },
-    { title: "Just Because", subtitle: "No reason needed", color: "bg-[#f3e5f5]", icon: "✨" },
-
-    // === RELATIONSHIPS ===
-    { title: "Parents", subtitle: "Love wrapped in memories", color: "bg-[#77d2f3]", icon: "🏠" },
-    { title: "Kids", subtitle: "Fun gifts they'll treasure", color: "bg-[#fff3b0]", icon: "🎈" },
-    { title: "Grandparents", subtitle: "Honor their wisdom", color: "bg-[#d7ccc8]", icon: "👴" },
-    { title: "Siblings", subtitle: "Sibling love", color: "bg-[#b2dfdb]", icon: "👫" },
-    { title: "Besties", subtitle: "For friends like family", color: "bg-[#c5f9d7]", icon: "🤝" },
-    { title: "Colleagues", subtitle: "Work friendships", color: "bg-[#cfd8dc]", icon: "👥" },
-    { title: "Boss", subtitle: "Professional appreciation", color: "bg-[#d1c4e9]", icon: "🤵" },
-    { title: "Teachers", subtitle: "Gratitude for mentors", color: "bg-[#b2ebf2]", icon: "✏️" },
+    // Row 3: Relationships & Festival (21-30) - ALL HAVE IMAGES NOW
+    { id: 21, title: "Just Because", subtitle: "No reason needed", image: "/occasions/just_because.png" },
+    { id: 22, title: "Parents", subtitle: "Love wrapped in memories", image: "/occasions/parents.png" },
+    { id: 23, title: "Kids", subtitle: "Fun gifts they'll treasure", image: "/occasions/Kids.png" },
+    { id: 24, title: "Grandparents", subtitle: "Honor their wisdom", image: "/occasions/Grandparents.png" },
+    { id: 25, title: "Siblings", subtitle: "Sibling love", image: "/occasions/Siblings.png" },
+    { id: 26, title: "Besties", subtitle: "For friends like family", image: "/occasions/besties.png" },
+    { id: 27, title: "Colleagues", subtitle: "Work friendships", image: "/occasions/Colleagues.png" },
+    { id: 28, title: "Boss", subtitle: "Professional appreciation", image: "/occasions/Boss.png" },
+    { id: 29, title: "Teachers", subtitle: "Gratitude for mentors", image: "/occasions/Teachers.png" },
+    { id: 30, title: "Diwali", subtitle: "Festival of lights", image: "/occasions/diwali.png", date: "11-01" },
 ];
 
 // Function to check if an occasion is upcoming (within next 30 days)
@@ -1104,174 +1091,76 @@ const isUpcoming = (dateStr: string | undefined): { upcoming: boolean; daysLeft:
     return { upcoming: daysLeft <= 30 && daysLeft >= 0, daysLeft };
 };
 
-// Sort occasions: priority first, then 2 closest upcoming festivals, then non-festivals, then all festivals at end
+// Sort occasions: upcoming festivals come first, then rest in original order
 const getSortedOccasions = () => {
-    const priorityItems = allOccasions.filter(o => o.priority);
-    const otherItems = allOccasions.filter(o => !o.priority);
+    const withUpcoming = allOccasions.map(o => ({
+        ...o,
+        ...isUpcoming((o as any).date)
+    }));
 
-    // Separate festivals (items with dates) from non-festivals
-    const festivals = otherItems.filter(o => o.date);
-    const nonFestivals = otherItems.filter(o => !o.date);
-
-    // Find upcoming festivals sorted by days left, take top 2
-    const upcomingFestivals = festivals
-        .map(o => ({ ...o, ...isUpcoming(o.date) }))
+    // Get upcoming festivals
+    const upcomingFestivals = withUpcoming
         .filter(o => o.upcoming)
-        .sort((a, b) => a.daysLeft - b.daysLeft)
-        .slice(0, 2); // Only top 2 closest
+        .sort((a, b) => a.daysLeft - b.daysLeft);
 
-    // Get festival titles that are being highlighted
-    const highlightedTitles = new Set(upcomingFestivals.map(f => f.title));
+    // Get non-upcoming items in original order
+    const otherItems = withUpcoming.filter(o => !o.upcoming);
 
-    // Remaining festivals (not in top 2 upcoming)
-    const remainingFestivals = festivals.filter(f => !highlightedTitles.has(f.title));
-
-    return { priorityItems, upcomingFestivals, nonFestivals, remainingFestivals };
+    // Merge: upcoming first, then others
+    return [...upcomingFestivals, ...otherItems];
 };
 
 export const CategoryArches = () => {
-    const scrollContainerRef = useRef<HTMLDivElement>(null);
-    const [isDragging, setIsDragging] = useState(false);
-    const [startX, setStartX] = useState(0);
-    const [scrollLeftStart, setScrollLeftStart] = useState(0);
-
-    const { priorityItems, upcomingFestivals, nonFestivals, remainingFestivals } = getSortedOccasions();
-    // Order: Priority → 2 Closest Upcoming Festivals → Non-Festival Items → All Other Festivals
-    const sortedOccasions = [...priorityItems, ...upcomingFestivals, ...nonFestivals, ...remainingFestivals];
-
-    // Mouse drag handlers
-    const handleMouseDown = (e: React.MouseEvent) => {
-        if (!scrollContainerRef.current) return;
-        setIsDragging(true);
-        const rect = scrollContainerRef.current.getBoundingClientRect();
-        setStartX(e.clientX - rect.left);
-        setScrollLeftStart(scrollContainerRef.current.scrollLeft);
-    };
-
-    const handleMouseMove = (e: React.MouseEvent) => {
-        if (!isDragging || !scrollContainerRef.current) return;
-        e.preventDefault();
-        const rect = scrollContainerRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const walk = (x - startX) * 2;
-        scrollContainerRef.current.scrollLeft = scrollLeftStart - walk;
-    };
-
-    const handleMouseUp = () => setIsDragging(false);
-    const handleMouseLeave = () => setIsDragging(false);
+    const sortedOccasions = getSortedOccasions();
 
     return (
         <Section className="py-16 md:py-24">
-            {/* Section Header - All Pink Cute Aesthetic */}
-            <div className="flex items-center justify-between mb-10 md:mb-14 px-2">
-                <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 bg-gradient-to-br from-pink-400 to-rose-400 rounded-2xl -rotate-2 flex items-center justify-center shadow-xl shadow-pink-200/50 border-4 border-white/50 ring-1 ring-pink-100">
-                        <Gift className="text-white fill-white/20" size={28} strokeWidth={2} />
+            {/* Section Header - Pink with Perfect Icon Alignment */}
+            <div className="flex flex-col items-center mb-10 md:mb-14">
+                {/* Title Row - Icon perfectly aligned with text baseline */}
+                <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 md:w-11 md:h-11 bg-gradient-to-br from-pink-400 to-rose-500 rounded-xl flex items-center justify-center shadow-lg shadow-pink-200/50 flex-shrink-0">
+                        <Gift className="text-white" size={18} strokeWidth={2.5} />
                     </div>
-                    <div>
-                        <h3 className="text-3xl md:text-4xl font-heading font-black text-pink-500 leading-none tracking-tight drop-shadow-sm">
-                            Shop by Occasion
-                        </h3>
-                        <p className="text-xs md:text-sm text-pink-400/80 font-bold mt-1 tracking-wide uppercase">
-                            Sparkle in every celebration ✨
-                        </p>
-                    </div>
+                    <h3 className="text-2xl md:text-3xl font-semibold text-pink-500 tracking-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        Shop by Occasion
+                    </h3>
                 </div>
+                {/* Subtitle */}
+                <p className="text-sm text-gray-400 font-medium mt-2" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    Find the perfect gift for every celebration ✨
+                </p>
+            </div>
 
-                <div className="hidden md:flex items-center gap-2 text-xs font-bold text-white bg-gradient-to-r from-pink-400 to-rose-400 px-5 py-2.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all cursor-pointer">
-                    <span>Swipe to explore</span>
-                    <ArrowRight size={16} />
+            {/* === MOBILE LAYOUT: Single Scroll Container with 3 Rows === */}
+            <div className="md:hidden overflow-x-auto overflow-y-visible no-scrollbar -mx-4 px-4 py-3">
+                <div className="flex flex-col gap-5" style={{ width: 'max-content' }}>
+                    {/* Row 1: Items 1-10 */}
+                    <div className="flex gap-4 pt-3 pr-4">
+                        {sortedOccasions.slice(0, 10).map((c, i) => (
+                            <OccasionCard key={c.id} occasion={c} index={i} />
+                        ))}
+                    </div>
+                    {/* Row 2: Items 11-20 */}
+                    <div className="flex gap-4 pt-3 pr-4">
+                        {sortedOccasions.slice(10, 20).map((c, i) => (
+                            <OccasionCard key={c.id} occasion={c} index={i + 10} />
+                        ))}
+                    </div>
+                    {/* Row 3: Items 21-30 */}
+                    <div className="flex gap-4 pt-3 pr-4">
+                        {sortedOccasions.slice(20, 30).map((c, i) => (
+                            <OccasionCard key={c.id} occasion={c} index={i + 20} />
+                        ))}
+                    </div>
                 </div>
             </div>
 
-            {/* Draggable Carousel */}
-            <div
-                ref={scrollContainerRef}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
-                onMouseLeave={handleMouseLeave}
-                className={`
-                    flex gap-4 md:gap-5 overflow-x-auto no-scrollbar 
-                    py-6 -my-6 
-                    -mx-4 px-4 md:-mx-8 md:px-8
-                    ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}
-                `}
-                style={{ scrollBehavior: isDragging ? 'auto' : 'smooth' }}
-            >
-                {sortedOccasions.map((c, i) => {
-                    const { upcoming, daysLeft } = isUpcoming((c as any).date);
-                    const isHighlighted = upcoming && !(c as any).priority;
-
-                    return (c as any).image ? (
-                        // === IMAGE BASED CARD (NO CONTAINER) ===
-                        <a
-                            key={i}
-                            href={`/collections/${c.title.toLowerCase().replace(/ /g, '-')}`}
-                            className="flex-shrink-0 w-52 md:w-64 h-72 md:h-80 relative group transition-transform duration-300 transform hover:scale-[1.05]"
-                            onClick={(e) => { if (isDragging) e.preventDefault(); }}
-                            draggable="false"
-                        >
-                            <img
-                                src={(c as any).image}
-                                alt={c.title}
-                                className="w-full h-full object-contain drop-shadow-lg"
-                                draggable="false"
-                            />
-                        </a>
-                    ) : (
-                        // === STANDARD CARD (WITH CONTAINER) ===
-                        <a
-                            key={i}
-                            href={`/collections/${c.title.toLowerCase().replace(/ /g, '-')}`}
-                            className={`
-                                flex-shrink-0 w-52 md:w-64 h-72 md:h-80 rounded-3xl 
-                                ${c.color} 
-                                p-5 md:p-7 flex flex-col justify-between
-                                shadow-md hover:shadow-2xl transition-all duration-300
-                                transform hover:scale-[1.05] hover:-translate-y-2
-                                group relative
-                                ${isHighlighted ? 'ring-4 ring-yellow-400 ring-offset-2 animate-pulse' : ''}
-                            `}
-                            onClick={(e) => { if (isDragging) e.preventDefault(); }}
-                            draggable="false"
-                            style={isHighlighted ? {
-                                animation: 'glow 2s ease-in-out infinite alternate',
-                                boxShadow: '0 0 20px rgba(250, 204, 21, 0.5)'
-                            } : {}}
-                        >
-                            {/* Coming Soon Badge for Highlighted */}
-                            {isHighlighted && (
-                                <div className="absolute -top-2 -right-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded-full shadow-lg animate-bounce z-10">
-                                    🔥 {daysLeft === 0 ? 'TODAY!' : daysLeft === 1 ? 'TOMORROW!' : `${daysLeft} days`}
-                                </div>
-                            )}
-
-                            {/* Index or Star Badge */}
-                            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${(c as any).priority ? 'bg-black text-white' : 'bg-black/10 text-black'
-                                }`}>
-                                {(c as any).priority ? '★' : i + 1}
-                            </div>
-
-                            {/* Icon */}
-                            <div className="flex-1 flex items-center justify-center">
-                                <span className={`text-5xl md:text-6xl group-hover:scale-110 transition-transform duration-300 ${isHighlighted ? 'animate-bounce' : ''}`}>
-                                    {c.icon}
-                                </span>
-                            </div>
-
-                            {/* Text Content */}
-                            <div>
-                                <h4 className="font-heading font-bold text-lg md:text-xl text-black mb-1 leading-tight">
-                                    {c.title}
-                                </h4>
-                                <p className="text-xs md:text-sm text-black/60 leading-tight">
-                                    {c.subtitle}
-                                </p>
-                            </div>
-                        </a>
-                    );
-                })}
+            {/* === DESKTOP LAYOUT: 6 columns × 5 rows = 30 items === */}
+            <div className="hidden md:grid grid-cols-6 gap-5">
+                {sortedOccasions.slice(0, 30).map((c, i) => (
+                    <OccasionCard key={c.id} occasion={c} index={i} isDesktop />
+                ))}
             </div>
 
             {/* Mobile swipe indicator */}
@@ -1284,63 +1173,471 @@ export const CategoryArches = () => {
     )
 }
 
+// Individual Occasion Card Component
+const OccasionCard = ({ occasion, index, isDesktop = false }: {
+    key?: number;
+    occasion: any;
+    index: number;
+    isDesktop?: boolean;
+}) => {
+    const { upcoming, daysLeft } = isUpcoming(occasion.date);
+    const hasImage = !!occasion.image;
+
+    // BIGGER SIZES: Mobile w-36 h-48, Desktop full responsive
+    const sizeClasses = isDesktop
+        ? "w-full aspect-[3/4]"
+        : "flex-shrink-0 w-36 h-48";
+
+    return hasImage ? (
+        // === IMAGE BASED CARD ===
+        <a
+            href={`https://shop.themaryam.in/collections/${occasion.title.toLowerCase().replace(/ /g, '-')}`}
+            className={`${sizeClasses} relative group transition-transform duration-300 transform hover:scale-105`}
+        >
+            {/* Upcoming Badge */}
+            {upcoming && (
+                <div className="absolute -top-2 -right-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded-full shadow-lg z-10">
+                    🔥 {daysLeft === 0 ? 'TODAY!' : `${daysLeft}d`}
+                </div>
+            )}
+            <img
+                src={occasion.image}
+                alt={occasion.title}
+                className="w-full h-full object-contain drop-shadow-lg"
+                draggable="false"
+            />
+        </a>
+    ) : (
+        // === ICON BASED CARD ===
+        <a
+            href={`https://shop.themaryam.in/collections/${occasion.title.toLowerCase().replace(/ /g, '-')}`}
+            className={`
+                ${sizeClasses} rounded-3xl ${occasion.color || 'bg-gray-100'}
+                p-3 md:p-4 flex flex-col items-center justify-center
+                shadow-lg hover:shadow-2xl transition-all duration-300
+                transform hover:scale-105 hover:-translate-y-2
+                group relative text-center
+                ${upcoming ? 'ring-3 ring-yellow-400 ring-offset-2' : ''}
+            `}
+            style={upcoming ? { boxShadow: '0 0 20px rgba(250, 204, 21, 0.5)' } : {}}
+        >
+            {/* Upcoming Badge */}
+            {upcoming && (
+                <div className="absolute -top-2 -right-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded-full shadow-lg z-10 animate-bounce">
+                    🔥 {daysLeft === 0 ? 'TODAY!' : `${daysLeft}d`}
+                </div>
+            )}
+
+            {/* Icon - BIGGER */}
+            <span className={`text-4xl md:text-5xl mb-2 group-hover:scale-110 transition-transform ${upcoming ? 'animate-bounce' : ''}`}>
+                {occasion.icon}
+            </span>
+
+            {/* Title - BIGGER */}
+            <h4 className="font-bold text-xs md:text-sm text-black leading-tight line-clamp-2">
+                {occasion.title}
+            </h4>
+        </a>
+    );
+}
+
 // =============================================================================
-// 2. TRENDING - LEVITATING STAGGERED GRID
+// 2. TRENDING - ULTRA-OPTIMIZED VERTICAL VIDEO REELS
 // =============================================================================
 
-const trendingItems = [
-    { id: 't1', name: "Neon Vibes", price: 1800, img: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop", height: "h-80 md:h-96" }, // Neon sign
-    { id: 't2', name: "Memory Map", price: 1200, img: "https://images.pexels.com/photos/4553618/pexels-photo-4553618.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop", height: "h-64 md:h-72" }, // Map frame
-    { id: 't3', name: "Soundwave Art", price: 999, img: "https://images.pexels.com/photos/5077039/pexels-photo-5077039.jpeg?auto=compress&cs=tinysrgb&w=600&h=700&fit=crop", height: "h-72 md:h-80" }, // Music plaque
-    { id: 't4', name: "Engraved Wood", price: 1400, img: "https://images.pexels.com/photos/6044266/pexels-photo-6044266.jpeg?auto=compress&cs=tinysrgb&w=600&h=900&fit=crop", height: "h-88 md:h-[420px]" }, // Wood craft
+const trendingVideos = [
+    // First row
+    { id: 'v1', name: 'HER HAMPER', video: 'https://cdn.shopify.com/videos/c/o/v/c93d99a5a7314a83829571f03d0e2227.mp4', link: 'https://shop.themaryam.in/products/her-hamper', loves: 'Loved by 122K People' },
+    { id: 'v2', name: 'LETTERS', video: 'https://cdn.shopify.com/videos/c/o/v/c519459f0b7146958c9f64005b2833dc.mp4', link: 'https://shop.themaryam.in/products/letters', loves: 'Loved by 98K People' },
+    { id: 'v3', name: 'FOLDS', video: 'https://cdn.shopify.com/videos/c/o/v/d1240e6bf5224aa192ddadf5688ed456.mp4', link: 'https://shop.themaryam.in/products/folds', loves: 'Loved by 1.3M People' },
+    { id: 'v4', name: 'CARD', video: 'https://cdn.shopify.com/videos/c/o/v/a013f7125f2c4ae18820887b4dc6f541.mp4', link: 'https://shop.themaryam.in/products/card', loves: 'Loved by 77K People' },
+    // Second row
+    { id: 'v5', name: 'PHOTO LAMP', video: 'https://cdn.shopify.com/videos/c/o/v/dabc08df3c864fd8ab147a268ab3356f.mp4', link: 'https://shop.themaryam.in/products/photo-lamp', loves: 'Loved by 245K People' },
+    { id: 'v6', name: 'PHOTO FRAME', video: 'https://cdn.shopify.com/videos/c/o/v/eafe0f3cb8854c0780c527a642029951.mp4', link: 'https://shop.themaryam.in/products/photo-frame', loves: 'Loved by 189K People' },
+    { id: 'v7', name: 'WEARABLES', video: 'https://cdn.shopify.com/videos/c/o/v/4b636c4a7c814fe9875aa3a17a63a6c5.mp4', link: 'https://shop.themaryam.in/products/wearables', loves: 'Loved by 67K People' },
+    { id: 'v8', name: 'SPECIALS', video: 'https://cdn.shopify.com/videos/c/o/v/8758e5ae763547c68699e99fa44cd57f.mp4', link: 'https://shop.themaryam.in/products/specials', loves: 'Loved by 312K People' },
 ]
+
+// Ultra-Optimized Lazy Video Component - Play/Pause based on visibility
+const LazyVideo = ({ src, className, loves }: { src: string; className: string; loves: string }) => {
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [isInView, setIsInView] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+    const [isHovered, setIsHovered] = useState(false);
+
+    // IntersectionObserver for lazy loading AND play/pause control
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    setIsInView(entry.isIntersecting);
+                });
+            },
+            { rootMargin: '50px', threshold: 0.3 }
+        );
+
+        if (containerRef.current) {
+            observer.observe(containerRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
+
+    // Play when in view, pause when out of view (prevents lag)
+    useEffect(() => {
+        if (!videoRef.current) return;
+
+        if (isInView && isLoaded) {
+            videoRef.current.play().catch(() => { });
+        } else {
+            videoRef.current.pause();
+        }
+    }, [isInView, isLoaded]);
+
+    // Custom cursor tracking (Desktop only)
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (containerRef.current) {
+            const rect = containerRef.current.getBoundingClientRect();
+            setCursorPos({
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+            });
+        }
+    };
+
+    return (
+        <div
+            ref={containerRef}
+            className={`${className} relative`}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            style={{ cursor: 'none' }}
+        >
+            {/* Placeholder skeleton while loading */}
+            {!isLoaded && (
+                <div className="absolute inset-0 bg-gradient-to-br from-pink-100 via-gray-100 to-orange-100 animate-pulse">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full border-2 border-pink-200 border-t-pink-500 animate-spin" />
+                    </div>
+                </div>
+            )}
+
+            {/* Video - Only render when in viewport to prevent lag */}
+            {isInView && (
+                <video
+                    ref={videoRef}
+                    src={src}
+                    className={`w-full h-full object-cover transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                    onLoadedData={() => setIsLoaded(true)}
+                />
+            )}
+
+            {/* Custom Cursor - Desktop Only */}
+            {isHovered && (
+                <div
+                    className="hidden md:flex pointer-events-none absolute z-50 items-center gap-2 px-4 py-2.5 bg-white rounded-full shadow-2xl"
+                    style={{
+                        left: cursorPos.x,
+                        top: cursorPos.y,
+                        transform: 'translate(-50%, -50%)',
+                    }}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#EC4899">
+                        <path d="M6.979 3.074a6 6 0 0 1 4.988 1.425l.037 .033l.034 -.03a6 6 0 0 1 4.733 -1.44l.246 .036a6 6 0 0 1 3.364 10.008l-.18 .185l-.048 .041l-7.45 7.379a1 1 0 0 1 -1.313 .082l-.094 -.082l-7.493 -7.422a6 6 0 0 1 3.176 -10.215z" />
+                    </svg>
+                    <span className="text-gray-900 text-sm font-bold whitespace-nowrap">{loves}</span>
+                </div>
+            )}
+        </div>
+    );
+};
 
 export const TrendingLevitation = () => {
     return (
         <Section>
-            {/* Section Header - Minimal Style */}
-            <div className="flex items-center justify-between mb-10 md:mb-14">
+            {/* Section Header - Modern Fire Style */}
+            <div className="flex items-center justify-between mb-8 md:mb-12">
                 <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 bg-gray-900 rounded-full flex items-center justify-center">
-                        <TrendingUp className="text-white" size={18} />
+                    <div className="w-11 h-11 bg-gradient-to-br from-orange-500 via-red-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-500/30">
+                        {/* Fire/Flame Icon */}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white">
+                            <path d="M12 23c-4.5 0 -8 -3.5 -8 -8c0 -4 2.75 -7.25 5 -10c0 0 .5 2 2 4c1.5 2 3 2.5 3 2.5c.5 -1 1 -2 1 -4c0 -2 -.5 -4 -1 -6c3 1.5 6 4.5 6 11c0 4.5 -3.5 8 -8 8z" />
+                            <path d="M12 23c-2.5 0 -4 -1.5 -4 -4c0 -2 1.5 -3.5 2.5 -5c.5 1 1 1.5 1.5 2c.5 .5 1 1 1 1c0 -.5 .5 -1 .5 -2c0 -1 0 -1.5 -.5 -2.5c1 .5 2.5 2 2.5 4.5c0 2.5 -1.5 4 -3.5 4z" fill="rgba(255,255,255,0.6)" />
+                        </svg>
                     </div>
                     <div>
-                        <h2 className="text-lg md:text-xl font-bold text-gray-900">Trending Right Now</h2>
-                        <p className="text-[11px] md:text-xs text-gray-400">What everyone is loving today</p>
+                        <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 tracking-tight">What's Hot</h2>
+                        <p className="text-[12px] md:text-sm text-gray-500 font-medium">Trending gifts everyone loves</p>
                     </div>
                 </div>
-                <Button variant="outline" className="hidden md:flex text-xs">View All</Button>
+                <a href="https://shop.themaryam.in/collections/trending" className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-pink-500 to-orange-500 text-white text-sm font-semibold rounded-full hover:from-pink-600 hover:to-orange-600 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                    Explore All Hot Picks
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                </a>
             </div>
 
-            <div className="columns-2 md:columns-4 gap-6 space-y-6">
-                {trendingItems.map((item, i) => (
-                    <div key={item.id} className="break-inside-avoid relative group cursor-pointer">
-                        <div className={`w-full ${item.height} rounded-2xl overflow-hidden relative shadow-md group-hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2`}>
-                            <img src={item.img} alt={item.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                            <div className="absolute top-3 right-3 bg-white/30 backdrop-blur-md p-2 rounded-full text-white hover:bg-white hover:text-red-500 transition-colors">
-                                <Heart size={18} />
-                            </div>
-                            <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                                <h3 className="text-white font-bold text-lg">{item.name}</h3>
-                                <div className="flex justify-between items-center mt-1">
-                                    <span className="text-white/90 text-sm">₹{item.price}</span>
-                                    <span className="text-xs bg-white text-black px-2 py-1 rounded-full font-bold">Shop</span>
+            {/* Vertical Video Grid - 6 on mobile, 8 on desktop */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
+                {trendingVideos.map((item, index) => (
+                    <a
+                        key={item.id}
+                        href={item.link}
+                        className={`relative group block ${index >= 6 ? 'hidden md:block' : ''}`}
+                    >
+                        {/* Video Container */}
+                        <div className="relative aspect-[9/16] rounded-3xl overflow-hidden bg-gray-100 shadow-lg group-hover:shadow-2xl transition-shadow duration-300">
+                            {/* Lazy Loaded Video with Viewport-based Play/Pause */}
+                            <LazyVideo
+                                src={item.video}
+                                className="w-full h-full"
+                                loves={item.loves}
+                            />
+
+                            {/* Gradient Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+
+                            {/* Product Name */}
+                            <div className="absolute bottom-0 inset-x-0 p-4 pointer-events-none">
+                                <h3 className="text-white font-bold text-lg md:text-xl tracking-wide drop-shadow-lg">{item.name}</h3>
+                                <div className="flex items-center gap-2 mt-1.5">
+                                    <span className="text-white/70 text-[11px] font-medium md:hidden">{item.loves}</span>
+                                    <span className="text-white/80 text-xs font-medium hidden md:inline">Tap to shop</span>
+                                    <svg className="w-3 h-3 text-white/80" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                                 </div>
                             </div>
+
+                            {/* Heart Button */}
+                            <button
+                                onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+                                className="absolute top-3 right-3 bg-white/20 backdrop-blur-sm p-2.5 rounded-full text-white hover:bg-white hover:text-red-500 transition-colors duration-200 hover:scale-110 active:scale-95 z-10"
+                                aria-label="Add to wishlist"
+                            >
+                                <Heart size={16} />
+                            </button>
+
+                            {/* Fire Badge */}
+                            <div className="absolute top-3 left-3 flex items-center gap-1 bg-gradient-to-r from-orange-500 to-red-500 px-2.5 py-1 rounded-full shadow-md pointer-events-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="white">
+                                    <path d="M12 23c-4.5 0 -8 -3.5 -8 -8c0 -4 2.75 -7.25 5 -10c0 0 .5 2 2 4c1.5 2 3 2.5 3 2.5c.5 -1 1 -2 1 -4c0 -2 -.5 -4 -1 -6c3 1.5 6 4.5 6 11c0 4.5 -3.5 8 -8 8z" />
+                                </svg>
+                                <span className="text-white text-[9px] font-bold">HOT</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 ))}
             </div>
+
+            {/* Mobile View All Button - Gradient Style */}
             <div className="mt-8 flex justify-center md:hidden">
-                <Button variant="outline">View All Collections</Button>
+                <a href="https://shop.themaryam.in/collections/trending" className="flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-pink-500 to-orange-500 text-white text-sm font-bold rounded-full hover:from-pink-600 hover:to-orange-600 transition-all shadow-lg active:scale-95">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 23c-4.5 0 -8 -3.5 -8 -8c0 -4 2.75 -7.25 5 -10c0 0 .5 2 2 4c1.5 2 3 2.5 3 2.5c.5 -1 1 -2 1 -4c0 -2 -.5 -4 -1 -6c3 1.5 6 4.5 6 11c0 4.5 -3.5 8 -8 8z" />
+                    </svg>
+                    Explore All Hot Picks
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                </a>
             </div>
+
+            {/* Hide cursor on video hover */}
+            <style>{`
+                @media (min-width: 768px) {
+                    .group:hover video { cursor: none; }
+                }
+            `}</style>
         </Section>
     )
 }
 
+
+// =============================================================================
+// 2.5. EXPLORE GIFTS - SPECIALLY CRAFTED SECTION
+// =============================================================================
+
+export const ExploreGifts = () => {
+    return (
+        <Section className="bg-white py-20 md:py-28">
+            {/* Header - Elegant Typography */}
+            <div className="text-center mb-16 md:mb-24">
+                <span className="inline-block py-1 px-3 rounded-full bg-pink-50 text-pink-600 text-xs font-bold tracking-widest uppercase mb-4">
+                    Handpicked for You
+                </span>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading italic font-medium text-gray-900 mb-4 tracking-tight">
+                    Explore Gifts specially crafted for you
+                </h2>
+                <p className="text-gray-500 text-base md:text-lg font-medium max-w-2xl mx-auto">
+                    Because some feelings are too special for <span className="text-gray-900 font-semibold border-b-2 border-pink-200">ordinary gifts</span>
+                </p>
+            </div>
+
+            {/* Product Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 px-4 md:px-8">
+
+                {/* Card 1 - Letters */}
+                <a href="https://shop.themaryam.in/collections/letters" className="group relative block">
+                    <div className="relative h-full bg-gradient-to-br from-gray-50 to-gray-100 rounded-[2rem] p-8 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border border-transparent hover:border-gray-200">
+
+                        {/* Decorative Background Element */}
+                        <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+                            <Star size={80} className="text-gray-900" />
+                        </div>
+
+                        {/* Badge */}
+                        <div className="absolute top-8 left-8 z-10">
+                            <span className="bg-gray-900/90 text-white text-[10px] font-bold tracking-wider px-3 py-1.5 rounded-full backdrop-blur-sm shadow-sm">
+                                NEW
+                            </span>
+                        </div>
+
+                        {/* Product Images - 2 Floating Letters */}
+                        <div className="relative aspect-[16/10] mb-8 flex items-center justify-center mt-4">
+                            <div className="relative z-10 flex items-center justify-center w-full translate-y-2">
+                                {/* Letter 1 - Left */}
+                                <div className="absolute w-32 h-36 md:w-36 md:h-40 transform -rotate-6 -translate-x-12 md:-translate-x-16 group-hover:-rotate-12 group-hover:-translate-x-14 md:group-hover:-translate-x-20 transition-all duration-700 ease-out will-change-transform">
+                                    <img
+                                        src="/for_you/Letter1.png"
+                                        alt="Letter Gift 1"
+                                        className="w-full h-full object-cover rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-white"
+                                    />
+                                </div>
+                                {/* Letter 2 - Right */}
+                                <div className="absolute w-32 h-36 md:w-36 md:h-40 transform rotate-6 translate-x-12 md:translate-x-16 group-hover:rotate-12 group-hover:translate-x-14 md:group-hover:translate-x-20 transition-all duration-700 ease-out z-10 will-change-transform">
+                                    <img
+                                        src="/for_you/Letter2.png"
+                                        alt="Letter Gift 2"
+                                        className="w-full h-full object-cover rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-white"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Product Name & CTA */}
+                        <div className="text-center relative z-20">
+                            <h3 className="text-2xl md:text-3xl font-heading italic font-bold text-gray-900 mb-2 group-hover:text-pink-600 transition-colors">
+                                Letters
+                            </h3>
+                            <div className="flex items-center justify-center gap-2 text-gray-500 text-sm font-medium group-hover:text-gray-900 transition-colors">
+                                <span>View Collection</span>
+                                <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform" />
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                {/* Card 2 - Folds */}
+                <a href="https://shop.themaryam.in/collections/folds" className="group relative block">
+                    <div className="relative h-full bg-gradient-to-br from-red-50/50 to-orange-50/50 rounded-[2rem] p-8 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border border-transparent hover:border-red-100">
+
+                        {/* Decorative Background Element */}
+                        <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+                            <Heart size={80} className="text-red-500" />
+                        </div>
+
+                        {/* Badge */}
+                        <div className="absolute top-8 left-8 z-10">
+                            <span className="bg-red-500/90 text-white text-[10px] font-bold tracking-wider px-3 py-1.5 rounded-full backdrop-blur-sm shadow-sm">
+                                HOT
+                            </span>
+                        </div>
+
+                        {/* Product Images - Folds */}
+                        <div className="relative aspect-[16/10] mb-8 flex items-center justify-center mt-4">
+                            <div className="relative z-10 flex items-center justify-center w-full translate-y-2">
+                                <div className="absolute w-32 h-36 md:w-36 md:h-40 transform -rotate-6 -translate-x-12 md:-translate-x-16 group-hover:-rotate-12 group-hover:-translate-x-14 md:group-hover:-translate-x-20 transition-all duration-700 ease-out will-change-transform">
+                                    <img
+                                        src="/for_you/folds1.png"
+                                        alt="Fold Gift 1"
+                                        className="w-full h-full object-cover rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-white"
+                                    />
+                                </div>
+                                <div className="absolute w-32 h-36 md:w-36 md:h-40 transform rotate-6 translate-x-12 md:translate-x-16 group-hover:rotate-12 group-hover:translate-x-14 md:group-hover:translate-x-20 transition-all duration-700 ease-out z-10 will-change-transform">
+                                    <img
+                                        src="/for_you/folds2.png"
+                                        alt="Fold Gift 2"
+                                        className="w-full h-full object-cover rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-white"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Product Name & CTA */}
+                        <div className="text-center relative z-20">
+                            <h3 className="text-2xl md:text-3xl font-heading italic font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">
+                                Folds
+                            </h3>
+                            <div className="flex items-center justify-center gap-2 text-gray-500 text-sm font-medium group-hover:text-gray-900 transition-colors">
+                                <span>View Collection</span>
+                                <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform" />
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                {/* Card 3 - Her Hamper */}
+                <a href="https://shop.themaryam.in/collections/her-hamper" className="group relative block">
+                    <div className="relative h-full bg-gradient-to-br from-pink-50/50 to-purple-50/50 rounded-[2rem] p-8 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border border-transparent hover:border-pink-100">
+
+                        {/* Decorative Background Element */}
+                        <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+                            <Sparkles size={80} className="text-pink-500" />
+                        </div>
+
+                        {/* Badge */}
+                        <div className="absolute top-8 left-8 z-10">
+                            <span className="bg-pink-500/90 text-white text-[10px] font-bold tracking-wider px-3 py-1.5 rounded-full backdrop-blur-sm shadow-sm">
+                                POPULAR
+                            </span>
+                        </div>
+
+                        {/* Product Images - Hamper */}
+                        <div className="relative aspect-[16/10] mb-8 flex items-center justify-center mt-4">
+                            <div className="relative z-10 flex items-center justify-center w-full translate-y-2">
+                                <div className="absolute w-32 h-36 md:w-36 md:h-40 transform -rotate-6 -translate-x-12 md:-translate-x-16 group-hover:-rotate-12 group-hover:-translate-x-14 md:group-hover:-translate-x-20 transition-all duration-700 ease-out will-change-transform">
+                                    <img
+                                        src="/for_you/hamper1.jpg"
+                                        alt="Hamper Gift 1"
+                                        className="w-full h-full object-cover rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-white"
+                                    />
+                                </div>
+                                <div className="absolute w-32 h-36 md:w-36 md:h-40 transform rotate-6 translate-x-12 md:translate-x-16 group-hover:rotate-12 group-hover:translate-x-14 md:group-hover:translate-x-20 transition-all duration-700 ease-out z-10 will-change-transform">
+                                    <img
+                                        src="/for_you/hamper2.png"
+                                        alt="Hamper Gift 2"
+                                        className="w-full h-full object-cover rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-white"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Product Name & CTA */}
+                        <div className="text-center relative z-20">
+                            <h3 className="text-2xl md:text-3xl font-heading italic font-bold text-gray-900 mb-2 group-hover:text-pink-600 transition-colors">
+                                Her Hamper
+                            </h3>
+                            <div className="flex items-center justify-center gap-2 text-gray-500 text-sm font-medium group-hover:text-gray-900 transition-colors">
+                                <span>View Collection</span>
+                                <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform" />
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </Section>
+    );
+};
+
+
 // =============================================================================
 // 3. TECH LOVE - CREATIVE COSMIC UPGRADE
-// =============================================================================
+// ============================================================================
 
 export const TechLove = () => {
     return (
@@ -1488,57 +1785,55 @@ export const CollectionsBento = () => {
     return (
         <Section className="bg-gray-50/50">
             <div className="text-center mb-16 select-none">
-                <h2 className="text-4xl font-heading font-bold mb-4">Unique Like Your Bond</h2>
-                <p className="text-gray-500">From handcrafted letters to neon signs, every piece tells a story.</p>
+                <h2 className="text-4xl font-heading font-bold mb-4">Home & Living Gifts</h2>
+                <p className="text-gray-500">Decor that speaks your language.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
 
-                {/* Large Item: Wearable Love (Jewelry) */}
-                <div className="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-3xl bg-white shadow-sm hover:shadow-xl transition-all">
-                    <img src="https://images.pexels.com/photos/10983783/pexels-photo-10983783.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Jewelry" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-0 left-0 p-8">
-                        <div className="bg-white/20 backdrop-blur-md p-2 rounded-lg inline-block mb-4">
-                            <Gem className="text-white" />
-                        </div>
-                        <h3 className="text-white text-3xl font-bold mb-2">Wearable Love</h3>
-                        <p className="text-white/80 mb-6 max-w-sm">Custom name necklaces, jhumkas, and bracelets that carry your story.</p>
-                        <Button variant="white" size="sm">Shop Jewelry</Button>
+                {/* Large Item: Neon Light Gifts (2x2) */}
+                <a href="https://shop.themaryam.in/collections/neon-lights" className="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-[2rem] bg-white shadow-sm hover:shadow-2xl transition-all duration-500 h-[400px] md:h-auto">
+                    <img src="https://static-assets-prod.fnp.com/assets/images/custom/new-home-2025/home-living/Untitled_170125.jpg" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Neon Light Gifts" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90"></div>
+                    <div className="absolute bottom-0 left-0 p-8 w-full">
+                        <h3 className="text-white text-3xl font-bold mb-2">Neon Light Gifts</h3>
+                        <p className="text-white/80 mb-6 max-w-sm font-medium tracking-wide">Light up their world with custom neon magic.</p>
+                        <Button variant="white" size="sm" className="shadow-lg hover:bg-pink-50 transition-colors">Shop Now</Button>
                     </div>
-                </div>
+                </a>
 
-                {/* Wide Item: Light & Paper (Jhilmil Cards) */}
-                <div className="md:col-span-2 relative group overflow-hidden rounded-3xl bg-orange-50 shadow-sm hover:shadow-xl transition-all">
-                    <img src="https://images.pexels.com/photos/6479589/pexels-photo-6479589.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90" alt="Cards" />
-                    <div className="absolute top-0 left-0 p-8 z-10">
-                        <h3 className="text-gray-900 text-2xl font-bold mb-1 drop-shadow-sm">Paper & Light</h3>
-                        <p className="text-gray-900 text-sm font-medium">Jhilmil cards, vintage letters & frames.</p>
+                {/* Wide Item: Photo Frames (2x1) */}
+                <a href="https://shop.themaryam.in/collections/photo-frames" className="md:col-span-2 relative group overflow-hidden rounded-[2rem] bg-white shadow-sm hover:shadow-2xl transition-all duration-500 h-[250px] md:h-auto">
+                    <img src="https://static-assets-prod.fnp.com/assets/images/custom/new-home-2025/home-living/photoframes_170125.jpg" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Photo Frames" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+                    <div className="absolute bottom-0 left-0 p-8 w-full">
+                        <h3 className="text-white text-2xl font-bold mb-1">Photo Frames</h3>
+                        <p className="text-white/80 text-sm mb-4 font-medium">Preserve every precious moment.</p>
+                        <Button variant="white" size="sm" className="shadow-lg hover:bg-pink-50 transition-colors">Shop Now</Button>
                     </div>
-                    <div className="absolute bottom-6 right-6 bg-white rounded-full p-3 shadow-lg group-hover:scale-110 transition-transform">
-                        <Mail className="text-orange-500" />
-                    </div>
-                </div>
+                </a>
 
-                {/* Small Item: Timeless (Clocks/Wallets) */}
-                <div className="relative group overflow-hidden rounded-3xl bg-blue-50 shadow-sm hover:shadow-xl transition-all">
-                    <img src="https://images.pexels.com/photos/4638862/pexels-photo-4638862.jpeg?auto=compress&cs=tinysrgb&w=400&fit=crop" loading="lazy" className="w-full h-full object-cover mix-blend-multiply opacity-60 transition-transform duration-700 group-hover:scale-110" alt="Wallet" />
-                    <div className="absolute bottom-6 left-6">
-                        <Clock className="mb-2 text-blue-900" />
-                        <h3 className="text-blue-900 font-bold text-lg">Timeless Gifts</h3>
-                        <p className="text-blue-700 text-xs">Clocks, Wallets & Pens</p>
+                {/* Small Item: Home Decor (1x1) */}
+                <a href="https://shop.themaryam.in/collections/home-decor" className="relative group overflow-hidden rounded-[2rem] bg-white shadow-sm hover:shadow-2xl transition-all duration-500 h-[250px] md:h-auto">
+                    <img src="https://apkamart.com/cdn/shop/files/peacock_showpiece_apkamart_25.jpg?v=1725950851" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Home Decor" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+                    <div className="absolute bottom-0 left-0 p-6 w-full">
+                        <h3 className="text-white text-xl font-bold mb-1">Home Decor</h3>
+                        <p className="text-white/80 text-xs mb-3 font-medium">Artistic & Elegant</p>
+                        <Button variant="white" size="sm" className="scale-90 origin-bottom-left shadow-lg hover:bg-pink-50 transition-colors">Shop Now</Button>
                     </div>
-                </div>
+                </a>
 
-                {/* Small Item: Little Joys (Scrunchies etc) */}
-                <div className="relative group overflow-hidden rounded-3xl bg-pink-50 shadow-sm hover:shadow-xl transition-all">
-                    <img src="https://images.pexels.com/photos/5632399/pexels-photo-5632399.jpeg?auto=compress&cs=tinysrgb&w=400&fit=crop" loading="lazy" className="w-full h-full object-cover mix-blend-multiply opacity-60 transition-transform duration-700 group-hover:scale-110" alt="Keychains" />
-                    <div className="absolute bottom-6 left-6">
-                        <Smile className="mb-2 text-pink-900" />
-                        <h3 className="text-pink-900 font-bold text-lg">Little Joys</h3>
-                        <p className="text-pink-700 text-xs">Scrunchies, Keychains & Ties</p>
+                {/* Small Item: Forever Flowers (1x1) */}
+                <a href="https://shop.themaryam.in/collections/dried-flowers" className="relative group overflow-hidden rounded-[2rem] bg-white shadow-sm hover:shadow-2xl transition-all duration-500 h-[250px] md:h-auto">
+                    <img src="https://static-assets-prod.fnp.com/assets/images/custom/new-home-2025/home-living/Dried-Flowers_170125.jpg" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Forever Flowers" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+                    <div className="absolute bottom-0 left-0 p-6 w-full">
+                        <h3 className="text-white text-xl font-bold mb-1">Forever Flowers</h3>
+                        <p className="text-white/80 text-xs mb-3 font-medium">Blooms eternal</p>
+                        <Button variant="white" size="sm" className="scale-90 origin-bottom-left shadow-lg hover:bg-pink-50 transition-colors">Shop Now</Button>
                     </div>
-                </div>
+                </a>
 
             </div>
         </Section>
