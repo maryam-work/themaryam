@@ -523,6 +523,8 @@ const WrappedFooter: React.FC = () => (
     </footer>
 );
 
+import SEO from '../../components/SEO';
+
 const WrappedListPage: React.FC = () => {
     const [email, setEmail] = useState('');
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -538,6 +540,12 @@ const WrappedListPage: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-gray-50" style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif' }}>
+            <SEO
+                title="Wrapped by The Maryam | Gift Guide & Ideas"
+                description="Expert gifting advice, curated guides, and real talk about relationships and thoughtful giving. No clichés, just helpful ideas."
+                canonical="/wrapped"
+                keywords={['gift guide', 'relationship advice', 'gifting ideas', 'wrapped by themaryam']}
+            />
             <WrappedHeader onMenuClick={() => setSidebarOpen(true)} />
             <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
