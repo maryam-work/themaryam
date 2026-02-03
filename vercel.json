@@ -1,13 +1,9 @@
 {
+    "cleanUrls": true,
     "redirects": [
         {
             "source": "/collections/:path*",
             "destination": "https://shop.themaryam.in/collections/:path*",
-            "permanent": true
-        },
-        {
-            "source": "/policies/:path*",
-            "destination": "https://shop.themaryam.in/policies/:path*",
             "permanent": true
         }
     ],
