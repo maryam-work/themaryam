@@ -1161,9 +1161,9 @@ export const Footer: React.FC = () => {
             <ul className="space-y-4 md:space-y-5">
               {[
                 { name: 'Neon Lights', href: '/collections/neon-lights' },
+                { name: '3D Miniatures', href: '/collections/3d-miniatures' },
                 { name: 'Photo Frames', href: '/collections/photo-frames' },
-                { name: 'Home Decor', href: '/collections/home-decor' },
-                { name: 'Forever Flowers', href: '/collections/dried-flowers' },
+                { name: 'Custom Mugs', href: '/collections/mugs' },
                 { name: 'Engraved Jewelry', href: '/collections/jewelry' }
               ].map((item) => (
                 <li key={item.name}>
@@ -1206,7 +1206,7 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-4 md:space-y-5">
               <li>
-                <a href="/policies/terms-of-service" className="text-sm md:text-base font-medium flex items-center justify-between group/link hover:text-gray-600 transition-colors text-gray-800" rel="nofollow">
+                <a href="/policies/terms-of-service" className="text-sm md:text-base font-medium flex items-center justify-between group/link hover:text-gray-600 transition-colors text-gray-800">
                   Terms of Service
                   <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300 text-gray-400" />
                 </a>
@@ -1218,13 +1218,13 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="/policies/refund-policy" className="text-sm md:text-base font-medium flex items-center justify-between group/link hover:text-gray-600 transition-colors text-gray-800">
+                <a href="/policies/return-refund-policy" className="text-sm md:text-base font-medium flex items-center justify-between group/link hover:text-gray-600 transition-colors text-gray-800">
                   Return & Refund
                   <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300 text-gray-400" />
                 </a>
               </li>
               <li>
-                <a href="/policies/privacy-policy" className="text-sm md:text-base font-medium flex items-center justify-between group/link hover:text-gray-600 transition-colors text-gray-800" rel="nofollow">
+                <a href="/policies/privacy-policy" className="text-sm md:text-base font-medium flex items-center justify-between group/link hover:text-gray-600 transition-colors text-gray-800">
                   Privacy Policy
                   <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300 text-gray-400" />
                 </a>
@@ -1239,7 +1239,7 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-4 md:space-y-5">
               <li>
-                <a href="/pages/contact" className="text-sm md:text-base font-medium flex items-center justify-between group/link hover:text-gray-600 transition-colors text-gray-800">
+                <a href="/policies/contact-information" className="text-sm md:text-base font-medium flex items-center justify-between group/link hover:text-gray-600 transition-colors text-gray-800">
                   Contact Us
                   <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300 text-gray-400" />
                 </a>
@@ -1347,11 +1347,13 @@ export const Footer: React.FC = () => {
               <div className="flex items-start gap-2 mb-2">
                 <MapPin size={12} className="mt-0.5 flex-shrink-0" />
                 <address className="not-italic" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
-                  <span itemProp="streetAddress">Gorwa</span>,
+                  <span itemProp="streetAddress">B/47 Shanti Nagar Society, Near Haridham Mandir, Gorwa</span>,
                   <span itemProp="addressLocality"> Vadodara</span>,
                   <span itemProp="addressRegion"> Gujarat</span> -
                   <span itemProp="postalCode"> 390016</span>,
                   <span itemProp="addressCountry"> India</span>
+                  <br />
+                  <span className="text-[10px] text-gray-400 mt-1 block">(Registered Office)</span>
                 </address>
               </div>
             </div>
@@ -1395,7 +1397,7 @@ export const Footer: React.FC = () => {
             <div className="flex gap-4 md:gap-6 mt-2 md:mt-0 flex-wrap justify-center">
               <a href="/policies/privacy-policy" className="hover:text-gray-900 transition-colors">Privacy</a>
               <a href="/policies/terms-of-service" className="hover:text-gray-900 transition-colors">Terms</a>
-              <a href="/policies/refund-policy" className="hover:text-gray-900 transition-colors">Refunds</a>
+              <a href="/policies/return-refund-policy" className="hover:text-gray-900 transition-colors">Refunds</a>
               <a href="/sitemap.xml" className="hover:text-gray-900 transition-colors">Sitemap</a>
             </div>
           </div>
