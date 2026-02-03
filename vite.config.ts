@@ -19,10 +19,7 @@ export default defineConfig(({ mode }) => {
             src: 'pages/*.html',
             dest: ''
           },
-          {
-            src: 'policies/*.html',
-            dest: 'policies'
-          }
+
         ]
       })
     ],
