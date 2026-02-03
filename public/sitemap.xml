@@ -174,4 +174,46 @@
     <priority>0.85</priority>
   </url>
   
+  <!-- ========== POLICY PAGES (REQUIRED FOR MERCHANT CENTER) ========== -->
+  <url>
+    <loc>https://themaryam.in/policies/privacy-policy</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://themaryam.in/policies/terms-of-service</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://themaryam.in/policies/return-refund-policy</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://themaryam.in/policies/shipping-policy</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://themaryam.in/policies/contact-information</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://themaryam.in/pages/track-order</loc>
+    <lastmod>2026-02-03</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://themaryam.in/pages/faq</loc>
+    <lastmod>2026-02-03</lastmod>
+    <priority>0.5</priority>
+  </url>
 </urlset>
