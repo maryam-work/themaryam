@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Track Your Order | The Maryam</title>
+    <meta name="description" content="Track your order from The Maryam. Enter your tracking ID to see delivery status.">
+    <link rel="canonical" href="https://themaryam.in/pages/track-order">
+    <meta name="theme-color" content="#ffffff">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1d1d1f;
+            --color-secondary: #6e6e73;
+            --color-accent: #0071e3;
+            --color-bg: #ffffff;
+            --color-bg-alt: #f5f5f7;
+            --color-border: #d2d2d7;
+            --radius-lg: 20px;
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-primary);
+            background: var(--color-bg);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.2s;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-border);
+            height: 64px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        .main {
+            padding-top: 120px;
+            padding-bottom: 80px;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .input-group {
+            margin-top: 40px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .input-box {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+
+        .btn {
+            background: #000;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .info-text {
+            color: var(--color-secondary);
+            margin-top: 24px;
+            font-size: 14px;
+        }
+
+        .footer {
+            background: #111;
+            color: white;
+            padding: 60px 0;
+            margin-top: 80px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #888;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container"
+            style="max-width:1200px; display:flex; justify-content:space-between; align-items:center">
+            <a href="/" class="logo">The Maryam</a>
+            <a href="/policies/contact-information" style="font-size:14px; font-weight:500">Contact Support</a>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <h1 class="page-title">Track Your Order</h1>
+            <p style="color:var(--color-secondary)">Enter your Tracking ID provided in your shipping confirmation
+                email/SMS.</p>
+
+            <div class="input-group">
+                <!-- Simple redirection for now, implies functionality -->
+                <input type="text" class="input-box" placeholder="Enter Tracking ID (e.g. 123456789)">
+                <a href="#"
+                    onclick="alert('Please check your Email or SMS for the direct tracking link provided by our courier partner.'); return false;"
+                    class="btn">Track Order</a>
+            </div>
+
+            <p class="info-text">
+                Don't have a tracking ID yet? Orders are usually processed within 24-48 hours.<br>
+                For help, contact <a href="mailto:support@themaryam.in"
+                    style="color:#000; text-decoration:underline;">support@themaryam.in</a>
+            </p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <h3 style="color:white; font-size:18px; margin-bottom:16px;">The Maryam</h3>
+            <p style="color:#888; margin-bottom:24px; max-width:500px; margin-left:auto; margin-right:auto;">
+                Making memories tangible. Premium personalized gifts with a touch of love.
+            </p>
+
+            <div style="margin-bottom:32px; color:#888;">
+                <p style="margin-bottom:8px;"><strong>Address:</strong> B/47 Shanti Nagar Society, Near Haridham Mandir,
+                    Gorwa, Vadodara, Gujarat - 390016, India <span
+                        style="font-size:11px; color:#666; display:block; margin-top:2px;">(Registered Office)</span>
+                </p>
+                <p style="margin-bottom:8px;"><strong>Email:</strong> <a
+                        href="mailto:support@themaryam.in">support@themaryam.in</a></p>
+                <p><strong>Phone:</strong> <a href="tel:+917359033087">+91 7359033087</a></p>
+            </div>
+
+            <div
+                style="border-top:1px solid #333; padding-top:24px; display:flex; gap:24px; justify-content:center; flex-wrap:wrap;">
+                <a href="/">Home</a>
+                <a href="/policies/shipping-policy.html">Shipping</a>
+                <a href="/policies/return-refund-policy.html">Returns</a>
+                <a href="/policies/terms-of-service.html">Terms</a>
+                <a href="/policies/privacy-policy.html">Privacy</a>
+                <a href="/policies/contact-information.html">Contact</a>
+            </div>
+            <p style="margin-top:24px; color:#555;">&copy; 2026 The Maryam. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
