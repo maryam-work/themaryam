@@ -610,143 +610,101 @@ export const Header: React.FC = () => {
         </div>
       </header >
 
-      {/* Mobile Sidebar Menu - Ultra Smooth Apple Style */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 z-[100] lg:hidden">
-          {/* Backdrop with GPU-accelerated blur */}
-          <div
-            className="absolute inset-0 bg-black/40 backdrop-blur-md"
-            onClick={() => setMobileMenuOpen(false)}
-            style={{
-              animation: 'backdropFadeIn 0.25s cubic-bezier(0.32, 0.72, 0, 1) forwards',
-              willChange: 'opacity'
-            }}
-          />
+      {/* Mobile Sidebar Menu - Superkicks Style (Persistent with CSS Transitions) */}
+      <div
+        className={`fixed inset-0 z-[100] lg:hidden transition-all duration-300 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
+      >
+        {/* Backdrop */}
+        <div
+          className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300"
+          onClick={() => setMobileMenuOpen(false)}
+        />
 
-          {/* Sidebar Panel - Hardware Accelerated */}
-          <div
-            className="absolute left-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl"
-            style={{
-              animation: 'slideInLeft 0.35s cubic-bezier(0.32, 0.72, 0, 1) forwards',
-              willChange: 'transform',
-              transform: 'translate3d(0, 0, 0)',
-              backfaceVisibility: 'hidden'
-            }}
-          >
-            {/* Header */}
-            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100/80">
-              <img
-                src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/themaryam_logo_header_main_800x800.png?v=1769320607"
-                alt="The Maryam"
-                className="h-10 w-auto"
-              />
-              <button
-                onClick={() => setMobileMenuOpen(false)}
-                className="p-2.5 text-gray-400 hover:text-gray-900 transition-colors duration-150 rounded-full hover:bg-gray-100 active:scale-95"
-                style={{ willChange: 'transform' }}
-              >
-                <X size={20} strokeWidth={2.5} />
-              </button>
-            </div>
-
-            {/* Scrollable Menu Container */}
-            <div className="h-[calc(100%-140px)] overflow-y-auto overscroll-contain">
-              {/* Category Navigation */}
-              <nav className="px-3 py-4">
-                {[...categories, 'On Trend'].map((cat, index) => {
-                  const isOnTrend = cat === 'On Trend';
-                  return (
-                    <a
-                      key={cat}
-                      href={isOnTrend ? 'https://shop.themaryam.in/collections/trending' : `https://shop.themaryam.in/collections/${cat.toLowerCase().replace(' ', '-')}`}
-                      className={`flex items-center justify-between px-4 py-3.5 text-[15px] font-medium rounded-xl transition-all duration-150 active:scale-[0.98] ${isOnTrend
-                        ? 'text-white bg-gradient-to-r from-rose-500 to-pink-500 mt-3 shadow-lg shadow-pink-500/20'
-                        : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100'
-                        }`}
-                      style={{
-                        fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
-                        animation: `menuItemSlide 0.4s cubic-bezier(0.32, 0.72, 0, 1) ${0.05 + index * 0.03}s both`,
-                        willChange: 'transform, opacity'
-                      }}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <span>{cat}</span>
-                      <svg
-                        className={`w-4 h-4 transition-transform duration-150 ${isOnTrend ? 'text-white/80' : 'text-gray-400'}`}
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                      </svg>
-                    </a>
-                  );
-                })}
-              </nav>
-            </div>
-
-            {/* Bottom CTA */}
-            <div
-              className="absolute bottom-0 left-0 right-0 px-4 py-4 border-t border-gray-100 bg-white/95 backdrop-blur-sm"
-              style={{
-                animation: 'fadeInUp 0.4s cubic-bezier(0.32, 0.72, 0, 1) 0.2s both'
-              }}
+        {/* Sidebar Panel */}
+        <div
+          className={`absolute top-0 left-0 h-full w-[85%] max-w-[340px] bg-white text-black z-50 shadow-2xl transform transition-transform duration-300 ease-out flex flex-col ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+            }`}
+        >
+          {/* Close Button Area */}
+          <div className="absolute top-6 right-6 z-10">
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
             >
-              <a
-                href="https://shop.themaryam.in"
-                className="flex items-center justify-center gap-2 w-full py-3.5 bg-gray-900 text-white text-[14px] font-semibold rounded-xl hover:bg-gray-800 active:scale-[0.98] transition-all duration-150 shadow-lg"
-                style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif' }}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <Sparkles size={16} />
-                <span>Explore All Gifts</span>
+              <X className="w-6 h-6 text-black" strokeWidth={2} />
+            </button>
+          </div>
+
+          {/* Menu Items */}
+          <div className="flex-1 overflow-y-auto px-8 py-8 [&::-webkit-scrollbar]:hidden" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            <div className="space-y-6 mt-8">
+              {/* Home Link */}
+              <a href="/" className="group flex items-center justify-between cursor-pointer">
+                <span className="text-lg font-bold tracking-widest uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>HOME</span>
+              </a>
+
+              {/* Dynamic Categories - Bold & Outfit */}
+              {categories.map((cat) => (
+                <a
+                  key={cat}
+                  href={`https://shop.themaryam.in/collections/${cat.toLowerCase().replace(' ', '-')}`}
+                  className="group flex items-center justify-between cursor-pointer"
+                >
+                  <span
+                    className="text-lg font-bold tracking-widest uppercase"
+                    style={{ fontFamily: "'Outfit', sans-serif" }}
+                  >
+                    {cat}
+                  </span>
+                  <ArrowRight className="w-5 h-5 text-black opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300" strokeWidth={2} />
+                </a>
+              ))}
+
+              {/* On Trend */}
+              <a href="https://shop.themaryam.in/collections/trending" className="group flex items-center justify-between cursor-pointer">
+                <span className="text-lg font-bold tracking-widest uppercase text-rose-600" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                  ON TREND
+                </span>
+                <Sparkles className="w-5 h-5 text-rose-600" />
+              </a>
+
+              {/* Utility Links */}
+              <div className="pt-4 space-y-6">
+                <a href="/pages/track-order" className="group flex items-center justify-between cursor-pointer">
+                  <span className="text-xl font-medium tracking-wide">TRACK ORDER</span>
+                </a>
+                <a href="/contact.html" className="group flex items-center justify-between cursor-pointer">
+                  <span className="text-xl font-medium tracking-wide">CONTACT US</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Bottom Links (Account/Wishlist) */}
+            <div className="mt-12 border-t border-gray-200 pt-8 space-y-5">
+              <a href="https://shop.themaryam.in/account" className="flex items-center space-x-3 text-sm font-bold uppercase tracking-wider text-gray-800">
+                <User className="w-5 h-5" />
+                <span>Account</span>
+              </a>
+              <a href="https://shop.themaryam.in/wishlist" className="flex items-center space-x-3 text-sm font-bold uppercase tracking-wider text-gray-800">
+                <Heart className="w-5 h-5" />
+                <span>My Wishlist</span>
               </a>
             </div>
-          </div>
-        </div>
-      )}
 
-      {/* Ultra-Smooth CSS Animations - GPU Accelerated */}
-      <style>{`
-        @keyframes backdropFadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        
-        @keyframes slideInLeft {
-          from { 
-            transform: translate3d(-100%, 0, 0);
-            opacity: 0.8;
-          }
-          to { 
-            transform: translate3d(0, 0, 0);
-            opacity: 1;
-          }
-        }
-        
-        @keyframes menuItemSlide {
-          from { 
-            transform: translate3d(-20px, 0, 0);
-            opacity: 0;
-          }
-          to { 
-            transform: translate3d(0, 0, 0);
-            opacity: 1;
-          }
-        }
-        
-        @keyframes fadeInUp {
-          from { 
-            transform: translate3d(0, 10px, 0);
-            opacity: 0;
-          }
-          to { 
-            transform: translate3d(0, 0, 0);
-            opacity: 1;
-          }
-        }
-      `}</style>
+            {/* Socials */}
+            <div className="mt-8 flex space-x-6 text-gray-500">
+              <a href="https://instagram.com" target="_blank" rel="noreferrer"><Instagram className="w-5 h-5 hover:text-black transition-colors" /></a>
+              <a href="https://facebook.com" target="_blank" rel="noreferrer"><Facebook className="w-5 h-5 hover:text-black transition-colors" /></a>
+              <a href="tel:+917359033087"><Phone className="w-5 h-5 hover:text-black transition-colors" /></a>
+            </div>
+          </div>
+
+          {/* Left Decorative Line (Optional, matches snippet style subtlety) */}
+          <div className="absolute left-0 top-0 bottom-0 w-1 bg-white"></div>
+        </div>
+      </div>
+
     </>
   );
 };
