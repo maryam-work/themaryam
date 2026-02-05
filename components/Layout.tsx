@@ -692,11 +692,20 @@ export const Header: React.FC = () => {
               </a>
             </div>
 
-            {/* Socials */}
-            <div className="mt-8 flex space-x-6 text-gray-500">
-              <a href="https://instagram.com" target="_blank" rel="noreferrer"><Instagram className="w-5 h-5 hover:text-black transition-colors" /></a>
-              <a href="https://facebook.com" target="_blank" rel="noreferrer"><Facebook className="w-5 h-5 hover:text-black transition-colors" /></a>
-              <a href="tel:+917359033087"><Phone className="w-5 h-5 hover:text-black transition-colors" /></a>
+            {/* Socials - List Format */}
+            <div className="mt-8 space-y-5">
+              <a href="https://instagram.com/themaryam.in" target="_blank" rel="noreferrer" className="flex items-center space-x-3 text-sm font-bold uppercase tracking-wider text-gray-800">
+                <Instagram className="w-5 h-5" />
+                <span>Instagram - @themaryam.in</span>
+              </a>
+              <a href="https://facebook.com/themaryam.in" target="_blank" rel="noreferrer" className="flex items-center space-x-3 text-sm font-bold uppercase tracking-wider text-gray-800">
+                <Facebook className="w-5 h-5" />
+                <span>Facebook - @themaryam.in</span>
+              </a>
+              <a href="tel:+917359033087" className="flex items-center space-x-3 text-sm font-bold uppercase tracking-wider text-gray-800">
+                <Phone className="w-5 h-5" />
+                <span>Support - +91 73590 33087</span>
+              </a>
             </div>
           </div>
 
@@ -727,6 +736,8 @@ export const BirthdayReminderPopup: React.FC = () => {
     if (!hasSeenPopup) {
       const timer = setTimeout(() => {
         setIsVisible(true);
+        // Set seen flag IMMEDIATELY so it never shows again, even if page is reloaded
+        localStorage.setItem('maryam_birthday_popup_seen', 'true');
       }, 2500);
       return () => clearTimeout(timer);
     }
@@ -790,7 +801,7 @@ export const BirthdayReminderPopup: React.FC = () => {
 
   const handleSubmit = () => {
     if (birthday && phone.length >= 10) {
-      localStorage.setItem('maryam_birthday_popup_seen', 'true');
+      // Flag already set in useEffect, just storing data
       localStorage.setItem('maryam_birthday_data', JSON.stringify({
         birthday: birthday?.toString() || '',
         phone,
@@ -803,7 +814,7 @@ export const BirthdayReminderPopup: React.FC = () => {
 
   const handleClose = () => {
     setIsClosing(true);
-    localStorage.setItem('maryam_birthday_popup_seen', 'true');
+    // Flag already set in useEffect
     setTimeout(() => {
       setIsVisible(false);
       setIsClosing(false);
@@ -1006,8 +1017,8 @@ export const BirthdayReminderPopup: React.FC = () => {
             opacity: 1;
           }
           100% {
-            transform: translateY(110%) scale(0.85);
-            opacity: 0;
+            transform: translateY(110%) scale(0.95);
+            opacity: 1;
           }
         }
         
