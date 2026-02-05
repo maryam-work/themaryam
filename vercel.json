@@ -9,7 +9,47 @@
     ],
     "rewrites": [
         {
-            "source": "/((?!api|_next/static|_next/image|favicon.ico|.*\\.png|.*\\.jpg|.*\\.jpeg|.*\\.gif|.*\\.svg|.*\\.ico|.*\\.xml|.*\\.txt|.*\\.webmanifest).*)",
+            "source": "/anniversary-gifts",
+            "destination": "/anniversary-gifts.html"
+        },
+        {
+            "source": "/bestsellers",
+            "destination": "/bestsellers.html"
+        },
+        {
+            "source": "/cakes",
+            "destination": "/cakes.html"
+        },
+        {
+            "source": "/flowers",
+            "destination": "/flowers.html"
+        },
+        {
+            "source": "/same-day-delivery",
+            "destination": "/same-day-delivery.html"
+        },
+        {
+            "source": "/wedding-gifts",
+            "destination": "/wedding-gifts.html"
+        },
+        {
+            "source": "/contact",
+            "destination": "/contact.html"
+        },
+        {
+            "source": "/pages/faq",
+            "destination": "/pages/faq.html"
+        },
+        {
+            "source": "/pages/track-order",
+            "destination": "/pages/track-order.html"
+        },
+        {
+            "source": "/policies/:path*",
+            "destination": "/policies/:path.html"
+        },
+        {
+            "source": "/((?!api|_next/static|_next/image|favicon.ico|.*\\.png|.*\\.jpg|.*\\.jpeg|.*\\.gif|.*\\.svg|.*\\.ico|.*\\.xml|.*\\.txt|.*\\.webmanifest|.*\\.html).*)",
             "destination": "/index.html"
         }
     ],
