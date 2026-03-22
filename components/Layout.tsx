@@ -26,6 +26,174 @@ import {
 } from 'lucide-react';
 import { Container } from './UI';
 
+export const FestivalAnnouncementBar: React.FC = () => {
+  const [festival, setFestival] = useState<any>(null);
+  const [particles, setParticles] = useState<{left: number, top: number, size: number, opacity: number, char: string}[]>([]);
+
+  useEffect(() => {
+    if (sessionStorage.getItem('festival-bar-dismissed')) return;
+
+    const FESTIVALS = [
+      { name: 'eid', date: '2025-03-31', daysBeforeShow: 10, emoji: '🌙', emojiEnd: '⭐', text: 'Eid Mubarak! Celebrate with Handcrafted Gifts', particles: ['☪', '⭐', '✨', '🌟'] },
+      { name: 'eid', date: '2026-03-21', daysBeforeShow: 10, emoji: '🌙', emojiEnd: '⭐', text: 'Eid Mubarak! Celebrate with Handcrafted Gifts', particles: ['☪', '⭐', '✨', '🌟'] },
+      { name: 'eid', date: '2027-03-10', daysBeforeShow: 10, emoji: '🌙', emojiEnd: '⭐', text: 'Eid Mubarak! Celebrate with Handcrafted Gifts', particles: ['☪', '⭐', '✨', '🌟'] },
+      { name: 'eid', date: '2025-06-07', daysBeforeShow: 8, emoji: '🌙', emojiEnd: '🕌', text: 'Eid ul-Adha Mubarak! Gift Your Loved Ones', particles: ['☪', '⭐', '✨', '🌟'] },
+      { name: 'eid', date: '2026-05-27', daysBeforeShow: 8, emoji: '🌙', emojiEnd: '🕌', text: 'Eid ul-Adha Mubarak! Gift Your Loved Ones', particles: ['☪', '⭐', '✨', '🌟'] },
+      { name: 'holi', date: '2025-03-14', daysBeforeShow: 7, emoji: '🎨', emojiEnd: '💜', text: 'Happy Holi! Splash Colors of Love with Gifts', particles: ['🔴', '🟡', '🟢', '🔵', '🟣'] },
+      { name: 'holi', date: '2026-03-03', daysBeforeShow: 7, emoji: '🎨', emojiEnd: '💜', text: 'Happy Holi! Splash Colors of Love with Gifts', particles: ['🔴', '🟡', '🟢', '🔵', '🟣'] },
+      { name: 'valentine', date: '2025-02-14', daysBeforeShow: 10, emoji: '💕', emojiEnd: '💝', text: "Valentine's Week — Say It With a Gift They'll Never Forget", particles: ['❤️', '💕', '💗', '✨'] },
+      { name: 'valentine', date: '2026-02-14', daysBeforeShow: 10, emoji: '💕', emojiEnd: '💝', text: "Valentine's Week — Say It With a Gift They'll Never Forget", particles: ['❤️', '💕', '💗', '✨'] },
+      { name: 'valentine', date: '2027-02-14', daysBeforeShow: 10, emoji: '💕', emojiEnd: '💝', text: "Valentine's Week — Say It With a Gift They'll Never Forget", particles: ['❤️', '💕', '💗', '✨'] },
+      { name: 'mothers', date: '2025-05-11', daysBeforeShow: 10, emoji: '🌸', emojiEnd: '💐', text: "Mother's Day — She Deserves The World. Start With a Gift.", particles: ['🌸', '🌺', '💮', '✨'] },
+      { name: 'mothers', date: '2026-05-10', daysBeforeShow: 10, emoji: '🌸', emojiEnd: '💐', text: "Mother's Day — She Deserves The World. Start With a Gift.", particles: ['🌸', '🌺', '💮', '✨'] },
+      { name: 'rakhi', date: '2025-08-09', daysBeforeShow: 10, emoji: '🪢', emojiEnd: '💛', text: 'Raksha Bandhan — Celebrate The Bond with Premium Gifts', particles: ['🪢', '✨', '💛', '🎀'] },
+      { name: 'rakhi', date: '2026-08-28', daysBeforeShow: 10, emoji: '🪢', emojiEnd: '💛', text: 'Raksha Bandhan — Celebrate The Bond with Premium Gifts', particles: ['🪢', '✨', '💛', '🎀'] },
+      { name: 'independence', date: '2025-08-15', daysBeforeShow: 5, emoji: '🇮🇳', emojiEnd: '🇮🇳', text: 'Happy Independence Day! Proud to Be Indian', particles: ['🇮🇳', '✨', '⭐'] },
+      { name: 'independence', date: '2026-08-15', daysBeforeShow: 5, emoji: '🇮🇳', emojiEnd: '🇮🇳', text: 'Happy Independence Day! Proud to Be Indian', particles: ['🇮🇳', '✨', '⭐'] },
+      { name: 'diwali', date: '2025-10-21', daysBeforeShow: 12, emoji: '🪔', emojiEnd: '✨', text: 'Diwali Sale — Light Up Someone\'s Life with a Perfect Gift', particles: ['🪔', '✨', '🎆', '🌟', '💫'] },
+      { name: 'diwali', date: '2026-11-08', daysBeforeShow: 12, emoji: '🪔', emojiEnd: '✨', text: 'Diwali Sale — Light Up Someone\'s Life with a Perfect Gift', particles: ['🪔', '✨', '🎆', '🌟', '💫'] },
+      { name: 'womens', date: '2025-03-08', daysBeforeShow: 5, emoji: '💜', emojiEnd: '👑', text: "Happy Women's Day — Gift Her Something She Truly Deserves", particles: ['💜', '👑', '✨', '💐'] },
+      { name: 'womens', date: '2026-03-08', daysBeforeShow: 5, emoji: '💜', emojiEnd: '👑', text: "Happy Women's Day — Gift Her Something She Truly Deserves", particles: ['💜', '👑', '✨', '💐'] },
+      { name: 'christmas', date: '2025-12-25', daysBeforeShow: 10, emoji: '🎄', emojiEnd: '🎅', text: 'Merry Christmas! Spread Joy with Handcrafted Gifts', particles: ['❄️', '🎄', '⭐', '🎁', '✨'] },
+      { name: 'christmas', date: '2026-12-25', daysBeforeShow: 10, emoji: '🎄', emojiEnd: '🎅', text: 'Merry Christmas! Spread Joy with Handcrafted Gifts', particles: ['❄️', '🎄', '⭐', '🎁', '✨'] },
+      { name: 'newyear', date: '2026-01-01', daysBeforeShow: 5, emoji: '🎆', emojiEnd: '🥂', text: 'Happy New Year! Start Fresh with Gifts of Love', particles: ['🎆', '✨', '🥂', '🎉', '💫'] },
+      { name: 'newyear', date: '2027-01-01', daysBeforeShow: 5, emoji: '🎆', emojiEnd: '🥂', text: 'Happy New Year! Start Fresh with Gifts of Love', particles: ['🎆', '✨', '🥂', '🎉', '💫'] },
+      { name: 'independence', date: '2025-01-26', daysBeforeShow: 3, emoji: '🇮🇳', emojiEnd: '🇮🇳', text: 'Happy Republic Day! Celebrating India', particles: ['🇮🇳', '✨', '⭐'] },
+      { name: 'independence', date: '2026-01-26', daysBeforeShow: 3, emoji: '🇮🇳', emojiEnd: '🇮🇳', text: 'Happy Republic Day! Celebrating India', particles: ['🇮🇳', '✨', '⭐'] }
+    ];
+
+    const DEFAULT_BANNER = {
+      name: 'default', emoji: '✨', emojiEnd: '🎁',
+      text: 'Handcrafted Gifts That Speak Louder Than Words',
+      particles: ['✨', '💫', '⭐']
+    };
+
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    
+    let best = null;
+    let bestDiff = Infinity;
+
+    for (const f of FESTIVALS) {
+      const festDate = new Date(f.date + 'T00:00:00');
+      const showFrom = new Date(festDate.getTime());
+      showFrom.setDate(showFrom.getDate() - f.daysBeforeShow);
+      
+      const showUntil = new Date(festDate.getTime());
+      showUntil.setDate(showUntil.getDate() + 1);
+
+      if (today >= showFrom && today <= showUntil) {
+        const diff = Math.abs(festDate.getTime() - today.getTime());
+        if (diff < bestDiff) {
+          bestDiff = diff;
+          best = f;
+        }
+      }
+    }
+
+    const activeFestival = best || DEFAULT_BANNER;
+    setFestival(activeFestival);
+
+    if (activeFestival.particles) {
+      const newParticles = [];
+      for (let i = 0; i < 12; i++) {
+        newParticles.push({
+          left: Math.random() * 100,
+          top: Math.random() * 100,
+          size: 0.5 + Math.random() * 0.6,
+          opacity: 0.08 + Math.random() * 0.12,
+          char: activeFestival.particles[i % activeFestival.particles.length]
+        });
+      }
+      setParticles(newParticles);
+    }
+  }, []);
+
+  if (!festival) return null;
+
+  let bgGradient = '';
+  let textColor = '#fff';
+  let textShadow = 'none';
+
+  switch(festival.name) {
+    case 'eid': bgGradient = 'linear-gradient(135deg, #0d5c3d 0%, #1a8a5c 40%, #0f7a4e 60%, #0d5c3d 100%)'; break;
+    case 'diwali': bgGradient = 'linear-gradient(135deg, #8B1A1A 0%, #D4451A 40%, #E8721A 60%, #D4451A 100%)'; break;
+    case 'holi': bgGradient = 'linear-gradient(135deg, #FF6B9D 0%, #C850C0 25%, #4158D0 50%, #43E97B 75%, #F9D423 100%)'; textShadow = '0 1px 3px rgba(0,0,0,0.2)'; break;
+    case 'valentine': bgGradient = 'linear-gradient(135deg, #FF416C 0%, #FF4B6E 40%, #E8446A 60%, #D43F6E 100%)'; break;
+    case 'rakhi': bgGradient = 'linear-gradient(135deg, #FF9933 0%, #E87A30 40%, #9B59B6 70%, #8E44AD 100%)'; break;
+    case 'christmas': bgGradient = 'linear-gradient(135deg, #c0392b 0%, #e74c3c 30%, #27ae60 70%, #2ecc71 100%)'; break;
+    case 'newyear': bgGradient = 'linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 60%, #1a1a2e 100%)'; textColor = '#FFD700'; break;
+    case 'mothers': bgGradient = 'linear-gradient(135deg, #fce4ec 0%, #f8bbd0 40%, #f48fb1 60%, #f06292 100%)'; textColor = '#880E4F'; break;
+    case 'independence': bgGradient = 'linear-gradient(135deg, #FF9933 0%, #FF9933 33%, #FFFFFF 33%, #FFFFFF 66%, #138808 66%, #138808 100%)'; textColor = '#1a1a1a'; textShadow = '0 0 8px rgba(255,255,255,0.8)'; break;
+    case 'womens': bgGradient = 'linear-gradient(135deg, #7B1FA2 0%, #9C27B0 40%, #BA68C8 60%, #CE93D8 100%)'; break;
+    case 'default': default: bgGradient = 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 40%, #3a3a3a 60%, #1a1a1a 100%)'; break;
+  }
+
+  return (
+    <div 
+      style={{
+        width: '100%',
+        overflow: 'hidden',
+        position: 'relative',
+        zIndex: 50,
+        fontFamily: "'Outfit', 'Inter', sans-serif",
+        display: 'block'
+      }}
+      role="banner" 
+      aria-label="Festival announcement"
+    >
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '8px',
+        padding: '10px 16px',
+        minHeight: '42px',
+        position: 'relative',
+        overflow: 'hidden',
+        background: bgGradient
+      }}>
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden', zIndex: 1 }}>
+          {particles.map((p, i) => (
+            <span key={i} style={{
+              position: 'absolute',
+              left: `${p.left}%`,
+              top: `${p.top}%`,
+              fontSize: `${p.size}rem`,
+              opacity: p.opacity,
+              color: festival.name === 'eid' ? '#ffd700' : 'inherit'
+            }}>
+              {p.char}
+            </span>
+          ))}
+        </div>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '8px',
+          whiteSpace: 'nowrap',
+          zIndex: 2,
+          position: 'relative'
+        }}>
+          <span style={{ fontSize: '1.1rem', flexShrink: 0 }}>{festival.emoji}</span>
+          <span style={{
+            fontSize: '0.8rem',
+            fontWeight: 600,
+            letterSpacing: '0.04em',
+            lineHeight: 1.3,
+            color: textColor,
+            textShadow: textShadow
+          }}>
+            {festival.text}
+          </span>
+          <span style={{ fontSize: '1.1rem', flexShrink: 0 }}>{festival.emojiEnd}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const TopBar: React.FC = () => {
   return (
     <div className="hidden lg:block w-full relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #fef1f4 0%, #ffeef3 25%, #fff5f7 50%, #ffeef3 75%, #fef1f4 100%)' }}>
