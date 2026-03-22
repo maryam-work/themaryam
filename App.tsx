@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { TopBar, Header, Footer, BirthdayReminderPopup } from './components/Layout';
+import { TopBar, Header, Footer, BirthdayReminderPopup, BottomNav } from './components/Layout';
 import {
   Hero,
   CategoriesGrid,
@@ -181,6 +181,7 @@ const App: React.FC = () => {
         {/* Secret Admin CMS - DO NOT SHARE THIS URL */}
         <Route path="/m7x2k9p4q8w1a5t3y6u0i2o4e6r8z3c5v7b9n1l0" element={<SecretAdminPage />} />
       </Routes>
+      <BottomNav />
     </div>
   );
 };
