@@ -1426,8 +1426,8 @@ export const BottomNav: React.FC = () => {
     {
       id: 'search',
       label: 'Search',
-      href: '/search',
-      isInternal: true,
+      href: 'https://shop.themaryam.in/search',
+      isInternal: false,
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
           <circle cx="11" cy="11" r="7"/>
@@ -1438,8 +1438,8 @@ export const BottomNav: React.FC = () => {
     {
       id: 'ideas',
       label: 'Ideas',
-      href: '/wrapped',
-      isInternal: true,
+      href: 'https://shop.themaryam.in/pages/ideas',
+      isInternal: false,
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
           <path d="M9 18h6"/>
@@ -1451,7 +1451,7 @@ export const BottomNav: React.FC = () => {
     {
       id: 'account',
       label: 'Account',
-      href: 'https://shop.themaryam.in/account',
+      href: 'https://shop.themaryam.in/account/login',
       isInternal: false,
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
