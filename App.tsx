@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { TopBar, Header, Footer, BirthdayReminderPopup, BottomNav } from './components/Layout';
+import { TopBar, Header, Footer, BirthdayReminderPopup, BottomNav, FestivalAnnouncementBar } from './components/Layout';
 import {
   Hero,
   CategoriesGrid,
@@ -133,6 +133,7 @@ const HomePage: React.FC = () => {
           ]
         }}
       />
+      <FestivalAnnouncementBar />
       <Header />
       <TopBar />
       <main className="flex flex-col gap-0 w-full overflow-x-hidden">
