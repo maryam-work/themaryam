@@ -1375,3 +1375,201 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
+
+// ============================================
+// Mobile Bottom Navigation Bar
+// Pixel-perfect replica of shop.themaryam.in bottom-nav
+// Mobile-only (hidden on lg/desktop)
+// ============================================
+export const BottomNav: React.FC = () => {
+  const [activePath, setActivePath] = useState('/');
+  const [pressedItem, setPressedItem] = useState<string | null>(null);
+
+  useEffect(() => {
+    setActivePath(window.location.pathname);
+
+    const handlePopState = () => setActivePath(window.location.pathname);
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const navItems = [
+    {
+      id: 'discover',
+      label: 'Discover',
+      href: '/',
+      isInternal: true,
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+          <path d="M20 12v10H4V12"/>
+          <path d="M2 7h20v5H2z"/>
+          <path d="M12 22V7"/>
+          <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+          <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+        </svg>
+      ),
+    },
+    {
+      id: 'shop',
+      label: 'Shop',
+      href: 'https://shop.themaryam.in/pages/categories',
+      isInternal: false,
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+          <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+          <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+          <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+        </svg>
+      ),
+    },
+    {
+      id: 'search',
+      label: 'Search',
+      href: '/search',
+      isInternal: true,
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="11" cy="11" r="7"/>
+          <path d="M21 21l-4.35-4.35"/>
+        </svg>
+      ),
+    },
+    {
+      id: 'ideas',
+      label: 'Ideas',
+      href: '/wrapped',
+      isInternal: true,
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+          <path d="M9 18h6"/>
+          <path d="M10 22h4"/>
+          <path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"/>
+        </svg>
+      ),
+    },
+    {
+      id: 'account',
+      label: 'Account',
+      href: 'https://shop.themaryam.in/account',
+      isInternal: false,
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M20 21a8 8 0 1 0-16 0"/>
+        </svg>
+      ),
+    },
+  ];
+
+  const isActive = (item: typeof navItems[0]) => {
+    if (item.id === 'discover') return activePath === '/' || activePath === '';
+    if (item.isInternal) return activePath.startsWith(item.href);
+    return false;
+  };
+
+  return (
+    <>
+      {/* Bottom Nav Bar - Mobile Only */}
+      <nav
+        className="flex items-center justify-around lg:hidden"
+        aria-label="Mobile Navigation"
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 50,
+          height: 'calc(64px + env(safe-area-inset-bottom, 0px))',
+          paddingBottom: 'env(safe-area-inset-bottom, 0px)',
+          background: 'rgba(255, 255, 255, 0.98)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderTop: '0.5px solid rgba(0, 0, 0, 0.06)',
+          boxShadow: '0 -2px 10px rgba(0, 0, 0, 0.04)',
+          transform: 'translateZ(0)',
+          contain: 'layout style' as any,
+        }}
+      >
+        {navItems.map((item) => {
+          const active = isActive(item);
+          const pressed = pressedItem === item.id;
+
+          const commonProps = {
+            key: item.id,
+            'aria-label': item.label,
+            onPointerDown: () => setPressedItem(item.id),
+            onPointerUp: () => setPressedItem(null),
+            onPointerLeave: () => setPressedItem(null),
+            style: {
+              display: 'flex',
+              flexDirection: 'column' as const,
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '4px',
+              flex: 1,
+              height: '100%',
+              padding: '8px 0',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              color: active ? '#000' : 'rgba(0, 0, 0, 0.5)',
+              textDecoration: 'none',
+              transition: 'color 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+              transform: pressed ? 'scale(0.95)' : 'scale(1)',
+              minWidth: '48px',
+              minHeight: '48px',
+              WebkitTapHighlightColor: 'transparent',
+            },
+          };
+
+          const content = (
+            <>
+              <span
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '24px',
+                  height: '24px',
+                }}
+              >
+                {item.icon}
+              </span>
+              <span
+                style={{
+                  fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif",
+                  fontSize: '10px',
+                  fontWeight: 500,
+                  letterSpacing: '0.02em',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {item.label}
+              </span>
+            </>
+          );
+
+          return (
+            <a
+              {...commonProps}
+              href={item.href}
+              {...(!item.isInternal ? { target: '_self' } : {})}
+            >
+              {content}
+            </a>
+          );
+        })}
+      </nav>
+
+      {/* Spacer to prevent content from hiding behind bottom nav - Mobile Only */}
+      <div
+        className="lg:hidden"
+        style={{
+          height: 'calc(64px + env(safe-area-inset-bottom, 0px) + 16px)',
+        }}
+        aria-hidden="true"
+      />
+    </>
+  );
+};
