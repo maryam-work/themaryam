@@ -310,7 +310,7 @@ export const Hero = ({ onSearch, isLoading }: { onSearch: (query: string) => voi
                             <span className="text-xs font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Bouquets</span>
                             <div className="absolute right-0 top-2 bottom-2 w-px bg-rose-200"></div>
                         </a>
-                        <a href="https://shop.themaryam.in/collections/hampers" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors">
+                        <a href="https://shop.themaryam.in/collections/gift-hampers" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors">
                             <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/hamper_hero_image_800x800.jpg?v=1769151314" alt="Hampers" className="w-full h-full object-cover" />
                             </div>
@@ -395,7 +395,7 @@ export const Hero = ({ onSearch, isLoading }: { onSearch: (query: string) => voi
                             <span className="text-sm font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Bouquets</span>
                             <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
                         </a>
-                        <a href="https://shop.themaryam.in/collections/hampers" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
+                        <a href="https://shop.themaryam.in/collections/gift-hampers" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors relative">
                             <div className="w-24 h-24 mb-3 rounded-full flex items-center justify-center overflow-hidden">
                                 <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/hamper_hero_image_800x800.jpg?v=1769151314" alt="Hampers" className="w-full h-full object-cover" />
                             </div>
@@ -447,24 +447,24 @@ export const CategoriesGrid: React.FC = () => {
 
     // All 18 categories with functional search links
     const categories = [
-        { id: 1, name: 'Anniversary', image: '/categories/anniversary.png', link: '/search?q=Anniversary+Gifts' },
-        { id: 2, name: 'Birthday', image: '/categories/birthday.png', link: '/search?q=Birthday+Gifts' },
-        { id: 3, name: 'Gift Sets', image: '/categories/gift-sets.png', link: '/search?q=Gift+Sets' },
-        { id: 4, name: 'Chocolates', image: '/categories/chocolates.png', link: '/search?q=Chocolate+Gift+Boxes' },
-        { id: 5, name: 'Personalised', image: '/categories/personalised.png', link: '/search?q=Personalized+Gifts' },
-        { id: 6, name: 'Bouquets', image: '/categories/bouquets.png', link: '/search?q=Flower+Bouquets' },
-        { id: 7, name: 'Specials', image: '/categories/specials.png', link: '/search?q=Special+Gifts' },
-        { id: 8, name: 'Valentine Gifts', image: '/categories/valentine-gifts.png', link: '/search?q=Valentine+Gifts' },
-        { id: 9, name: 'Miss You', image: '/categories/miss-you.png', link: '/search?q=Miss+You+Gifts' },
-        { id: 10, name: 'Love You', image: '/categories/love-you.png', link: '/search?q=Love+You+Gifts' },
-        { id: 11, name: 'Congratulations', image: '/categories/congratulations.png', link: '/search?q=Congratulations+Gifts' },
-        { id: 12, name: 'Cakes', image: '/categories/cakes.png', link: '/search?q=Cakes' },
-        { id: 13, name: 'Gift Hampers', image: '/categories/gift-hampers.png', link: '/search?q=Gift+Hampers' },
-        { id: 14, name: 'Frames', image: '/categories/frames.png', link: '/search?q=Photo+Frames' },
-        { id: 15, name: 'Wedding Gifts', image: '/categories/wedding-gifts.png', link: '/search?q=Wedding+Gifts' },
-        { id: 16, name: 'Friendship', image: '/categories/friendship.png', link: '/search?q=Friendship+Gifts' },
-        { id: 17, name: 'Corporate Gifts', image: '/categories/corporate-gifts.png', link: '/search?q=Corporate+Gifts' },
-        { id: 18, name: 'Letters', image: '/categories/letters.png', link: '/search?q=Handwritten+Letters' },
+        { id: 1, name: 'Anniversary', image: '/categories/anniversary.png', link: 'https://shop.themaryam.in/collections/anniversary' },
+        { id: 2, name: 'Birthday', image: '/categories/birthday.png', link: 'https://shop.themaryam.in/collections/birthday' },
+        { id: 3, name: 'Gift Sets', image: '/categories/gift-sets.png', link: 'https://shop.themaryam.in/collections/gift-sets' },
+        { id: 4, name: 'Chocolates', image: '/categories/chocolates.png', link: 'https://shop.themaryam.in/collections/chocolates' },
+        { id: 5, name: 'Personalised', image: '/categories/personalised.png', link: 'https://shop.themaryam.in/collections/personalised' },
+        { id: 6, name: 'Bouquets', image: '/categories/bouquets.png', link: 'https://shop.themaryam.in/collections/bouquets' },
+        { id: 7, name: 'Specials', image: '/categories/specials.png', link: 'https://shop.themaryam.in/collections/specials' },
+        { id: 8, name: 'Valentine Gifts', image: '/categories/valentine-gifts.png', link: 'https://shop.themaryam.in/collections/valentine-gift' },
+        { id: 9, name: 'Miss You', image: '/categories/miss-you.png', link: 'https://shop.themaryam.in/collections/miss-you' },
+        { id: 10, name: 'Love You', image: '/categories/love-you.png', link: 'https://shop.themaryam.in/collections/love-you' },
+        { id: 11, name: 'Congratulations', image: '/categories/congratulations.png', link: 'https://shop.themaryam.in/collections/congratulations' },
+        { id: 12, name: 'Cakes', image: '/categories/cakes.png', link: 'https://shop.themaryam.in/collections/cakes' },
+        { id: 13, name: 'Gift Hampers', image: '/categories/gift-hampers.png', link: 'https://shop.themaryam.in/collections/gift-hampers' },
+        { id: 14, name: 'Frames', image: '/categories/frames.png', link: 'https://shop.themaryam.in/collections/frames' },
+        { id: 15, name: 'Wedding Gifts', image: '/categories/wedding-gifts.png', link: 'https://shop.themaryam.in/collections/wedding-gifts' },
+        { id: 16, name: 'Friendship', image: '/categories/friendship.png', link: 'https://shop.themaryam.in/collections/friendship' },
+        { id: 17, name: 'Corporate Gifts', image: '/categories/corporate-gifts.png', link: 'https://shop.themaryam.in/collections/corporate-gift' },
+        { id: 18, name: 'Letters', image: '/categories/letters.png', link: 'https://shop.themaryam.in/collections/letters' },
     ];
 
     // Split into 2 rows for mobile
@@ -1037,10 +1037,10 @@ const allOccasions = [
     { id: 2, title: "For Her", subtitle: "Curated picks she'll adore", image: "/occasions/forher.png" },
     { id: 3, title: "Couples", subtitle: "Celebrate your bond", image: "/occasions/couples.png" },
     { id: 4, title: "Birthday", subtitle: "Celebrate their day", image: "/occasions/birthday.png" },
-    { id: 5, title: "Valentine Day", subtitle: "Day of love", image: "/occasions/valentine_day.png", date: "02-14" },
-    { id: 6, title: "Wedding", subtitle: "Make their day special", image: "/occasions/wedding.png" },
+    { id: 5, title: "Valentine Day", subtitle: "Day of love", image: "/occasions/valentine_day.png", date: "02-14", slug: "valentine-gift" },
+    { id: 6, title: "Wedding", subtitle: "Make their day special", image: "/occasions/wedding.png", slug: "wedding-gifts" },
     { id: 7, title: "Anniversary", subtitle: "Cherish the moments", image: "/occasions/Anniversary.png" },
-    { id: 8, title: "Engagement", subtitle: "New beginnings", image: "/occasions/Engagement.png" },
+    { id: 8, title: "Engagement", subtitle: "New beginnings", image: "/occasions/Engagement.png", slug: "couples" },
     { id: 9, title: "Baby Shower", subtitle: "Welcome the little one", image: "/occasions/baby_shower.png" },
     { id: 10, title: "Graduation", subtitle: "Achievement unlocked", image: "/occasions/Graduation.png" },
 
@@ -1048,12 +1048,12 @@ const allOccasions = [
     { id: 11, title: "New Job", subtitle: "Career celebrations", image: "/occasions/New_job.png" },
     { id: 12, title: "Promotion", subtitle: "Moving up!", image: "/occasions/Promotion.png" },
     { id: 13, title: "Retirement", subtitle: "New chapter begins", image: "/occasions/Retirement.png" },
-    { id: 14, title: "New Home Vibes", subtitle: "Housewarming gifts", image: "/occasions/New_home.png" },
+    { id: 14, title: "New Home Vibes", subtitle: "Housewarming gifts", image: "/occasions/New_home.png", slug: "new-home" },
     { id: 15, title: "Date Night", subtitle: "Romantic gestures", image: "/occasions/date_night.png" },
     { id: 16, title: "Farewell", subtitle: "Memories to cherish", image: "/occasions/Farewell.png" },
     { id: 17, title: "Get Well Soon", subtitle: "Sending love", image: "/occasions/get_well_soon.png" },
     { id: 18, title: "Thank You", subtitle: "Express gratitude", image: "/occasions/thank_you.png" },
-    { id: 19, title: "Apology", subtitle: "Make it right", image: "/occasions/iam_sorry.png" },
+    { id: 19, title: "Apology", subtitle: "Make it right", image: "/occasions/iam_sorry.png", slug: "im-sorry" },
     { id: 20, title: "Congratulations", subtitle: "Celebrate success", image: "/occasions/Congratulations.png" },
 
     // Row 3: Relationships & Festival (21-30) - ALL HAVE IMAGES NOW
@@ -1191,7 +1191,7 @@ const OccasionCard = ({ occasion, index, isDesktop = false }: {
     return hasImage ? (
         // === IMAGE BASED CARD ===
         <a
-            href={`https://shop.themaryam.in/collections/${occasion.title.toLowerCase().replace(/ /g, '-')}`}
+            href={`https://shop.themaryam.in/collections/${(occasion as any).slug || occasion.title.toLowerCase().replace(/ /g, '-')}`}
             className={`${sizeClasses} relative group transition-transform duration-300 transform hover:scale-105`}
         >
             {/* Upcoming Badge */}
@@ -1210,7 +1210,7 @@ const OccasionCard = ({ occasion, index, isDesktop = false }: {
     ) : (
         // === ICON BASED CARD ===
         <a
-            href={`https://shop.themaryam.in/collections/${occasion.title.toLowerCase().replace(/ /g, '-')}`}
+            href={`https://shop.themaryam.in/collections/${(occasion as any).slug || occasion.title.toLowerCase().replace(/ /g, '-')}`}
             className={`
                 ${sizeClasses} rounded-3xl ${occasion.color || 'bg-gray-100'}
                 p-3 md:p-4 flex flex-col items-center justify-center
@@ -1581,7 +1581,7 @@ export const ExploreGifts = () => {
                 </a>
 
                 {/* Card 3 - Her Hamper */}
-                <a href="https://shop.themaryam.in/collections/her-hamper" className="group relative block">
+                <a href="https://shop.themaryam.in/collections/gift-hampers" className="group relative block">
                     <div className="relative h-full bg-gradient-to-br from-pink-50/50 to-purple-50/50 rounded-[2rem] p-8 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border border-transparent hover:border-pink-100">
 
                         {/* Decorative Background Element */}
