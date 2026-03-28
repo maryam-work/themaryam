@@ -2031,7 +2031,7 @@ export const HelpFAB: React.FC = () => {
           background: '#fafafa',
         }}>
           <a
-            href="https://wa.me/919220424253?text=Hi%20TheMaryam!%20I%20have%20a%20question%20about%20your%20products."
+            href="https://wa.me/917359033087?text=Hi%20TheMaryam!%20I%20have%20a%20question%20about%20your%20products."
             target="_blank"
             rel="noopener noreferrer"
             style={{
