@@ -557,7 +557,7 @@ export const Header: React.FC = () => {
                     iconPath: 'M11 14v8h-4a3 3 0 0 1 -3 -3v-4a1 1 0 0 1 1 -1h6zm8 0a1 1 0 0 1 1 1v4a3 3 0 0 1 -3 3h-4v-8h6zm-2.5 -12a3.5 3.5 0 0 1 3.163 5h.337a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-7v-5h-2v5h-7a2 2 0 0 1 -2 -2v-1a2 2 0 0 1 2 -2h.337a3.486 3.486 0 0 1 -.337 -1.5c0 -1.933 1.567 -3.5 3.483 -3.5c1.755 -.03 3.312 1.092 4.381 2.934l.136 .243c1.033 -1.914 2.56 -3.114 4.291 -3.175l.209 -.002zm-9 2a1.5 1.5 0 0 0 0 3h3.143c-.741 -1.905 -1.949 -3.02 -3.143 -3zm8.983 0c-1.18 -.02 -2.385 1.096 -3.126 3h3.143a1.5 1.5 0 1 0 -.017 -3z',
                     link: 'https://shop.themaryam.in/collections/all',
                     subItems: [
-                      { name: 'Valentine\'s Day', link: 'https://shop.themaryam.in/collections/valentines', desc: 'Express your love', iconPath: 'M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572' },
+                      { name: 'Valentine\'s Day', link: 'https://shop.themaryam.in/collections/valentine-gift', desc: 'Express your love', iconPath: 'M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572' },
                       { name: 'Mother\'s Day', link: 'https://shop.themaryam.in/collections/mothers-day', desc: 'For the best mom', iconPath: 'M12 21a9 9 0 1 1 0 -18a9 9 0 0 1 0 18z M9 10h.01 M15 10h.01 M9.5 15a3.5 3.5 0 0 0 5 0' },
                       { name: 'Father\'s Day', link: 'https://shop.themaryam.in/collections/fathers-day', desc: 'For the hero', iconPath: 'M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9l8 -4.5' },
                       { name: 'Raksha Bandhan', link: 'https://shop.themaryam.in/collections/rakhi', desc: 'Sibling love', iconPath: 'M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0 M12 12m-5 0a5 5 0 1 0 10 0a5 5 0 1 0 -10 0' },
@@ -625,12 +625,12 @@ export const Header: React.FC = () => {
                     gradient: 'from-blue-600 to-indigo-600',
                     image: '/nav/corporate.png',
                     iconPath: 'M3 21l18 0 M9 8l1 0 M9 12l1 0 M9 16l1 0 M14 8l1 0 M14 12l1 0 M14 16l1 0 M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16',
-                    link: 'https://shop.themaryam.in/collections/corporate',
+                    link: 'https://shop.themaryam.in/collections/corporate-gift',
                     subItems: [
-                      { name: 'Corporate Gifts', link: 'https://shop.themaryam.in/collections/corporate?filter=gifts', desc: 'Business gifting', iconPath: 'M3 8m0 1a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1z M12 8l0 13' },
-                      { name: 'Employee Rewards', link: 'https://shop.themaryam.in/collections/corporate?filter=rewards', desc: 'Team appreciation', iconPath: 'M12 6l4 6l5 -4l-2 10h-14l-2 -10l5 4z' },
-                      { name: 'Bulk Orders', link: 'https://shop.themaryam.in/collections/corporate?filter=bulk', desc: 'Large quantities', iconPath: 'M3 8m0 1a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1z M12 8l0 13 M19 12v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-7' },
-                      { name: 'Custom Branding', link: 'https://shop.themaryam.in/collections/corporate?filter=branding', desc: 'Your logo', iconPath: 'M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5' },
+                      { name: 'Corporate Gifts', link: 'https://shop.themaryam.in/collections/corporate-gift?filter=gifts', desc: 'Business gifting', iconPath: 'M3 8m0 1a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1z M12 8l0 13' },
+                      { name: 'Employee Rewards', link: 'https://shop.themaryam.in/collections/corporate-gift?filter=rewards', desc: 'Team appreciation', iconPath: 'M12 6l4 6l5 -4l-2 10h-14l-2 -10l5 4z' },
+                      { name: 'Bulk Orders', link: 'https://shop.themaryam.in/collections/corporate-gift?filter=bulk', desc: 'Large quantities', iconPath: 'M3 8m0 1a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1z M12 8l0 13 M19 12v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-7' },
+                      { name: 'Custom Branding', link: 'https://shop.themaryam.in/collections/corporate-gift?filter=branding', desc: 'Your logo', iconPath: 'M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5' },
                     ]
                   },
                   'Chocolates': {
@@ -667,12 +667,12 @@ export const Header: React.FC = () => {
                     gradient: 'from-teal-500 to-cyan-500',
                     image: '/nav/hampers.png',
                     iconPath: 'M15.949 3.684l1.104 3.316h1.947a3 3 0 0 1 2.962 3.477l-1.252 7.131a4 4 0 0 1 -3.954 3.392h-9.512a3.994 3.994 0 0 1 -3.95 -3.371l-1.258 -7.173a3 3 0 0 1 2.964 -3.456h1.945l1.105 -3.316a1 1 0 0 1 1.898 .632l-.895 2.684h5.893l-.895 -2.684a1 1 0 1 1 1.898 -.632m-3.949 7.316a3 3 0 0 0 -2.995 2.824l-.005 .176a3 3 0 1 0 3 -3',
-                    link: 'https://shop.themaryam.in/collections/hampers',
+                    link: 'https://shop.themaryam.in/collections/gift-hampers',
                     subItems: [
-                      { name: 'Gift Baskets', link: 'https://shop.themaryam.in/collections/hampers?filter=baskets', desc: 'Curated sets', iconPath: 'M5.001 8h13.999a2 2 0 0 1 1.977 2.304l-1.255 7.152a3 3 0 0 1 -2.966 2.544h-9.512a3 3 0 0 1 -2.965 -2.544l-1.255 -7.152a2 2 0 0 1 1.977 -2.304z M17 8c0 -3.333 -2 -5 -5 -5' },
-                      { name: 'Gourmet Hampers', link: 'https://shop.themaryam.in/collections/hampers?filter=gourmet', desc: 'Food delights', iconPath: 'M19 3v12h-5c-.023 -3.681 .184 -7.406 5 -12z M5 3v12h5c.023 -3.681 -.184 -7.406 -5 -12z M12 21v-9' },
-                      { name: 'Spa Hampers', link: 'https://shop.themaryam.in/collections/hampers?filter=spa', desc: 'Relax & unwind', iconPath: 'M7 3c0 6 2 8 2 14 M12 5c0 8 -2.009 10 -2 16 M17 3c0 6 -2 8 -2 14' },
-                      { name: 'Corporate Hampers', link: 'https://shop.themaryam.in/collections/hampers?filter=corporate', desc: 'Business gifts', iconPath: 'M3 21l18 0 M9 8l1 0 M9 12l1 0 M9 16l1 0 M14 8l1 0 M14 12l1 0 M14 16l1 0 M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16' },
+                      { name: 'Gift Baskets', link: 'https://shop.themaryam.in/collections/gift-hampers?filter=baskets', desc: 'Curated sets', iconPath: 'M5.001 8h13.999a2 2 0 0 1 1.977 2.304l-1.255 7.152a3 3 0 0 1 -2.966 2.544h-9.512a3 3 0 0 1 -2.965 -2.544l-1.255 -7.152a2 2 0 0 1 1.977 -2.304z M17 8c0 -3.333 -2 -5 -5 -5' },
+                      { name: 'Gourmet Hampers', link: 'https://shop.themaryam.in/collections/gift-hampers?filter=gourmet', desc: 'Food delights', iconPath: 'M19 3v12h-5c-.023 -3.681 .184 -7.406 5 -12z M5 3v12h5c.023 -3.681 -.184 -7.406 -5 -12z M12 21v-9' },
+                      { name: 'Spa Hampers', link: 'https://shop.themaryam.in/collections/gift-hampers?filter=spa', desc: 'Relax & unwind', iconPath: 'M7 3c0 6 2 8 2 14 M12 5c0 8 -2.009 10 -2 16 M17 3c0 6 -2 8 -2 14' },
+                      { name: 'Corporate Hampers', link: 'https://shop.themaryam.in/collections/gift-hampers?filter=corporate', desc: 'Business gifts', iconPath: 'M3 21l18 0 M9 8l1 0 M9 12l1 0 M9 16l1 0 M14 8l1 0 M14 12l1 0 M14 16l1 0 M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16' },
                     ]
                   },
                 };
@@ -1750,6 +1750,10 @@ export const BottomNav: React.FC = () => {
 export const HelpFAB: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [showCallbackForm, setShowCallbackForm] = useState(false);
+  const [callbackQuery, setCallbackQuery] = useState('');
+  const [callbackPhone, setCallbackPhone] = useState('');
+  const [callbackSubmitted, setCallbackSubmitted] = useState(false);
 
   const faqs = [
     {
@@ -1782,7 +1786,18 @@ export const HelpFAB: React.FC = () => {
   const closeDialog = () => {
     setIsOpen(false);
     setOpenIndex(null);
+    setShowCallbackForm(false);
+    setCallbackSubmitted(false);
+    setCallbackQuery('');
+    setCallbackPhone('');
     document.body.style.overflow = '';
+  };
+
+  const handleCallbackSubmit = () => {
+    if (!callbackPhone.trim() || callbackPhone.trim().length < 10) return;
+    const msg = `Hi TheMaryam! I need help.%0A%0A*My Query:* ${encodeURIComponent(callbackQuery || 'General inquiry')}%0A*Contact:* +91${callbackPhone.trim()}%0A%0APlease call me back. Thank you!`;
+    window.open(`https://wa.me/917359033087?text=${msg}`, '_blank');
+    setCallbackSubmitted(true);
   };
 
   const toggleFAQ = (index: number) => {
@@ -2024,45 +2039,230 @@ export const HelpFAB: React.FC = () => {
           })}
         </div>
 
-        {/* Footer - WhatsApp CTA */}
+        {/* Footer - Callback Form or Button */}
         <div style={{
           padding: '12px 16px 16px',
           borderTop: '1px solid #f0f0f0',
           background: '#fafafa',
         }}>
-          <a
-            href="https://wa.me/917359033087?text=Hi%20TheMaryam!%20I%20have%20a%20question%20about%20your%20products."
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
+          {/* Success State */}
+          {callbackSubmitted ? (
+            <div style={{
               display: 'flex',
+              flexDirection: 'column',
               alignItems: 'center',
-              justifyContent: 'center',
               gap: '8px',
-              width: '100%',
-              padding: '12px 20px',
-              border: 'none',
-              borderRadius: '14px',
-              background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
-              color: '#fff',
-              fontFamily: "'Outfit', sans-serif",
-              fontSize: '0.85rem',
-              fontWeight: 600,
-              cursor: 'pointer',
-              textDecoration: 'none',
-              transition: 'transform 0.2s, box-shadow 0.2s',
-              boxShadow: '0 4px 16px rgba(37, 211, 102, 0.25)',
-              WebkitTapHighlightColor: 'transparent',
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(37, 211, 102, 0.35)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 4px 16px rgba(37, 211, 102, 0.25)'; }}
-          >
-            {/* WhatsApp icon */}
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-            I have other questions
-          </a>
+              padding: '8px 0',
+              animation: 'fadeIn 0.3s ease',
+            }}>
+              <div style={{
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #25D366, #128C7E)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <p style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontSize: '0.85rem',
+                fontWeight: 600,
+                color: '#1a1a1a',
+                margin: 0,
+                textAlign: 'center',
+              }}>We'll call you back soon!</p>
+              <p style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontSize: '0.72rem',
+                color: '#888',
+                margin: 0,
+                textAlign: 'center',
+              }}>Check your WhatsApp for confirmation</p>
+            </div>
+          ) : showCallbackForm ? (
+            /* Callback Form */
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {/* Back button */}
+              <button
+                onClick={() => setShowCallbackForm(false)}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: 0,
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: '0.75rem',
+                  color: '#888',
+                  marginBottom: '2px',
+                  WebkitTapHighlightColor: 'transparent',
+                }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to FAQs
+              </button>
+
+              {/* Query input */}
+              <div>
+                <label style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: '0.75rem',
+                  fontWeight: 600,
+                  color: '#1a1a1a',
+                  display: 'block',
+                  marginBottom: '5px',
+                }}>What is your query?</label>
+                <textarea
+                  value={callbackQuery}
+                  onChange={(e) => setCallbackQuery(e.target.value)}
+                  placeholder="Describe your question or concern..."
+                  rows={2}
+                  style={{
+                    width: '100%',
+                    padding: '10px 12px',
+                    borderRadius: '10px',
+                    border: '1.5px solid #e8e8e8',
+                    background: '#fff',
+                    fontFamily: "'Outfit', sans-serif",
+                    fontSize: '0.82rem',
+                    color: '#1a1a1a',
+                    resize: 'none',
+                    outline: 'none',
+                    transition: 'border-color 0.2s',
+                    boxSizing: 'border-box',
+                  }}
+                  onFocus={(e) => e.currentTarget.style.borderColor = '#1a1a1a'}
+                  onBlur={(e) => e.currentTarget.style.borderColor = '#e8e8e8'}
+                />
+              </div>
+
+              {/* Phone input */}
+              <div>
+                <label style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: '0.75rem',
+                  fontWeight: 600,
+                  color: '#1a1a1a',
+                  display: 'block',
+                  marginBottom: '5px',
+                }}>Enter your contact number</label>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  borderRadius: '10px',
+                  border: '1.5px solid #e8e8e8',
+                  background: '#fff',
+                  overflow: 'hidden',
+                  transition: 'border-color 0.2s',
+                }}>
+                  <span style={{
+                    padding: '10px 10px 10px 12px',
+                    fontFamily: "'Outfit', sans-serif",
+                    fontSize: '0.82rem',
+                    fontWeight: 600,
+                    color: '#888',
+                    borderRight: '1px solid #e8e8e8',
+                    background: '#fafafa',
+                    userSelect: 'none',
+                  }}>+91</span>
+                  <input
+                    type="tel"
+                    value={callbackPhone}
+                    onChange={(e) => {
+                      const val = e.target.value.replace(/\D/g, '').slice(0, 10);
+                      setCallbackPhone(val);
+                    }}
+                    placeholder="9876543210"
+                    maxLength={10}
+                    style={{
+                      flex: 1,
+                      padding: '10px 12px',
+                      border: 'none',
+                      outline: 'none',
+                      fontFamily: "'Outfit', sans-serif",
+                      fontSize: '0.82rem',
+                      color: '#1a1a1a',
+                      background: 'transparent',
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Submit button */}
+              <button
+                onClick={handleCallbackSubmit}
+                disabled={callbackPhone.trim().length < 10}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  width: '100%',
+                  padding: '12px 20px',
+                  border: 'none',
+                  borderRadius: '14px',
+                  background: callbackPhone.trim().length >= 10
+                    ? 'linear-gradient(135deg, #1a1a1a 0%, #333 100%)'
+                    : '#ccc',
+                  color: '#fff',
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: '0.85rem',
+                  fontWeight: 600,
+                  cursor: callbackPhone.trim().length >= 10 ? 'pointer' : 'not-allowed',
+                  transition: 'transform 0.2s, box-shadow 0.2s, background 0.3s',
+                  boxShadow: callbackPhone.trim().length >= 10
+                    ? '0 4px 16px rgba(0,0,0,0.15)'
+                    : 'none',
+                  WebkitTapHighlightColor: 'transparent',
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                </svg>
+                Request a Callback
+              </button>
+            </div>
+          ) : (
+            /* Default: "I have other questions" button */
+            <button
+              onClick={() => setShowCallbackForm(true)}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                width: '100%',
+                padding: '12px 20px',
+                border: 'none',
+                borderRadius: '14px',
+                background: 'linear-gradient(135deg, #1a1a1a 0%, #333 100%)',
+                color: '#fff',
+                fontFamily: "'Outfit', sans-serif",
+                fontSize: '0.85rem',
+                fontWeight: 600,
+                cursor: 'pointer',
+                transition: 'transform 0.2s, box-shadow 0.2s',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
+                WebkitTapHighlightColor: 'transparent',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,0,0,0.2)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.15)'; }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+              I have other questions
+            </button>
+          )}
         </div>
       </div>
 
