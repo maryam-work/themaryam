@@ -359,7 +359,7 @@ export const Header: React.FC = () => {
   // FNP Style Categories
   const categories = [
     'Birthday', 'Occasions', 'Anniversary', 'Flowers', 'Cakes',
-    'Personalised', 'Corporate', 'Chocolates', 'Wearables', 'Hampers'
+    'Customised', 'Corporate', 'Chocolates', 'Wearables', 'Hampers'
   ];
 
   return (
@@ -462,15 +462,18 @@ export const Header: React.FC = () => {
             </a>
           </div>
 
-          {/* Center: Search Bar */}
+          {/* Center: Search Bar - Clickable, navigates to /search */}
           <div className="flex-1 max-w-xl mx-8">
-            <div className="relative group">
-              <input
-                type="text"
-                placeholder={placeholder || "Kuch bhi batao..."}
-                className="w-full bg-white border border-gray-300 rounded-xl py-3 pl-12 pr-14 text-sm font-medium text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-all"
+            <div
+              className="relative group cursor-pointer"
+              onClick={() => navigate('/search')}
+            >
+              <div
+                className="w-full bg-white border border-gray-300 rounded-xl py-3 pl-12 pr-14 text-sm font-medium text-gray-500 transition-all hover:border-gray-400 hover:shadow-sm"
                 style={{ fontFamily: 'Inter, sans-serif' }}
-              />
+              >
+                {placeholder || "Kuch bhi batao..."}
+              </div>
               {/* Search Icon */}
               <div className="absolute left-4 top-1/2 -translate-y-1/2">
                 <Search className="w-5 h-5 text-gray-500" />
@@ -478,11 +481,11 @@ export const Header: React.FC = () => {
               {/* Voice/Mic Icon with Separator */}
               <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center">
                 <div className="w-[1px] h-6 bg-gray-200 mr-3"></div>
-                <button className="text-[#6B7D3A] hover:text-[#5a6b30] transition-colors p-1">
+                <div className="text-[#6B7D3A] hover:text-[#5a6b30] transition-colors p-1">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
                   </svg>
-                </button>
+                </div>
               </div>
             </div>
           </div>
@@ -605,18 +608,18 @@ export const Header: React.FC = () => {
                       { name: 'Cake Combos', link: 'https://shop.themaryam.in/collections/cakes?filter=combos', desc: 'With flowers', iconPath: 'M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9l8 -4.5' },
                     ]
                   },
-                  'Personalised': {
-                    accent: 'text-indigo-600',
-                    accentLight: 'bg-indigo-50',
-                    gradient: 'from-indigo-500 to-purple-500',
+                  'Customised': {
+                    accent: 'text-purple-600',
+                    accentLight: 'bg-purple-50',
+                    gradient: 'from-purple-500 to-indigo-500',
                     image: '/nav/personalised.png',
-                    iconPath: 'M6.979 3.074a6 6 0 0 1 4.988 1.425l.037 .033l.034 -.03a6 6 0 0 1 4.733 -1.44l.246 .036a6 6 0 0 1 3.364 10.008l-.18 .185l-.048 .041l-7.45 7.379a1 1 0 0 1 -1.313 .082l-.094 -.082l-7.493 -7.422a6 6 0 0 1 3.176 -10.215z',
-                    link: 'https://shop.themaryam.in/collections/personalised',
+                    iconPath: 'M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0 M6 21v-2a4 4 0 0 1 4 -4h4c.348 0 .686 .045 1.009 .128 M16 19h6 M19 16v6',
+                    link: 'https://shop.themaryam.in/collections/customized',
                     subItems: [
-                      { name: 'Photo Frames', link: 'https://shop.themaryam.in/collections/personalised?filter=frames', desc: 'Memory keepers', iconPath: 'M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z M3 10h18 M10 3v18' },
-                      { name: 'Custom Mugs', link: 'https://shop.themaryam.in/collections/personalised?filter=mugs', desc: 'Daily reminder', iconPath: 'M5 11h14v-3h-14z M17.5 11l-1.5 10h-8l-1.5 -10 M6 8v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1' },
-                      { name: 'Engraved Jewelry', link: 'https://shop.themaryam.in/collections/personalised?filter=jewelry', desc: 'Elegant touch', iconPath: 'M12 6l4 6l5 -4l-2 10h-14l-2 -10l5 4z' },
-                      { name: 'Name Lamps', link: 'https://shop.themaryam.in/collections/personalised?filter=lamps', desc: 'Light up love', iconPath: 'M9 16a5 5 0 1 1 6 0v1.5a2.5 2.5 0 0 1 -6 0v-1.5z M9.7 17h4.6 M9 21h6' },
+                      { name: 'Photo Frames', link: 'https://shop.themaryam.in/collections/customized?filter=frames', desc: 'Memory keepers', iconPath: 'M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z M3 10h18 M10 3v18' },
+                      { name: 'Custom Mugs', link: 'https://shop.themaryam.in/collections/customized?filter=mugs', desc: 'Daily reminder', iconPath: 'M5 11h14v-3h-14z M17.5 11l-1.5 10h-8l-1.5 -10 M6 8v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1' },
+                      { name: 'Engraved Jewelry', link: 'https://shop.themaryam.in/collections/customized?filter=jewelry', desc: 'Elegant touch', iconPath: 'M12 6l4 6l5 -4l-2 10h-14l-2 -10l5 4z' },
+                      { name: 'Name Lamps', link: 'https://shop.themaryam.in/collections/customized?filter=lamps', desc: 'Light up love', iconPath: 'M9 16a5 5 0 1 1 6 0v1.5a2.5 2.5 0 0 1 -6 0v-1.5z M9.7 17h4.6 M9 21h6' },
                     ]
                   },
                   'Corporate': {
