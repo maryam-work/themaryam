@@ -1,5 +1,5 @@
 // @ts-ignore
-import rawProductsData from '../src/data/compressed_catalog.json';
+import rawProductsData from '../wrapy_products.json';
 
 // Get API keys from Vercel/Local env (comma separated if multiple)
 const ENV_KEYS = import.meta.env.VITE_GEMINI_API_KEY || '';
@@ -38,8 +38,26 @@ export interface MatchedProduct extends ProductInfo {
     reason: string;
 }
 
-// Load products
-const PRODUCT_CATALOG = rawProductsData as ProductInfo[];
+// Map the raw wrapy_products.json into an optimized in-memory array instantly
+const rawWrap = rawProductsData as any;
+const PRODUCT_CATALOG: ProductInfo[] = (rawWrap.products || []).map((p: any) => {
+    const rawTags = p.keywords || p.tags || [];
+    const keywords = Array.isArray(rawTags) ? rawTags : rawTags.split(',');
+
+    const searchBlob = `${p.name} ${p.category} ${(p.description || '').replace(/<[^>]*>?/gm, ' ')} ${keywords.join(' ')}`.toLowerCase().replace(/[^\w\s₹]/g, ' ');
+
+    return {
+        handle: p.handle,
+        name: p.name,
+        description: (p.description || '').replace(/<[^>]*>?/gm, ' ').slice(0, 150),
+        price: Number(p.price) || 0,
+        category: p.category || 'Gifts',
+        tags: keywords,
+        image: Array.isArray(p.images) && p.images.length > 0 ? p.images[0] : (p.image || ''),
+        url: p.product_url || `https://shop.themaryam.in/products/${p.handle}`,
+        searchBlob: searchBlob
+    };
+});
 
 // ===================================================================
 // RESULT CACHE
