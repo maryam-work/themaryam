@@ -344,11 +344,11 @@ export const Hero = ({ onSearch, isLoading }: { onSearch: (query: string) => voi
                             <span className="text-xs font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Frames</span>
                             <div className="absolute right-0 top-2 bottom-2 w-px bg-rose-200"></div>
                         </a>
-                        <a href="/personalised" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors">
+                        <a href="https://shop.themaryam.in/collections/customized" className="flex flex-col items-center py-3 px-1 text-center group hover:bg-rose-50 transition-colors">
                             <div className="w-16 h-16 mb-2 rounded-full flex items-center justify-center overflow-hidden">
-                                <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/personalised_hero_image_800x800.jpg?v=1769150941" alt="Personalised" className="w-full h-full object-cover" />
+                                <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/personalised_hero_image_800x800.jpg?v=1769150941" alt="Customised" className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-xs font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Personalised</span>
+                            <span className="text-xs font-semibold text-gray-700 leading-tight group-hover:text-rose-500 transition-colors">Customised</span>
                         </a>
                     </div>
                 </div>
@@ -423,11 +423,11 @@ export const Hero = ({ onSearch, isLoading }: { onSearch: (query: string) => voi
                             <span className="text-sm font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Frames</span>
                             <div className="absolute right-0 top-3 bottom-3 w-px bg-rose-200"></div>
                         </a>
-                        <a href="/personalised" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors">
+                        <a href="https://shop.themaryam.in/collections/customized" className="flex flex-col items-center py-4 px-3 text-center group hover:bg-rose-50 transition-colors">
                             <div className="w-24 h-24 mb-3 rounded-full flex items-center justify-center overflow-hidden">
-                                <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/personalised_hero_image_800x800.jpg?v=1769150941" alt="Personalised" className="w-full h-full object-cover" />
+                                <img src="https://cdn.shopify.com/s/files/1/0801/4931/5828/files/personalised_hero_image_800x800.jpg?v=1769150941" alt="Customised" className="w-full h-full object-cover" />
                             </div>
-                            <span className="text-sm font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Personalised</span>
+                            <span className="text-sm font-semibold text-gray-700 group-hover:text-rose-500 transition-colors">Customised</span>
                         </a>
                     </div>
                 </div>
@@ -451,7 +451,7 @@ export const CategoriesGrid: React.FC = () => {
         { id: 2, name: 'Birthday', image: '/categories/birthday.png', link: 'https://shop.themaryam.in/collections/birthday' },
         { id: 3, name: 'Gift Sets', image: '/categories/gift-sets.png', link: 'https://shop.themaryam.in/collections/gift-sets' },
         { id: 4, name: 'Chocolates', image: '/categories/chocolates.png', link: 'https://shop.themaryam.in/collections/chocolates' },
-        { id: 5, name: 'Personalised', image: '/categories/personalised.png', link: 'https://shop.themaryam.in/collections/personalised' },
+        { id: 5, name: 'Customised', image: '/categories/personalised.png', link: 'https://shop.themaryam.in/collections/customized' },
         { id: 6, name: 'Bouquets', image: '/categories/bouquets.png', link: 'https://shop.themaryam.in/collections/bouquets' },
         { id: 7, name: 'Specials', image: '/categories/specials.png', link: 'https://shop.themaryam.in/collections/specials' },
         { id: 8, name: 'Valentine Gifts', image: '/categories/valentine-gifts.png', link: 'https://shop.themaryam.in/collections/valentine-gift' },
@@ -663,7 +663,7 @@ export const PromoCarousel: React.FC = () => {
         { id: 4, src: '/banners/customised-banner.png', alt: 'Customised Gifts', link: '#' },
         { id: 5, src: '/banners/frames-banner.png', alt: 'Photo Frames', link: '#' },
         { id: 6, src: '/banners/letters-banner.png', alt: 'Love Letters', link: '#' },
-        { id: 7, src: '/banners/personalised-banner.png', alt: 'Personalised Gifts', link: '#' },
+        { id: 7, src: '/banners/personalised-banner.png', alt: 'Customised Gifts', link: '#' },
         { id: 8, src: '/banners/wedding-banner.png', alt: 'Wedding Gifts', link: '#' },
     ];
 
